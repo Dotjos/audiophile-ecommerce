@@ -1,103 +1,143 @@
-import Image from "next/image";
+"use client"
+import { useState } from "react";
+import { Button, Footer, Navbar, ToProduct } from "./Components";
+import Image from 'next/image'
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default function Page() {
+  //state to manage menuTaggle
+  const [isOpen,setIsOpen] = useState<boolean>(false)
+      const toggleMenu=()=>{
+       setIsOpen(prev=>!prev)
+      }
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    return (
+        <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >
+          <Navbar toggleMenu={toggleMenu}/>
+<section className="relative">
+  {isOpen &&
+  <div className="min-h-screen z-50 px-4 py-6 absolute">
+    <div className="bg-WhiteSmoke-100 h-3/4">
+    <ToProduct/>
     </div>
-  );
-}
+  </div> }
+  
+  <div className="relative h-[75vh] flex items-center justify-center w-full text-PureWhite-100"> 
+    {/* Background Image */}
+    <Image
+      src="/assets/home/mobile/image-header.jpg"
+      alt="Speaker"
+      fill
+      priority
+      className="object-cover object-center absolute z-0"
+    />
+
+    {/* Content */}
+    <div className="z-10 text-center flex flex-col items-center justify-center">
+      <h2 className="font-thin tracking-[0.5em] text-xs uppercase mb-4">New product</h2>
+      
+      <h1 className="text-2xl font-bold tracking-wide mb-4">
+        XX99 MARK II <br /> HEADPHONES
+      </h1>
+      
+      <p className="text-[11px] w-4/5 leading-5 font-extralight mb-6">
+        Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+      </p>
+
+      <Button text="SEE PRODUCT" className="text-sm" />
+    </div>
+
+   </div>
+</section>
+
+          <div className="m-4">
+            <section className="min-h-screen my-10 flex flex-col">
+            <ToProduct/>
+            </section>   
+
+            <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">
+
+              <div className="flex flex-col items-center justify-between relative z-10 h-full">
+    {/* Background pattern with speaker image positioned in the center */}
+    <div className="relative flex h-1/2 justify-center items-center mb-10">
+      <Image
+        src="/assets/home/desktop/pattern-circles.svg"
+        alt="pattern-circles"
+       fill
+        className="absolute z-0 border"
+      />
+      
+      {/* Speaker image centered within the circles */}
+      <Image
+        src="/assets/home/mobile/image-speaker-zx9.png"
+        alt="ZX9 Speaker"
+        width={160}
+        height={200}
+        className="relative z-10 object-contain"
+      />
+    </div>
+    
+    {/* Text content */}
+    <div className="text-center text-white">
+      <h2 className="text-4xl font-bold mb-6">ZX9<br />SPEAKER</h2>
+      <p className="text-sm font-light mb-8 max-w-[250px] mx-auto">
+        Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+      </p>
+    </div>
+    
+    {/* Button */}
+    <Button text="SEE PRODUCT" variant="secondary" />
+              </div>
+              
+            </section>
+
+            <section className=" flex flex-col space-y-4 my-5">
+               <div className="h-64 relative w-full">
+                <Image
+                src={"/assets/home/mobile/image-speaker-zx7.jpg"}
+                alt="ZX7 Speaker"
+                fill
+                className="object-cover rounded-lg"       
+                />
+                <div className="z-10 inset-0 flex flex-col px-5 space-y-4 justify-center absolute">
+                <h1 className="text-xl tracking-widest">ZX7 SPEAKER</h1>
+                <Button text="SEE PRODUCT" variant="new" className="w-3/5"/>
+                </div>
+               </div>
+ 
+               <div className="flex flex-col space-y-3">
+                <div className="h-32 relative">
+                  <Image src={"/assets/home/mobile/image-earphones-yx1.jpg"}
+                  alt="earphones"
+                  fill
+                  className="object-cover rounded-lg"  
+                  />
+                </div>
+
+
+                <div className="h-32 bg-OffWhite-100 flex flex-col space-y-4 justify-center px-6 rounded-lg">
+                <h1 className="text-xl tracking-widest">YX1 EARPHONES</h1>
+                <Button text="SEE PRODUCT" variant="new" className="w-3/5 text-sm"/>
+                </div>
+               </div>
+            </section>
+
+          <section className="min-h-screen text-center flex flex-col justify-around">
+            <Image
+            src={"/assets/shared/mobile/image-best-gear.jpg"}
+            alt="Best Gear"
+            width={450}
+            height={450}
+            className="object-cover rounded-lg"
+            />
+ 
+        <h1 className="font-bold text-xl"> BRINGING YOU THE <br/> <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
+              <p className="text-xs leading-5">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
+                We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
+                 of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
+              </p>  
+          </section>
+          </div> 
+
+          <Footer/>  
+        </div>   
+    )}
