@@ -61,29 +61,33 @@ export const Button: FC<ButtonProps> = ({
   );
 };
 
-  interface ToShowComponentProps {
-    text: string;
-    imgPath: string;
-  }
-
-export const ToShowComponent : FC<ToShowComponentProps> = ({text,imgPath})=>{ return(
-    <div className='bg-OffWhite-100 p-3 relative flex flex-col justify-end  rounded-xl h-32'>
-    <div className='absolute -top-7 left-0 right-0 flex justify-center'>
-      <Image
-        src={imgPath}
-        alt='Go to'
-        width={75}
-        height={75}
-        className='inline-block rounded-xl '  
-      />
-    </div>
-    <div className='flex justify-between items-center flex-col'>
-     <span className='text-center text-xs text-PureBlack-100 font-medium'>{text}</span>
-     <Button text='SHOW' variant='tertiary'/>
-    </div>
-   </div>)           
-   
+interface ToShowComponentProps {
+  text: string;
+  imgPath: string;
+  height?: string; // e.g., "h-40", "h-48", "min-h-[200px]", etc.
 }
+
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, height = "h-40" }) => {
+  return (
+    <div className={`${height} flex flex-col justify-end`}>
+      <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
+        <div className="absolute -top-5 left-0 right-0 flex justify-center">
+          <Image
+            src={imgPath}
+            alt="Go to"
+            width={75}
+            height={75}
+            className="inline-block rounded-xl"
+          />
+        </div>
+        <div className="flex justify-between items-center flex-col">
+          <span className="text-center text-xs text-PureBlack-100 font-medium">{text}</span>
+          <Button text="SHOW" variant="tertiary" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export function Footer(){
   return(<footer className= 'text-center px-5 pb-5 bg-PureBlack-100 text-WhiteSmoke-100'>
@@ -133,14 +137,4 @@ export function Footer(){
           </div>
 
         </footer>)
-}
-
-export function ToProduct (){
-  return(
-    <div className='flex flex-col h-full flex-1 space-y-12'>
-      <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-      <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-      <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
-    </div>
-  )
 }

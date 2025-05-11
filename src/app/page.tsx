@@ -1,7 +1,8 @@
 "use client"
-import { useState } from "react";
-import { Button, Footer, Navbar, ToProduct } from "./Components";
+import { useState,useEffect } from "react";
+import { Button, Footer, Navbar, ToShowComponent } from "./Components";
 import Image from 'next/image'
+
 
 export default function Page() {
   //state to manage menuTaggle
@@ -10,17 +11,31 @@ export default function Page() {
        setIsOpen(prev=>!prev)
       }
 
+      useEffect(() => {
+        if (isOpen) {
+          document.body.classList.add("overflow-hidden");
+        } else {
+          document.body.classList.remove("overflow-hidden");
+        }
+      
+        // Clean up in case component unmounts
+        return () => document.body.classList.remove("overflow-hidden");
+      }, [isOpen]);
+
     return (
         <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >
           <Navbar toggleMenu={toggleMenu}/>
-<section className="relative">
-  {isOpen &&
-  <div className="min-h-screen z-50 px-4 py-6 absolute">
-    <div className="bg-WhiteSmoke-100 h-3/4">
-    <ToProduct/>
-    </div>
-  </div> }
-  
+      <section className="relative">
+{isOpen && (
+  <div className="absolute inset-0 bg-black/50 z-50 h-screen">
+     <div className="bg-WhiteSmoke-100 w-full h-[77vh] flex flex-col justify-around rounded-b-lg shadow-lg px-4 pt-5 pb-3">
+       <ToShowComponent text="HEADPHONES" height="h-25" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png" />
+       <ToShowComponent text="SPEAKERS" height="h-25" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+       <ToShowComponent text="EARPHONES" height="h-25" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/> 
+    </div> 
+  </div>
+)}
+
   <div className="relative h-[75vh] flex items-center justify-center w-full text-PureWhite-100"> 
     {/* Background Image */}
     <Image
@@ -51,7 +66,9 @@ export default function Page() {
 
           <div className="m-4">
             <section className="min-h-screen my-10 flex flex-col">
-            <ToProduct/>
+              <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>   
 
             <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">
