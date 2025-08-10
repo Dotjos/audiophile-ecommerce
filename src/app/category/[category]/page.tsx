@@ -30,8 +30,8 @@ export default async function Page({ params }: CategoryPageProps) {
       <div className=' bg-PureBlack-100 text-PureWhite-100'>
          <h1 className='p-3 relative ultra-thin-border uppercase text-center'>{category}</h1>
       </div>
-      <div className='py-4 px-2 grid grid-cols-1'>
-        {products.map((product,index) => (
+      <div className='py-4 px-4 grid grid-cols-1'>
+        {products.map((product,index:number) => (
           <div key={product.id} className="flex space-y-4 text-center flex-col items-center mb-6">
             <img
               src={product.image}
@@ -39,7 +39,7 @@ export default async function Page({ params }: CategoryPageProps) {
               className="w-full h-auto object-cover rounded-lg"
             />
             {index===0&&<h2 className="text-xs tracking-[5px]  font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
-            <h2 className="text-lg w-1/2 uppercase tracking-wide font-semibold mt-2">{product.name}</h2>
+            <h2 className="text-lg w-3/5 uppercase tracking-wide font-semibold mt-2">{product.name}</h2>
             <p className="text-sm text-gray-500 mt-1">{product.details}</p>
             <Button text='SEE PRODUCT'/>
           </div>

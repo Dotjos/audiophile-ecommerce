@@ -35,12 +35,6 @@ export default function Page() {
    </div>
 </section>
           <div className="m-4">
-            <section className="min-h-screen my-10 flex flex-col">
-              <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
-            </section>   
-
             <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">
 
               <div className="flex flex-col items-center justify-between relative z-10 h-full">
@@ -99,31 +93,12 @@ export default function Page() {
                   className="object-cover rounded-lg"  
                   />
                 </div>
-
-
                 <div className="h-32 bg-OffWhite-100 flex flex-col space-y-4 justify-center px-6 rounded-lg">
                 <h1 className="text-xl tracking-widest">YX1 EARPHONES</h1>
                 <Button text="SEE PRODUCT" variant="new" className="w-3/5 text-sm"/>
                 </div>
                </div>
             </section>
-
-          <section className="min-h-screen text-center flex flex-col justify-around">
-            <Image
-            src={"/assets/shared/mobile/image-best-gear.jpg"}
-            alt="Best Gear"
-            width={450}
-            height={450}
-            className="object-cover rounded-lg"
-            />
- 
-             <h1 className="font-bold text-xl"> BRINGING YOU THE <br/> <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
-              <p className="text-xs leading-5">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
-                We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
-                 of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
-              </p>  
-          </section>
-          
           </div> 
         </div>   
     )}

@@ -3,7 +3,7 @@ import { useEffect, useState, ReactNode } from 'react';
 import { Navbar } from './Components/Navbar';
 import Menu from './Components/Menu';
 import useStore from './Zustore';
-import { AudioGearSection, Footer } from './Components';
+import { AudioGearSection, Footer, NavSection } from './Components';
 
 
 interface Props {
@@ -42,7 +42,10 @@ export default function ScrollLockProvider({ children }: Props) {
       <Navbar toggleMenu={toggleMenu} />
       {isOpen && <Menu isOpen={isOpen} onClose={closeMenu}/>}
       {children}
+    <div className='px-4 py-10'>
+      <NavSection/>
       <AudioGearSection/>
+    </div>
      <Footer/>    
     </div>
   );

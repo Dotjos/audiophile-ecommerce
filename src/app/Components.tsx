@@ -152,3 +152,13 @@ export function AudioGearSection() {
   )
 
 }
+
+export function NavSection(){
+  return(
+    <section className="min-h-screen flex flex-col">
+              <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+            </section>  
+  )
+}
