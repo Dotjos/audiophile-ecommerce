@@ -39,7 +39,7 @@ export default async function Page({ params }: CategoryPageProps) {
               className="w-full h-auto object-cover rounded-lg"
             />
             {index===0&&<h2 className="text-xs tracking-[5px]  font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
-            <h2 className="text-lg w-1/2 tracking-wide font-semibold mt-2">{product.name}</h2>
+            <h2 className="text-lg w-1/2 uppercase tracking-wide font-semibold mt-2">{product.name}</h2>
             <p className="text-sm text-gray-500 mt-1">{product.details}</p>
             <Button text='SEE PRODUCT'/>
           </div>
