@@ -12,10 +12,22 @@ body {
   --color-Peach-100: #FBAF85;
   --color-PureWhite-100: #FFFFFF;
   --color-PureBlack-100: #000000;
+  --color-Gray-200: #979797;
+
 
    /* background image */
   --bg-mobileheader: '/assets/home/mobile/image-header.jpg';
 
   /* font-family */
   --font-display: 'Manrope', sans-serif;
+}
+
+.ultra-thin-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.08px;
+  background-color: var(--color-Gray-200);
 }
