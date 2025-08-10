@@ -1,48 +1,25 @@
 "use client"
-
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react';
-
-interface NavbarProps {
-  toggleMenu: () => void;
-}
-
-export const Navbar : FC<NavbarProps> = ({toggleMenu})=>{
-    return(
-<nav className="flex border-b-AlmostBlack-100 bg-PureBlack-100 text-PureWhite-100 p-2 justify-between">
-  <div onClick={toggleMenu} className='h-5 w-6 relative'>
-  <Image
-    src={"./assets/shared/tablet/icon-hamburger.svg"}
-    alt='Hamburger'
-    fill
-    priority
-    />
-  </div>
-   
-    <span>audiophile</span>
-    <div className='h-5 w-6 relative'>
-    <Image
-    src={"./assets/shared/mobile/icon-cart.svg"}
-    alt='cart'
-    fill
-    priority
-    />
-    </div>
-    
-</nav>)
-}
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary'|'new';
   text: string;
   className?: string;
   backGroundColor?: string;
+  link?: string;
+
+  basePath?: string;
+
 }
 
 export const Button: FC<ButtonProps> = ({
   variant = 'primary',
   text,
   className = '',
+  link='',
+  basePath='category'
 }) => {
   const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors';
   
@@ -52,22 +29,38 @@ export const Button: FC<ButtonProps> = ({
     tertiary: 'bg-transparent text-[9px] text-AlmostBlack-100 hover:text-BurntSienna-100',
     new: 'bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
   };
+
+  // const dynamicRoute=link?`${basePath}/${link}`:basePath
+  const dynamicRoute = link ? 
+    (basePath ? `/${basePath}/${link}` : `/${link}`) : 
+    `/${basePath}`;
+
   
   return (
-    <button className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+    <Link href={dynamicRoute} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
       {text}
       {variant==="tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
-    </button>
+    </Link>
   );
 };
-
+ 
 interface ToShowComponentProps {
   text: string;
   imgPath: string;
   height?: string; // e.g., "h-40", "h-48", "min-h-[200px]", etc.
+  linkPath?:string;
+  basePath?:string
 }
 
-export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, height = "h-40" }) => {
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, height = "h-40",basePath="category",linkPath }) => {
+  
+  const generateSlug = (text: string) => {
+    return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+  };
+
+  const finalLink = linkPath || generateSlug(text);
+
+
   return (
     <div className={`${height} flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
@@ -82,7 +75,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, heigh
         </div>
         <div className="flex justify-between items-center flex-col">
           <span className="text-center text-xs text-PureBlack-100 font-medium">{text}</span>
-          <Button text="SHOW" variant="tertiary" />
+          <Button text="SHOW" variant="tertiary" link={finalLink} basePath={basePath} />
         </div>
       </div>
     </div>
