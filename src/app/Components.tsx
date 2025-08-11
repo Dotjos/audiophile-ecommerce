@@ -9,7 +9,6 @@ interface ButtonProps {
   className?: string;
   backGroundColor?: string;
   link?: string;
-
   basePath?: string;
 
 }

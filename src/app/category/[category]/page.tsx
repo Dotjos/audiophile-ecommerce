@@ -2,11 +2,20 @@ import { notFound } from 'next/navigation';
 import { getProductsByCategory } from '../../lib/products';
 import { VALID_CATEGORIES,validCategory } from '../../lib/constants';
 import { Button } from '@/app/Components';
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 
 interface CategoryPageProps {
   params: Promise<{
     category: string;   
   }>;
+}
+
+interface Product {
+  id: string;
+  image: string;
+  name: string;
+  details: string;
+  price: number;
 }
 
 export default async function Page({ params }: CategoryPageProps) {
@@ -31,7 +40,7 @@ export default async function Page({ params }: CategoryPageProps) {
          <h1 className='p-3 relative ultra-thin-border uppercase text-center'>{category}</h1>
       </div>
       <div className='py-4 px-4 grid grid-cols-1'>
-        {products.map((product,index:number) => (
+        {products.map((product: Product,index:number) => (
           <div key={product.id} className="flex space-y-4 text-center flex-col items-center mb-6">
             <img
               src={product.image}
