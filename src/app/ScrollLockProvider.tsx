@@ -4,6 +4,7 @@ import { Navbar } from './Components/Navbar';
 import Menu from './Components/Menu';
 import useStore from './Zustore';
 import { AudioGearSection, Footer, NavSection } from './Components';
+import { usePathname } from 'next/navigation';
 
 
 interface Props {
@@ -12,6 +13,8 @@ interface Props {
 
 export default function ScrollLockProvider({ children }: Props) {
   const {isOpen,toggleMenu,closeMenu} = useStore();
+  const pathname = usePathname()
+  const homePage = pathname === '/';
 
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function ScrollLockProvider({ children }: Props) {
       {isOpen && <Menu isOpen={isOpen} onClose={closeMenu}/>}
       {children}
     <div className='px-4 py-10'>
-      <NavSection/>
+     { !homePage&&<NavSection/>}
       <AudioGearSection/>
     </div>
      <Footer/>    

@@ -1,5 +1,5 @@
 "use client"
-import { Button, Footer, ToShowComponent } from "./Components";
+import { Button, Footer, NavSection, ToShowComponent } from "./Components";
 import Image from 'next/image'
 
 export default function Page() {
@@ -35,6 +35,7 @@ export default function Page() {
    </div>
 </section>
           <div className="m-4">
+              <NavSection/>
             <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">
 
               <div className="flex flex-col items-center justify-between relative z-10 h-full">
