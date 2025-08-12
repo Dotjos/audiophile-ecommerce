@@ -1,19 +1,35 @@
+// lib/constants.ts
 export const VALID_CATEGORIES = ['headphones', 'speakers', 'earphones'] as const;
 export type validCategory = typeof VALID_CATEGORIES[number];
 
-export const CATEGORY_CONFIG = {
+export interface Product {
+  id: string;
+  image: string;
+  name: string;
+  details: string;
+  price: number;
+  category: validCategory;
+}
+
+// Category display information
+export const CATEGORY_INFO: Record<validCategory, {
+  title: string;
+  description: string;
+  displayName: string;
+}> = {
   headphones: {
-    name:'Headphones',
-    description:'Premium headphones for the ultimate listening experience',
+    title: 'Premium Headphones',
+    description: 'Immerse yourself in studio-quality sound',
+    displayName: 'Headphones'
   },
   speakers: {
-    name:'Speakers',
-    description:'Powerful speakers that deliver exceptional sound quality',
+    title: 'High-Quality Speakers',
+    description: 'Transform your space with powerful audio',
+    displayName: 'Speakers'
   },
   earphones: {
-    name:'Earphones', 
-    description:'Portable audio solutions for life on the go',
-  },
-} as const;
-
-export type Category = 'headphones' | 'speakers' | 'earphones';
+    title: 'Wireless Earphones',
+    description: 'Superior audio for life on the move',
+    displayName: 'Earphones'
+  }
+};

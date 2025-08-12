@@ -17,13 +17,13 @@ interface Product {
   price: number;
 }
 
+function isValidCategory(category: string): category is validCategory {
+  return VALID_CATEGORIES.includes(category as validCategory);
+}
+
 export default async function Page({ params }: CategoryPageProps) {
   const { category } =await params;
 
-  function isValidCategory(category: string): category is validCategory {
-    return VALID_CATEGORIES.includes(category as validCategory);
-  }
-  
 
   // Validate category
   if (!isValidCategory(category)) {
