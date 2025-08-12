@@ -15,3 +15,5 @@ export const CATEGORY_CONFIG = {
     description:'Portable audio solutions for life on the go',
   },
 } as const;
+
+export type Category = 'headphones' | 'speakers' | 'earphones';

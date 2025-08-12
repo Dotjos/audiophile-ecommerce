@@ -3,7 +3,7 @@ import { Goback } from "@/app/Components/Goback";
 
 export default async function Page() {
 
-  function fetchProductDetails() {}
+ async function fetchProductDetails() {}
     
 
   return (
