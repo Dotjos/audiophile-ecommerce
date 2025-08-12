@@ -1,15 +1,13 @@
-"use client";
 import { Goback } from "@/app/Components/Goback";
-import { useRouter } from "next/navigation";
 
 
+export default async function Page() {
 
-const page = () => {
+  function fetchProductDetails() {}
     
-    //remeber to create a go back functionality button when you come back
 
   return (
-    <div>
+    <div className="px-4 py-2 text-Gray-200">
       <Goback />
       <div>page</div>
     </div>
@@ -17,4 +15,3 @@ const page = () => {
 
 };
 
-export default page;

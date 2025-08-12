@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { getProductsByCategory } from '../../lib/products';
 import { VALID_CATEGORIES,validCategory } from '../../lib/constants';
 import { Button } from '@/app/Components';
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 
 interface CategoryPageProps {
   params: Promise<{
