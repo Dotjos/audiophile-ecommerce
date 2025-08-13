@@ -1,10 +1,16 @@
 import { Goback } from "@/app/Components/Goback";
+import { getProductById } from "@/app/lib/products";
+import { notFound } from 'next/navigation';
 
 
-export default async function Page() {
+interface PageProps {
+  params: Promise<{ id: string }>
+}
 
- async function fetchProductDetails() {}
-    
+export default async function Page({ params }: PageProps) {
+
+  const { id } = await params;
+  const product = await getProductById((await params).id);
 
   return (
     <div className="px-4 py-2 text-Gray-200">

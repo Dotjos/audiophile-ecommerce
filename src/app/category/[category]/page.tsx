@@ -24,14 +24,17 @@ function isValidCategory(category: string): category is validCategory {
 export default async function Page({ params }: CategoryPageProps) {
   const { category } =await params;
 
+  const normalizedCategory = category.toLowerCase();
+
+
 
   // Validate category
-  if (!isValidCategory(category)) {
+  if (!isValidCategory(normalizedCategory)) {
     notFound();
   }
   
   // Fetch products for this category
-  const products = await getProductsByCategory(category);
+  const products = await getProductsByCategory(normalizedCategory);
   
   return (
     <div className="min-h-screen">
