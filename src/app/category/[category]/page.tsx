@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { getProductsByCategory } from '../../lib/products';
 import { VALID_CATEGORIES,validCategory } from '../../lib/constants';
-import { Button } from '@/app/Components';
+import { Button, ProductImage } from '@/app/Components';
+import Image from 'next/image';
 
 interface CategoryPageProps {
   params: Promise<{
@@ -27,7 +28,6 @@ export default async function Page({ params }: CategoryPageProps) {
   const normalizedCategory = category.toLowerCase();
 
 
-
   // Validate category
   if (!isValidCategory(normalizedCategory)) {
     notFound();
@@ -44,11 +44,7 @@ export default async function Page({ params }: CategoryPageProps) {
       <div className='py-4 px-4 grid grid-cols-1'>
         {products.map((product: Product,index:number) => (
           <div key={product.id} className="flex space-y-4 text-center flex-col items-center mb-6">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-auto object-cover rounded-lg"
-            />
+            <ProductImage src={product.image} alt={product.name} />
             {index===0&&<h2 className="text-xs tracking-[5px]  font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
             <h2 className="text-lg w-3/5 uppercase tracking-wide font-semibold mt-2">{product.name}</h2>
             <p className="text-sm text-gray-500 mt-1">{product.details}</p>

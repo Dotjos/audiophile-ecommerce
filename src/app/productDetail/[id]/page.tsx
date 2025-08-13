@@ -1,3 +1,4 @@
+import { ProductImage } from "@/app/Components";
 import { Goback } from "@/app/Components/Goback";
 import { getProductById } from "@/app/lib/products";
 import { notFound } from 'next/navigation';
@@ -10,12 +11,18 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
 
   const { id } = await params;
-  const product = await getProductById((await params).id);
+  const product = await getProductById((id))
 
   return (
     <div className="px-4 py-2 text-Gray-200">
       <Goback />
-      <div>page</div>
+      <div>
+        <ProductImage src={product?.image || ''} alt={product?.name || 'Product Image'} />
+        <h1>{product?.name}</h1>
+        <p>{product?.details}</p>
+        <h1>{product?.price}</h1>
+        <div></div>
+      </div>
     </div>
   );
 
