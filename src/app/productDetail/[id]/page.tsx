@@ -1,6 +1,7 @@
 import { ProductImage } from "@/app/Components";
 import { Goback } from "@/app/Components/Goback";
 import { getProductById } from "@/app/lib/products";
+import { formatPrice } from "@/app/utils";
 import { notFound } from 'next/navigation';
 
 
@@ -14,13 +15,13 @@ export default async function Page({ params }: PageProps) {
   const product = await getProductById((id))
 
   return (
-    <div className="px-4 py-2 text-Gray-200">
+    <div className="px-4 py-2">
       <Goback />
       <div>
         <ProductImage src={product?.image || ''} alt={product?.name || 'Product Image'} />
-        <h1>{product?.name}</h1>
-        <p>{product?.details}</p>
-        <h1>{product?.price}</h1>
+        <h2 className="text-lg w-3/5 uppercase tracking-wide font-semibold mt-2">{product?.name}</h2>
+        <p className="text-sm text-gray-500 mt-1">{product?.details}</p>
+        <h1 className="my-4 font-bold">{ formatPrice(product?.price ?? 0)}</h1>
         <div></div>
       </div>
     </div>
