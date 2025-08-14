@@ -1,26 +1,172 @@
 import { create } from "zustand";
 
+// Define cart item interface
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+}
+
 interface StoreState {
-    isOpen: boolean;
-    toggleMenu: () => void;
-    closeMenu: () => void;
-    openMenu: () => void;
+  // Menu state
+  isOpen: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+  openMenu: () => void;
+  
+  // Cart state
+  cartItems: CartItem[];
+  totalItems: number;
+  totalPrice: number;
+  
+  // Cart actions
+  addToCart: (item: Omit<CartItem, 'quantity'>, quantity: number) => void;
+  removeFromCart: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  clearCart: () => void;
+  getCartItemCount: () => number;
+  getCartTotal: () => number;
 }
 
 const useStore = create<StoreState>((set, get) => ({
-    isOpen: false,
-    toggleMenu: () => {
-        set((state) => ({ isOpen: !state.isOpen }));
-        console.log('Menu toggled, new state:', get().isOpen);
-    },
-    closeMenu: () => {
-        set({ isOpen: false });
-        console.log('Menu closed');
-    },
-    openMenu: () => {
-        set({ isOpen: true });
-        console.log('Menu opened');
-    },
+  // Menu state
+  isOpen: false,
+  toggleMenu: () => {
+    set((state) => ({ isOpen: !state.isOpen }));
+  },
+  closeMenu: () => {
+    set({ isOpen: false });
+  },
+  openMenu: () => {
+    set({ isOpen: true });
+  },
+  
+  // Cart state
+  cartItems: [],
+  totalItems: 0,
+  totalPrice: 0,
+  
+  // Cart actions
+  addToCart: (item, quantity) => {
+    set((state) => {
+      const existingItem = state.cartItems.find(cartItem => cartItem.id === item.id);
+      
+      let newCartItems;
+      if (existingItem) {
+        // Update quantity if item already exists
+        newCartItems = state.cartItems.map(cartItem =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem
+        );
+      } else {
+        // Add new item to cart
+        newCartItems = [...state.cartItems, { ...item, quantity }];
+      }
+      
+      const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      return {
+        cartItems: newCartItems,
+        totalItems,
+        totalPrice,
+      };
+    });
+  },
+  
+  removeFromCart: (id) => {
+    set((state) => {
+      const newCartItems = state.cartItems.filter(item => item.id !== id);
+      const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      return {
+        cartItems: newCartItems,
+        totalItems,
+        totalPrice,
+      };
+    });
+  },
+  
+  updateQuantity: (id, quantity) => {
+    set((state) => {
+      let newCartItems;
+      
+      if (quantity <= 0) {
+        // Remove item if quantity is 0 or less
+        newCartItems = state.cartItems.filter(item => item.id !== id);
+      } else {
+        // Update item quantity
+        newCartItems = state.cartItems.map(item =>
+          item.id === id ? { ...item, quantity } : item
+        );
+      }
+      
+      const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      return {
+        cartItems: newCartItems,
+        totalItems,
+        totalPrice,
+      };
+    });
+  },
+  
+  clearCart: () => {
+    set({
+      cartItems: [],
+      totalItems: 0,
+      totalPrice: 0,
+    });
+  },
+  
+  getCartItemCount: () => {
+    return get().totalItems;
+  },
+  
+  getCartTotal: () => {
+    return get().totalPrice;
+  },
 }));
 
 export default useStore;
+
+// Usage example in a component:
+/*
+import useStore from './path/to/store';
+
+function SomeComponent() {
+  const { 
+    cartItems, 
+    totalItems, 
+    totalPrice, 
+    addToCart, 
+    removeFromCart, 
+    updateQuantity 
+  } = useStore();
+
+  const handleAddToCart = () => {
+    addToCart(
+      {
+        id: 'product-1',
+        name: 'Sample Product',
+        price: 29.99,
+        image: '/product.jpg'
+      },
+      2 // quantity
+    );
+  };
+
+  return (
+    <div>
+      <p>Total Items: {totalItems}</p>
+      <p>Total Price: ${totalPrice.toFixed(2)}</p>
+      <button onClick={handleAddToCart}>Add to Cart</button>
+    </div>
+  );
+}
+*/
