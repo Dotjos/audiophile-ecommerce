@@ -1,16 +1,21 @@
 "use client";
-import { useState } from 'react';
 import { Button } from '../Components';
-import { addToCart } from '../actions/cart-actions';
+import { saveToDatabase } from '../actions/cart-actions';
+import useStore from '../Zustore';
+import { useState } from 'react';
 
 interface QuantityInputProps {
-  productId: string;
-  productName?: string;
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    image?: string;
+  };
 }
 
-export function QuantityInput({ productId, productName }: QuantityInputProps) {
-  const [quantity, setQuantity] = useState(1);
-
+export function QuantityInput({ product }: QuantityInputProps) {
+  const[quantity,setQuantity] =  useState(1)
+  const {addToCart}=  useStore()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value) || 1;
@@ -21,7 +26,9 @@ export function QuantityInput({ productId, productName }: QuantityInputProps) {
 
   const handleAddToCart = async () => {
     try {
-      const result = await addToCart(productId, quantity);
+       addToCart(product, quantity);
+       setQuantity(1); // Reset quantity after adding to cart
+       const result = await saveToDatabase(product, quantity);
       if (result.success) {
         console.log(result.message);
         // Optional: Show success message, reset quantity, etc.

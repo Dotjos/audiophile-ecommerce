@@ -1,7 +1,13 @@
-export async function addToCart(productId: string, quantity: number) {
+interface CartProduct {
+    id: string;
+    name: string;
+    price: number;
+    image?: string;
+  }
+
+export async function saveToDatabase(product: CartProduct, quantity: number) {
+    console.log(`Saving to database: ${quantity} items of product ${product.id}`);
     // Handle adding to cart logic here
-    console.log(`Added ${quantity} items of product ${productId} to cart`);
-    
     // You can add your cart logic here:
     // - Save to database
     // - Update session

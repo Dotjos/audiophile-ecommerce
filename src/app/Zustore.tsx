@@ -20,6 +20,7 @@ interface StoreState {
   cartItems: CartItem[];
   totalItems: number;
   totalPrice: number;
+ 
   
   // Cart actions
   addToCart: (item: Omit<CartItem, 'quantity'>, quantity: number) => void;
@@ -130,43 +131,7 @@ const useStore = create<StoreState>((set, get) => ({
   
   getCartTotal: () => {
     return get().totalPrice;
-  },
+  }
 }));
 
 export default useStore;
-
-// Usage example in a component:
-/*
-import useStore from './path/to/store';
-
-function SomeComponent() {
-  const { 
-    cartItems, 
-    totalItems, 
-    totalPrice, 
-    addToCart, 
-    removeFromCart, 
-    updateQuantity 
-  } = useStore();
-
-  const handleAddToCart = () => {
-    addToCart(
-      {
-        id: 'product-1',
-        name: 'Sample Product',
-        price: 29.99,
-        image: '/product.jpg'
-      },
-      2 // quantity
-    );
-  };
-
-  return (
-    <div>
-      <p>Total Items: {totalItems}</p>
-      <p>Total Price: ${totalPrice.toFixed(2)}</p>
-      <button onClick={handleAddToCart}>Add to Cart</button>
-    </div>
-  );
-}
-*/

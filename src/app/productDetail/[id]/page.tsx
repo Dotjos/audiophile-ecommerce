@@ -37,7 +37,7 @@ export default async function Page({ params }: PageProps) {
         <h2 className="text-lg w-3/5 uppercase tracking-wide font-semibold mt-2">{product?.name}</h2>
         <p className="text-sm text-gray-500 mt-1">{product?.details}</p>
         <h1 className="my-4 font-bold">{ formatPrice(product?.price ?? 0)}</h1>
-        <QuantityInput productId={id} productName={product.name} />
+        <QuantityInput product={product} />
       </div>
     </div>
   );
