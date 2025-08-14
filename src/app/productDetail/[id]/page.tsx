@@ -1,7 +1,7 @@
-import { Button, ProductImage } from "@/app/Components";
+import {  ProductImage,RandomComponents } from "@/app/Components";
 import { Goback } from "@/app/Components/Goback";
 import { QuantityInput } from "@/app/Components/QuantityCart";
-import { getProductById } from "@/app/lib/products";
+import { getProductById,getRandomProducts } from "@/app/lib/products";
 import { formatPrice } from "@/app/utils";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
@@ -18,8 +18,9 @@ export default async function Page({ params }: PageProps) {
 
  function generateSlug(text: string) {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-  }               
-
+  }   
+  
+  const randomProducts= await getRandomProducts(3);
 
   if (!product) {
     notFound();
@@ -63,6 +64,14 @@ export default async function Page({ params }: PageProps) {
             className="w-full h-auto object-cover rounded-lg mb-4"
           />
         ))}
+        </section>
+        <section>
+          <h1 className="font-bold text-center">YOU MAY ALSO LIKE</h1>
+          {randomProducts.map((product) => (
+            <div key={product.id} className="mt-4">
+              <RandomComponents product={product}/>
+            </div>
+          ))}
         </section>
       </div>
     </div>

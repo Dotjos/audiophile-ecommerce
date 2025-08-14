@@ -156,8 +156,6 @@ export const allProducts: Product[] = [
   }
 ];
 
-
-
 export async function getProductsByCategory(category: Category): Promise<Product[]> {
   // Simulate API delay (remove in production)
   await new Promise(resolve => setTimeout(resolve, 100));
@@ -173,6 +171,7 @@ export async function getProductById(productId: string): Promise<Product | null>
   return allProducts.find(product => product.id === productId) || null;
 }
 
+// Helper function to get a random product
 export async function getRandomProducts(count: number = 3): Promise<Product[]> {
   const shuffled = [...allProducts].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);

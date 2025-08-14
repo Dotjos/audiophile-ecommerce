@@ -45,6 +45,18 @@ export const Button: FC<ButtonProps> = ({
         {variant === "tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
       </button>
     );
+  
+    interface RandomProductProps {
+      product: {
+        image: string;
+        name: string;
+        details: string;
+        price: number;
+        features?: string[];
+        inTheBox?: { quantity: number; item: string }[];
+        productImages?: string[];
+      };
+    }
   }
 
   // If link is provided, render as Link (with optional onClick)
@@ -60,36 +72,6 @@ export const Button: FC<ButtonProps> = ({
   );
 };
 
-// export const Button: FC<ButtonProps> = ({
-//   variant = 'primary',
-//   text,
-//   className = '',
-//   link='',
-//   basePath='category',
-//   onClick
-// }) => {
-//   const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors';
-  
-//   const variantClasses = {
-//     primary: 'bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32',
-//     secondary: 'bg-PureBlack-100 hover:bg-AlmostBlack-100 text-PureWhite-100 border border-PureBlack-100',
-//     tertiary: 'bg-transparent text-[9px] text-AlmostBlack-100 hover:text-BurntSienna-100',
-//     new: 'bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
-//   };
-
-//   // const dynamicRoute=link?`${basePath}/${link}`:basePath
-//   const dynamicRoute = link ? 
-//     (basePath ? `/${basePath}/${link}` : `/${link}`) : 
-//     `/${basePath}`;
-
-  
-//   return (
-//     <Link href={dynamicRoute} onClick={onClick} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
-//       {text}
-//       {variant==="tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
-//     </Link>
-//   );
-// };
  
 interface ToShowComponentProps {
   text: string;
@@ -214,20 +196,63 @@ interface ProductImageProps {
   src: string; 
   alt: string; 
   width?: number; 
-  height?: number }
+  height?: number 
+  className?: string;
+}
 
-export function ProductImage({ src, alt, width = 400, height = 300 }: ProductImageProps) {
+export function ProductImage({ 
+  src, 
+  alt, 
+  width = 400, 
+  height = 300,
+  className = "w-full h-auto object-cover rounded-lg" 
+}: ProductImageProps) {
   return (
     <Image
       src={src}
       alt={alt}
       width={width}
       height={height}
-      className="w-full h-auto object-cover rounded-lg"
+      className={className}
       priority
       placeholder="blur"
       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bvNU6V0+"
     />
-  );
+  )}
+
+ 
+interface RandomProductProps {
+  product: {
+    id: string; // Make id required for proper linking
+    image: string;
+    name: string;
+    details: string;
+    price: number;
+    features?: string[];
+    inTheBox?: { quantity: number; item: string }[];
+    productImages?: string[];
+  };
 }
 
+export function RandomComponents({product}:RandomProductProps) {
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      <ProductImage
+        src={product.image}
+        alt={product.name}
+        width={300}
+        height={400}
+        className='h-32 w-full rounded-lg object-fill'
+        
+      />
+      <h1 className='font-bold text-center'>{product.name}</h1>
+      <Button
+        text="SEE PRODUCT"
+        variant="primary"
+        link={product.id}
+        basePath="productDetail"
+        className="w-full"
+      />   
+    </div>
+  );
+}
