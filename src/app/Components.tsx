@@ -10,17 +10,18 @@ interface ButtonProps {
   backGroundColor?: string;
   link?: string;
   basePath?: string;
-
+  onClick?: () => void;
 }
 
 export const Button: FC<ButtonProps> = ({
   variant = 'primary',
   text,
   className = '',
-  link='',
-  basePath='category'
+  link = '',
+  basePath = 'category',
+  onClick
 }) => {
-  const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors';
+  const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center';
   
   const variantClasses = {
     primary: 'bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32',
@@ -29,19 +30,66 @@ export const Button: FC<ButtonProps> = ({
     new: 'bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
   };
 
-  // const dynamicRoute=link?`${basePath}/${link}`:basePath
   const dynamicRoute = link ? 
     (basePath ? `/${basePath}/${link}` : `/${link}`) : 
     `/${basePath}`;
 
-  
+  // If onClick is provided without a link, render as button
+  if (onClick && !link) {
+    return (
+      <button 
+        onClick={onClick} 
+        className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      >
+        {text}
+        {variant === "tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
+      </button>
+    );
+  }
+
+  // If link is provided, render as Link (with optional onClick)
   return (
-    <Link href={dynamicRoute} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+    <Link 
+      href={dynamicRoute} 
+      onClick={onClick} 
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+    >
       {text}
-      {variant==="tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
+      {variant === "tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
     </Link>
   );
 };
+
+// export const Button: FC<ButtonProps> = ({
+//   variant = 'primary',
+//   text,
+//   className = '',
+//   link='',
+//   basePath='category',
+//   onClick
+// }) => {
+//   const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors';
+  
+//   const variantClasses = {
+//     primary: 'bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32',
+//     secondary: 'bg-PureBlack-100 hover:bg-AlmostBlack-100 text-PureWhite-100 border border-PureBlack-100',
+//     tertiary: 'bg-transparent text-[9px] text-AlmostBlack-100 hover:text-BurntSienna-100',
+//     new: 'bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
+//   };
+
+//   // const dynamicRoute=link?`${basePath}/${link}`:basePath
+//   const dynamicRoute = link ? 
+//     (basePath ? `/${basePath}/${link}` : `/${link}`) : 
+//     `/${basePath}`;
+
+  
+//   return (
+//     <Link href={dynamicRoute} onClick={onClick} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+//       {text}
+//       {variant==="tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
+//     </Link>
+//   );
+// };
  
 interface ToShowComponentProps {
   text: string;
@@ -182,3 +230,4 @@ export function ProductImage({ src, alt, width = 400, height = 300 }: ProductIma
     />
   );
 }
+
