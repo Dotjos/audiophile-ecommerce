@@ -46,17 +46,6 @@ export const Button: FC<ButtonProps> = ({
       </button>
     );
   
-    interface RandomProductProps {
-      product: {
-        image: string;
-        name: string;
-        details: string;
-        price: number;
-        features?: string[];
-        inTheBox?: { quantity: number; item: string }[];
-        productImages?: string[];
-      };
-    }
   }
 
   // If link is provided, render as Link (with optional onClick)

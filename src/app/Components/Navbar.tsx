@@ -4,10 +4,19 @@ import useStore from '../Zustore';
 
 interface NavbarProps {
     toggleMenu: () => void;
+    
 }
 
 export const Navbar : React.FC<NavbarProps> = ()=>{
     const toggleMenu = useStore(state=> state.toggleMenu);
+
+    function handleCartClick() {
+        // Handle cart click logic here
+        console.log("Cart clicked");
+    }
+
+    
+
     return(
 <nav className="flex border-b-AlmostBlack-100 bg-PureBlack-100 text-PureWhite-100 p-2 justify-between">
   <div onClick={toggleMenu} className='h-5 w-6 relative'>
@@ -20,7 +29,8 @@ export const Navbar : React.FC<NavbarProps> = ()=>{
   </div>
    
     <span>audiophile</span>
-    <div className='h-5 w-6 relative'>
+
+    <div className='h-5 w-6 relative' onClick={handleCartClick}>
     <Image
     src={"/assets/shared/mobile/icon-cart.svg"}
     alt='cart'

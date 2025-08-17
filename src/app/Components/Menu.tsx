@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 import { ToShowComponent } from "../Components";
+import Backdrop from './Backdrop';
 
 interface MenuProps {
   isOpen: boolean;
@@ -32,14 +33,8 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
 
   return (
     <>
-      {/* Backdrop - clicking it closes the menu */}
-      <div 
-        className="fixed inset-0 bg-black/50 z-40"
-        onClick={onClose}
-        aria-hidden="true"
-    />
-      
       {/* Menu content */}
+     <Backdrop>
       <div className="absolute right-0 z-50 w-full bg-WhiteSmoke-100 rounded-b-lg shadow-lg">
         <div className="flex flex-col gap-4 px-4 pt-20 pb-6">
 
@@ -70,6 +65,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
 
         </div>
       </div>
+      </Backdrop>
     </>
   );
 };
