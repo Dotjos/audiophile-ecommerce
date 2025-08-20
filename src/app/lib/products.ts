@@ -38,7 +38,7 @@ export const allProducts: Product[] = [
     ["/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg",
       "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg",
       "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg"],
-      smallImage: "/assets/shared/mobile/image-xx99-mark-two-headphones.jpg"
+      smallImage: "/assets/shared/desktop/image-xx99-mark-two-headphones.jpg"
   },
   {
     id: 'xx99-mark-i',
