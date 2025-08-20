@@ -68,7 +68,6 @@ export function QuantityInput({ product }: QuantityInputProps) {
           +
         </button>
       </div>
-   <Button text="ADD TO CART" className='w-2/5' variant="primary" onClick={handleAddToCart}/>
       
     </div>
   );
