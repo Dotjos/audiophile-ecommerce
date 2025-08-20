@@ -9,6 +9,7 @@ export interface Product {
   category: Category; 
   features?: string[];
   inTheBox?: { quantity: number; item: string }[];
+  smallImage?: string; // Optional for smaller display
   productImages?: string[];
 }
 
@@ -36,7 +37,8 @@ export const allProducts: Product[] = [
     productImages:
     ["/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg",
       "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg",
-      "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg"]
+      "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg"],
+      smallImage: "/assets/shared/mobile/image-xx99-mark-two-headphones.jpg"
   },
   {
     id: 'xx99-mark-i',
@@ -57,7 +59,8 @@ export const allProducts: Product[] = [
     productImages:
     ["/assets/product-xx99-mark-one-headphones/mobile/image-gallery-1.jpg",
       "/assets/product-xx99-mark-one-headphones/mobile/image-gallery-2.jpg",
-      "/assets/product-xx99-mark-one-headphones/mobile/image-gallery-3.jpg"]
+      "/assets/product-xx99-mark-one-headphones/mobile/image-gallery-3.jpg"],
+      smallImage: "/assets/shared/mobile/image-xx99-mark-one-headphones.jpg"
   },
   {
     id: 'xx59-headphones',
@@ -76,7 +79,8 @@ export const allProducts: Product[] = [
     productImages:
     ["/assets/product-xx59-headphones/mobile/image-gallery-1.jpg",
       "/assets/product-xx59-headphones/mobile/image-gallery-2.jpg",
-      "/assets/product-xx59-headphones/mobile/image-gallery-3.jpg"]
+      "/assets/product-xx59-headphones/mobile/image-gallery-3.jpg"],
+      smallImage: "/assets/shared/mobile/image-xx59-headphones.jpg"
   },
   
   // Speakers
@@ -102,7 +106,8 @@ export const allProducts: Product[] = [
       "/assets/product-zx9-speaker/mobile/image-gallery-1.jpg",
       "/assets/product-zx9-speaker/mobile/image-gallery-2.jpg",
       "/assets/product-zx9-speaker/mobile/image-gallery-3.jpg"
-    ]
+    ],
+    smallImage: "/assets/shared/mobile/image-zx9-speaker.jpg"
   },
   {
     id: "zx-7",
@@ -126,7 +131,8 @@ export const allProducts: Product[] = [
       "/assets/product-zx7-speaker/mobile/image-gallery-1.jpg",
       "/assets/product-zx7-speaker/mobile/image-gallery-2.jpg",
       "/assets/product-zx7-speaker/mobile/image-gallery-3.jpg"
-    ]
+    ],
+    smallImage: "/assets/shared/mobile/image-zx7-speaker.jpg"
   },
   
   // Earphones
@@ -152,7 +158,8 @@ export const allProducts: Product[] = [
       "/assets/product-yx1-earphones/mobile/image-gallery-1.jpg",
       "/assets/product-yx1-earphones/mobile/image-gallery-2.jpg",
       "/assets/product-yx1-earphones/mobile/image-gallery-3.jpg"
-    ]
+    ],
+    smallImage: "/assets/shared/mobile/image-yx1-earphones.jpg"
   }
 ];
 
