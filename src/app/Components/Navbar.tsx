@@ -9,9 +9,11 @@ interface NavbarProps {
 
 export const Navbar : React.FC<NavbarProps> = ()=>{
     const toggleMenu = useStore(state=> state.toggleMenu);
+    const toggleCart = useStore(state => state.toggleCart);
 
     function handleCartClick() {
         // Handle cart click logic here
+        toggleCart();
         console.log("Cart clicked");
     }
 
