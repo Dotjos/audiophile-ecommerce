@@ -11,12 +11,18 @@ interface CartItem {
 
 interface StoreState {
   // Menu state
-  isOpen: boolean;
+  menuIsOpen: boolean;
   toggleMenu: () => void;
   closeMenu: () => void;
   openMenu: () => void;
   
   // Cart state
+  cartisOpen: boolean;
+  toggleCart: () => void;
+  closeCart: () => void;
+  openCart: () => void;
+  
+  // Cart items
   cartItems: CartItem[];
   totalItems: number;
   totalPrice: number;
@@ -33,18 +39,28 @@ interface StoreState {
 
 const useStore = create<StoreState>((set, get) => ({
   // Menu state
-  isOpen: false,
+  menuIsOpen: false,
   toggleMenu: () => {
-    set((state) => ({ isOpen: !state.isOpen }));
+    set((state) => ({ menuIsOpen: !state.menuIsOpen}));
   },
   closeMenu: () => {
-    set({ isOpen: false });
+    set({ menuIsOpen: false });
   },
   openMenu: () => {
-    set({ isOpen: true });
+    set({ menuIsOpen: true });
   },
   
   // Cart state
+  cartisOpen: false,
+  toggleCart: () => {
+    set((state) => ({ cartisOpen: !state.cartisOpen }));
+  },
+  closeCart: () => {
+    set({ cartisOpen: false });
+  },
+  openCart: () => {
+    set({ cartisOpen: true });
+  },
   cartItems: [],
   totalItems: 0,
   totalPrice: 0,
