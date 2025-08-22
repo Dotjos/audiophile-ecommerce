@@ -1,8 +1,9 @@
 import {  ProductImage,RandomComponents } from "@/app/Components";
+import AddToCartSection from "@/app/Components/AddToCartSection";
 import { Goback } from "@/app/Components/Goback";
-import { QuantityInput } from "@/app/Components/QuantityCart";
 import { getProductById,getRandomProducts } from "@/app/lib/products";
 import { formatPrice } from "@/app/utils";
+import useStore from "@/app/Zustore";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
 
@@ -15,6 +16,7 @@ export default async function Page({ params }: PageProps) {
   // Fetch product details using the ID from params
   const { id } = await params;
   const product = await getProductById((id))
+
 
  function generateSlug(text: string) {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -34,7 +36,9 @@ export default async function Page({ params }: PageProps) {
         <h2 className="text-lg w-3/5 uppercase tracking-wide font-semibold mt-2">{product?.name}</h2>
         <p className="text-sm text-gray-500 mt-1">{product?.details}</p>
         <h1 className="my-4 font-bold">{ formatPrice(product?.price ?? 0)}</h1>
-        <QuantityInput product={product} />
+        <div className="flex space-x-2">
+         <AddToCartSection product={product} />
+        </div>
         <section className="my-15">
           <h1 className="font-bold">FEATURES</h1>
           <ul className="list-none mt-6">

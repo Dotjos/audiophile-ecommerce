@@ -4,9 +4,11 @@ import { create } from "zustand";
 interface CartItem {
   id: string;
   name: string;
+  cartName:string;
   price: number;
   quantity: number;
   image?: string;
+  smallImage?: string; // Optional small image for cart display
 }
 
 interface StoreState {
@@ -17,7 +19,7 @@ interface StoreState {
   openMenu: () => void;
   
   // Cart state
-  cartisOpen: boolean;
+  cartIsOpen: boolean;
   toggleCart: () => void;
   closeCart: () => void;
   openCart: () => void;
@@ -27,11 +29,12 @@ interface StoreState {
   totalItems: number;
   totalPrice: number;
  
-  
   // Cart actions
   addToCart: (item: Omit<CartItem, 'quantity'>, quantity: number) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
   clearCart: () => void;
   getCartItemCount: () => number;
   getCartTotal: () => number;
@@ -41,29 +44,49 @@ const useStore = create<StoreState>((set, get) => ({
   // Menu state
   menuIsOpen: false,
   toggleMenu: () => {
-    set((state) => ({ menuIsOpen: !state.menuIsOpen}));
+    set((state) => ({ 
+      menuIsOpen: !state.menuIsOpen,
+      cartIsOpen: false // Ensure cart is closed when menu is toggled
+    }));
   },
   closeMenu: () => {
     set({ menuIsOpen: false });
   },
   openMenu: () => {
-    set({ menuIsOpen: true });
+    set({ 
+      menuIsOpen: true,
+      cartIsOpen: false // Ensure cart is closed when menu is opened
+    });
   },
   
   // Cart state
-  cartisOpen: false,
+  cartIsOpen: false,
   toggleCart: () => {
-    set((state) => ({ cartisOpen: !state.cartisOpen }));
+    set((state) => ({ 
+      cartIsOpen: !state.cartIsOpen,
+      menuIsOpen: false // Ensure menu is closed when cart is toggled
+    }));
   },
   closeCart: () => {
-    set({ cartisOpen: false });
+    set({ cartIsOpen: false });
   },
   openCart: () => {
-    set({ cartisOpen: true });
+    set({ 
+      cartIsOpen: true,
+      menuIsOpen: false // Ensure menu is closed when cart is opened
+    });
   },
+  
   cartItems: [],
   totalItems: 0,
   totalPrice: 0,
+  
+  // Helper function to recalculate totals
+  _recalculateTotals: (cartItems: CartItem[]) => {
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    return { totalItems, totalPrice };
+  },
   
   // Cart actions
   addToCart: (item, quantity) => {
@@ -124,6 +147,69 @@ const useStore = create<StoreState>((set, get) => ({
       
       const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
       const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      return {
+        cartItems: newCartItems,
+        totalItems,
+        totalPrice,
+      };
+    });
+  },
+
+  increaseQuantity: (id) => {
+    set((state) => {
+      // First check if item exists in cart
+      const existingItem = state.cartItems.find(item => item.id === id);
+      
+      if (!existingItem) {
+        console.warn(`Item with id ${id} not found in cart`);
+        return state; // Return unchanged state
+      }
+
+      const newCartItems = state.cartItems.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      
+      const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      console.log('IncreaseQuantity - Item:', existingItem);
+      console.log('IncreaseQuantity - New quantity:', existingItem.quantity + 1);
+      console.log('IncreaseQuantity - New total price:', totalPrice);
+      
+      return {
+        cartItems: newCartItems,
+        totalItems,
+        totalPrice,
+      };
+    });
+  },
+
+  decreaseQuantity: (id) => {
+    set((state) => {
+      const existingItem = state.cartItems.find(item => item.id === id);
+      
+      if (!existingItem) {
+        console.warn(`Item with id ${id} not found in cart`);
+        return state; // Return unchanged state
+      }
+
+      let newCartItems;
+      
+      if (existingItem.quantity <= 1) {
+        // Remove item if quantity would become 0 or less
+        newCartItems = state.cartItems.filter(item => item.id !== id);
+      } else {
+        // Decrease quantity by 1
+        newCartItems = state.cartItems.map(item =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        );
+      }
+      
+      const totalItems = newCartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = newCartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      console.log('DecreaseQuantity - New total price:', totalPrice);
       
       return {
         cartItems: newCartItems,
