@@ -209,7 +209,7 @@ export function ProductImage({
     />
   )}
 
- 
+  
 interface RandomProductProps {
   product: {
     id: string; // Make id required for proper linking
