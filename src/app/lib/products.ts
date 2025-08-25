@@ -10,7 +10,7 @@ export interface Product {
   category: Category; 
   features?: string[];
   inTheBox?: { quantity: number; item: string }[];
-  smallImage?: string; // Optional for smaller display
+  smallImage: string; // Optional for smaller display
   productImages?: string[];
 }
 
