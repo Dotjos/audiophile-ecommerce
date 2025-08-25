@@ -21,13 +21,13 @@ export const Button: FC<ButtonProps> = ({
   basePath = 'category',
   onClick
 }) => {
-  const baseClasses = 'py-2.5 px-5 tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center';
+  const baseClasses = 'tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center';
   
   const variantClasses = {
-    primary: 'bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32',
-    secondary: 'bg-PureBlack-100 hover:bg-AlmostBlack-100 text-PureWhite-100 border border-PureBlack-100',
-    tertiary: 'bg-transparent text-[9px] text-AlmostBlack-100 hover:text-BurntSienna-100',
-    new: 'bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
+    primary: 'py-2.5 px-5 bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32',
+    secondary: 'py-2.5 px-5 bg-PureBlack-100 hover:bg-AlmostBlack-100 text-PureWhite-100 border border-PureBlack-100',
+    tertiary: 'bg-transparent text-xs text-Gray-200 hover:text-BurntSienna-100',
+    new: 'py-2.5 px-5 bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100',
   };
 
   const dynamicRoute = link ? 
@@ -56,11 +56,10 @@ export const Button: FC<ButtonProps> = ({
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
     >
       {text}
-      {variant === "tertiary" && <span className="text-BurntSienna-100 ml-1">{'>'}</span>}
+      {variant === "tertiary" && <span className="text-BurntSienna-100 font-bold text-lg ml-1">{'>'}</span>}
     </Link>
   );
 };
-
  
 interface ToShowComponentProps {
   text: string;
@@ -78,9 +77,8 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, heigh
 
   const finalLink = linkPath || generateSlug(text);
 
-
   return (
-    <div className={`${height} flex flex-col justify-end`}>
+    <div className={`${height}  flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
         <div className="absolute -top-5 left-0 right-0 flex justify-center">
           <Image
@@ -91,9 +89,9 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, heigh
             className="inline-block rounded-xl"
           />
         </div>
-        <div className="flex justify-between items-center flex-col">
-          <span className="text-center text-xs text-PureBlack-100 font-medium">{text}</span>
-          <Button text="SHOW" variant="tertiary" link={finalLink} basePath={basePath} />
+        <div className="flex justify-end flex-col">
+          <span className="text-center text-xs tracking-widest text-PureBlack-100 font-bold">{text}</span>
+          <Button text="SHOP" variant="tertiary" className='' link={finalLink} basePath={basePath} />
         </div>
       </div>
     </div>

@@ -35,8 +35,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     <>
       {/* Menu content */}
      <Backdrop>
-      <div className="absolute z-50 w-full bg-WhiteSmoke-100 rounded-b-lg shadow-lg">
-        <div className="flex flex-col gap-4 px-4 pt-20 pb-6">
+      <div className="absolute flex flex-col px-4 pb-6 pt-15 gap-y-8 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
 
          <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
@@ -45,7 +44,6 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
             imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png" 
           />
          </div>
-
 
          <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
@@ -64,7 +62,6 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
           </div>
 
         </div>
-      </div>
       </Backdrop>
     </>
   );
