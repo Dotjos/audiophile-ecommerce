@@ -1,5 +1,5 @@
 "use client"
-import { Button, Footer, NavSection, ToShowComponent } from "./Components";
+import { Button, NavSection } from "./Components";
 import Image from 'next/image'
 
 export default function Page() {

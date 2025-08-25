@@ -78,14 +78,14 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, heigh
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`${height}  flex flex-col justify-end`}>
+    <div className={`${height} flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
-        <div className="absolute -top-5 left-0 right-0 flex justify-center">
+        <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image
             src={imgPath}
             alt="Go to"
-            width={75}
-            height={75}
+            width={100}
+            height={100}
             className="inline-block rounded-xl"
           />
         </div>
@@ -171,10 +171,10 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="min-h-screen flex flex-col">
-              <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+    <section className="flex gap-y-13 my-15 flex-col">
+              <ToShowComponent text="HEADPHONES" height='h-25' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" height='h-25' imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" height='h-25' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
 }
