@@ -29,7 +29,7 @@ const Cart = () => {
         </div>
 
         {/* Checkout button */}
-        <Button text="CHECKOUT" className="w-full mt-4" />
+        <Button text="CHECKOUT" className="w-full mt-4" link="checkout" basePath="" disabled={totalItems===0}/>
       </div>
     </Backdrop>
   );
