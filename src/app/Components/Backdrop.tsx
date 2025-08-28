@@ -40,7 +40,7 @@ const Backdrop: React.FC<BackdropProps> = ({
 
   return (
     <div
-      className={`absolute flex justify-center w-full min-h-screen bg-PureBlack-100/40 z-40 transition-opacity ${className}`}
+      className={`absolute flex justify-center w-full min-h-screen bg-PureBlack-100/40 z-50 transition-opacity ${className}`}
       onClick={(e)=>handleClick(e)}
       role="dialog"
       aria-modal="true"
