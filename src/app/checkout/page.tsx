@@ -4,6 +4,8 @@ import { Button, RadioButton, TextInput } from '../Components';
 import useStore from '../Zustore';
 import SummaryItem from '../Components/SummaryItem';
 import { useForm,SubmitHandler } from 'react-hook-form';
+import { useState } from "react";
+import OrderComplete from "../Components/OrderComplete";
 
 interface IFormInput {
   name: string;
@@ -29,6 +31,8 @@ const page = () => {
     })  
   const selection= watch("paymentMethod","e-Money")
   const {cartItems,totalPrice}= useStore();
+  const [showOrderComplete, setShowOrderComplete] = useState(false); // Renamed for clarity
+
 
   // Validation patterns
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,9 +42,11 @@ const zipPattern = /^\d{5,6}$/;
   const onSubmit:SubmitHandler<IFormInput> = (data) =>
     { 
       console.log(data);
+      setShowOrderComplete(true);
      }
 
   return (
+    <>
     <div className='p-4'>
       <Goback/>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,7 +79,7 @@ const zipPattern = /^\d{5,6}$/;
         {required: "Phone no. is required",
           pattern:{
             value:phonePattern,
-            message:"Please enter a valid phone number"
+            message:"Please enter a valid phone no."
           }
         })}/>
 
@@ -100,8 +106,6 @@ const zipPattern = /^\d{5,6}$/;
         
          {selection=== "e-Money" && (
           <>
-          <div>
-          <>
           <TextInput text='e-Money Number' id="eMoneyNumber" error={errors.eMoneyNumber} className='' placeholder='123456789' 
           {...register("eMoneyNumber", { 
             required: selection === "e-Money" ? "e-Money number is required" : false,
@@ -111,7 +115,7 @@ const zipPattern = /^\d{5,6}$/;
             } : undefined
           })}
           />
-          <TextInput text='e-Money PIN' id="e-MoneyPin" className='' error={errors.eMoneyPin} placeholder='2222'
+          <TextInput text='e-Money PIN' id="eMoneyPin" className='' error={errors.eMoneyPin} placeholder='2222'
          {...register("eMoneyPin", { 
          required: selection === "e-Money" ? "e-Money PIN is required" : false,
          pattern: selection === "e-Money" ? {
@@ -120,8 +124,8 @@ const zipPattern = /^\d{5,6}$/;
           } : undefined
          })}     />     
         </>
-      </div>
-      </>)}
+      
+      )}
 
       </div>
 
@@ -137,14 +141,21 @@ const zipPattern = /^\d{5,6}$/;
             <span className='font-bold'>${totalPrice}</span>
           </div>
           <Button 
-            text= "CONTINUE & PAY"     
+            text= "CONTINUE & PAY"  
             className={`w-full mt-4 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`} 
-            type="submit"/>
-              disabled={!isValid} // Disable if form is invalid
+            type="submit"
+             />   
         </div>
-
         </form>
     </div>
+
+{
+  showOrderComplete && (
+    <OrderComplete onClose={() => setShowOrderComplete(false)} />
+  ) 
+}
+
+    </>
   );
 };
 
