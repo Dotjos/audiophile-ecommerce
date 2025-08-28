@@ -64,12 +64,11 @@ export const Button: FC<ButtonProps> = ({
 interface ToShowComponentProps {
   text: string;
   imgPath: string;
-  height?: string; // e.g., "h-40", "h-48", "min-h-[200px]", etc.
   linkPath?:string;
   basePath?:string
 }
 
-export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, height = "h-40",basePath="category",linkPath }) => {
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath }) => {
   
   const generateSlug = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -78,14 +77,14 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath, heigh
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`${height}  flex flex-col justify-end`}>
+    <div className={`h-25 flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
-        <div className="absolute -top-5 left-0 right-0 flex justify-center">
+        <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image
             src={imgPath}
             alt="Go to"
-            width={75}
-            height={75}
+            width={100}
+            height={100}
             className="inline-block rounded-xl"
           />
         </div>
@@ -171,9 +170,9 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="min-h-screen flex flex-col">
+    <section className="flex gap-y-13 my-15 flex-col">
               <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="SPEAKERS"  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
               <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
@@ -207,7 +206,6 @@ export function ProductImage({
     />
   )}
 
-  
 interface RandomProductProps {
   product: {
     id: string; // Make id required for proper linking
@@ -218,27 +216,30 @@ interface RandomProductProps {
     features?: string[];
     inTheBox?: { quantity: number; item: string }[];
     productImages?: string[];
+    smallImage:string
   };
 }
 
 export function RandomComponents({product}:RandomProductProps) {
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className="flex flex-col items-center gap-4">
+      <div className='h-27 overflow-hidden rounded-lg bg-OffWhite-100 w-full '>
       <ProductImage
-        src={product.image}
-        alt={product.name}
-        width={300}
-        height={400}
-        className='h-32 w-full rounded-lg object-fill'
-        
+        src={product.smallImage}
+        alt={product.id}
+        width={100}
+        height={75}
+        className='m-auto rounded-lg '
       />
-      <h1 className='font-bold text-center'>{product.name}</h1>
+      </div>
+
+      <h1 className='font-bold uppercase text-center'>{product.id}</h1>
       <Button
         text="SEE PRODUCT"
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-full"
+        className="w-1/3"
       />   
     </div>
   );

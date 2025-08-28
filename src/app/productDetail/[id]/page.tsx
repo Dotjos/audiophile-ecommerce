@@ -3,7 +3,6 @@ import AddToCartSection from "@/app/Components/AddToCartSection";
 import { Goback } from "@/app/Components/Goback";
 import { getProductById,getRandomProducts } from "@/app/lib/products";
 import { formatPrice } from "@/app/utils";
-import useStore from "@/app/Zustore";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
 
@@ -16,7 +15,6 @@ export default async function Page({ params }: PageProps) {
   // Fetch product details using the ID from params
   const { id } = await params;
   const product = await getProductById((id))
-
 
  function generateSlug(text: string) {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -70,9 +68,9 @@ export default async function Page({ params }: PageProps) {
         ))}
         </section>
         <section>
-          <h1 className="font-bold text-center">YOU MAY ALSO LIKE</h1>
+          <h1 className="font-bold text-xl text-center">YOU MAY ALSO LIKE</h1>
           {randomProducts.map((product) => (
-            <div key={product.id} className="mt-4">
+            <div key={product.id} className="mt-12">
               <RandomComponents product={product}/>
             </div>
           ))}

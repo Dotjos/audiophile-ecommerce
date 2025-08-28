@@ -35,7 +35,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     <>
       {/* Menu content */}
      <Backdrop>
-      <div className="absolute flex flex-col px-4 pb-6 pt-15 gap-y-8 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+      <div className="absolute flex flex-col px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
 
          <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
