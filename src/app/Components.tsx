@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { FC, forwardRef } from 'react';
 import { FieldError } from 'react-hook-form'; // Import FieldError for better prop typing
 
-
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'new';
   text: string;
@@ -59,7 +58,7 @@ export const Button: FC<ButtonProps> = ({
   // If link is provided, render as Link (with optional onClick)
   return (
     <Link 
-      href={dynamicRoute} 
+      href={disabled?"#":dynamicRoute}
       onClick={onClick} 
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
     >
