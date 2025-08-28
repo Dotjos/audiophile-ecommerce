@@ -2,6 +2,7 @@
 
 body {
   font-family: var(--font-display);
+  background-color: var(--color-WhiteSmoke-100);
 }
 
 @theme{
@@ -13,7 +14,6 @@ body {
   --color-PureWhite-100: #FFFFFF;
   --color-PureBlack-100: #000000;
   --color-Gray-200: #979797;
-
 
    /* background image */
   --bg-mobileheader: '/assets/home/mobile/image-header.jpg';
@@ -31,3 +31,35 @@ body {
   height: 0.08px;
   background-color: var(--color-Gray-200);
 }
+
+/* Custom styles for the radio button */
+/* Styles for the custom radio indicator */
+.radio-box .custom-radio-indicator {
+  transition: all 0.2s ease-in-out; /* Smooth transition for visual changes */
+}
+
+/* Style for the inner circle (the "check") */
+.radio-box .custom-radio-indicator .inner-circle {
+  background-color: transparent; /* Initially hidden */
+  transition: background-color 0.2s ease-in-out; /* Smooth color change */
+}
+
+/* When the HIDDEN input is CHECKED, apply styles to its SIBLINGS */
+.radio-box input[type="radio"]:checked + .custom-radio-indicator {
+  border-color: var(--color-BurntSienna-100); /* Orange border when checked */
+  background-color: #FFF2E6; /* Light orange background for the box */
+}
+
+.radio-box input[type="radio"]:checked + .custom-radio-indicator .inner-circle {
+  background-color: var(--color-BurntSienna-100); /* Orange fill for the inner circle when checked */
+}
+
+/* Optional: Add hover/focus styles for better UX */
+.radio-box:hover .custom-radio-indicator {
+  border-color: var(--color-BurntSienna-100); /* Lighter orange on hover */
+}
+
+.radio-box input[type="radio"]:focus + .custom-radio-indicator {
+  box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.4); /* Orange focus ring */
+}
+

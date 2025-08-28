@@ -15,6 +15,7 @@ export default function ScrollLockProvider({ children }: Props) {
   const {menuIsOpen,toggleMenu,closeMenu,cartIsOpen,toggleCart,closeCart} = useStore();
   const pathname = usePathname()
   const homePage = pathname === '/';
+  const checkoutPage = pathname === '/checkout';
 
   useEffect(() => {
     if (menuIsOpen || cartIsOpen) {
@@ -53,8 +54,8 @@ return (
       {cartIsOpen && <Cart/>}
       {children}
     <div className='px-4 py-10'>
-     { !homePage&&<NavSection/>}
-      <AudioGearSection/>
+     { !homePage || !checkoutPage &&<NavSection/>}
+      {!checkoutPage&&<AudioGearSection/>}
     </div>
      <Footer/>    
     </div>
