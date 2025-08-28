@@ -28,7 +28,6 @@ const Backdrop: React.FC<BackdropProps> = ({
     }
   }, [pathname, closeMenu, closeCart]);
 
-  
 
   const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
     // Only trigger onClick if clicking the backdrop itself (not children)
