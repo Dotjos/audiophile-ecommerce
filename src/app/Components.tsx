@@ -265,7 +265,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ id, placeholder, className = '', text, error, ...props }, ref ) => {
     return (
       <div className='w-full mb-3'>
-        <label htmlFor={id} className='text-xs font-semibold'>{text}</label><br/>
+        <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
+        <label htmlFor={id} className='text-xs hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
+        {error && (
+          <p className="text-xs">
+            {error.message}
+          </p>
+        )}
+        </div>
         <input 
           id={id} 
           type='text' 
@@ -273,9 +280,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           placeholder={placeholder} 
           // Apply an error class if an error exists, providing visual feedback.
           className={`
-            border w-full p-2 rounded-md
+            border w-full p-2 rounded-md caret-BurntSienna-100
             focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
-            text-xs
+            text-xs active:border-BurntSienna-100 hover:border-BurntSienna-100
             ${error ? 'border-red-500' : 'border-Gray-200'}
             ${className}
           `}
@@ -283,11 +290,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {...props}
         />
         {/* Display the error message if it exists */}
-        {error && (
-          <p className="text-red-500 text-xs mt-1">
-            {error.message || 'This field is required'}
-          </p>
-        )}
+        
       </div>
     );
   }
@@ -295,19 +298,21 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
 TextInput.displayName = 'TextInput'; // Required for forwardRef
 
-interface RadioButtonProps {
+interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
   id: string;
   label: string;
+  value:string
 }
 
 // Use forwardRef to correctly handle the ref passed from react-hook-form.
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
-  ({ id, label, ...props }, ref) => {
+  ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box border my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
         <input
           id={id}
           type='radio'
+          value={value}
           ref={ref}
           className="sr-only"
           {...props}
