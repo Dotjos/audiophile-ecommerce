@@ -1,16 +1,20 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react';
+import { FC, forwardRef } from 'react';
+import { FieldError } from 'react-hook-form'; // Import FieldError for better prop typing
+
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'tertiary'|'new';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'new';
   text: string;
+  disabled?: boolean;
   className?: string;
   backGroundColor?: string;
   link?: string;
   basePath?: string;
   onClick?: () => void;
+  type?: "submit" | "button"  // Add this line
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -19,7 +23,9 @@ export const Button: FC<ButtonProps> = ({
   className = '',
   link = '',
   basePath = 'category',
-  onClick
+  onClick,
+  disabled = false,
+  type = "button" // Default to "button" if not provided
 }) => {
   const baseClasses = 'tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center';
   
@@ -35,10 +41,12 @@ export const Button: FC<ButtonProps> = ({
     `/${basePath}`;
 
   // If onClick is provided without a link, render as button
-  if (onClick && !link) {
+  if ( type !== 'button' || onClick && !link) {
     return (
       <button 
+        type= {type}
         onClick={onClick} 
+        disabled={disabled}
         className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       >
         {text}
@@ -244,3 +252,73 @@ export function RandomComponents({product}:RandomProductProps) {
     </div>
   );
 }
+
+interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  placeholder: string;
+  className?: string; // Make className optional as it may not always be needed
+  text: string;
+  error?: FieldError; 
+}
+
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ id, placeholder, className = '', text, error, ...props }, ref ) => {
+    return (
+      <div className='w-full mb-3'>
+        <label htmlFor={id} className='text-xs font-semibold'>{text}</label><br/>
+        <input 
+          id={id} 
+          type='text' 
+          ref={ref} 
+          placeholder={placeholder} 
+          // Apply an error class if an error exists, providing visual feedback.
+          className={`
+            border w-full p-2 rounded-md
+            focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
+            text-xs
+            ${error ? 'border-red-500' : 'border-Gray-200'}
+            ${className}
+          `}
+          // Pass the rest of the props (like onChange, onBlur, name) to the input.
+          {...props}
+        />
+        {/* Display the error message if it exists */}
+        {error && (
+          <p className="text-red-500 text-xs mt-1">
+            {error.message || 'This field is required'}
+          </p>
+        )}
+      </div>
+    );
+  }
+);
+
+TextInput.displayName = 'TextInput'; // Required for forwardRef
+
+interface RadioButtonProps {
+  id: string;
+  label: string;
+}
+
+// Use forwardRef to correctly handle the ref passed from react-hook-form.
+export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
+  ({ id, label, ...props }, ref) => {
+    return (
+        <label className="radio-box border my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <input
+          id={id}
+          type='radio'
+          ref={ref}
+          className="sr-only"
+          {...props}
+        />
+        <div className="custom-radio-indicator relative w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
+          <div className="inner-circle w-2 h-2 rounded-full transition-all duration-200"></div>
+        </div>
+          {label}
+        </label>
+    );
+  }
+);
+
+RadioButton.displayName = 'RadioButton'; // Required for forwardRef
