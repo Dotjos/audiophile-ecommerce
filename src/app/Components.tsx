@@ -84,20 +84,20 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 flex flex-col justify-end`}>
-      <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
+    <div className={`h-25 md:h-50 md:w-1/3 flex flex-col justify-end`}>
+      <div className="bg-OffWhite-100 p-2 md:p-4 relative flex flex-col justify-end rounded-xl h-32 md:h-40 ">
         <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image
             src={imgPath}
             alt="Go to"
             width={100}
             height={100}
-            className="inline-block rounded-xl"
+            className="inline-block md:w-35 md:border rounded-xl"
           />
         </div>
-        <div className="flex justify-end flex-col">
-          <span className="text-center text-xs tracking-widest text-PureBlack-100 font-bold">{text}</span>
-          <Button text="SHOP" variant="tertiary" className='' link={finalLink} basePath={basePath} />
+        <div className="flex justify-end md:gap-y-2 flex-col">
+          <span className="text-center text-xs tracking-widest md:text-base text-PureBlack-100 font-bold">{text}</span>
+          <Button text="SHOP" variant="tertiary" className='md:text-base' link={finalLink} basePath={basePath} />
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="flex gap-y-13 my-15 flex-col">
+    <section className="flex gap-y-13 my-15 flex-col md:flex-row md:gap-x-6 md:justify-between">
               <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
               <ToShowComponent text="SPEAKERS"  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
               <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
