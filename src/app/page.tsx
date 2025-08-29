@@ -5,35 +5,37 @@ import Image from 'next/image'
 export default function Page() {
     return (
         <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >
-      <section className="relative">
+      <section className="relative bg-AlmostBlack-100">
 
-  <div className="relative h-[75vh] flex items-center justify-center w-full text-PureWhite-100"> 
+  <div className="relative min-h-screen flex items-center justify-center w-full text-PureWhite-100"> 
     {/* Background Image */}
     <Image
-      src="/assets/home/mobile/image-header.jpg"
+      src="/assets/home/tablet/image-header.jpg"
       alt="Speaker"
       fill
       priority
-      className="object-cover object-center absolute z-0"
+      sizes= "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      className="w-1/3 absolute"
     />
 
     {/* Content */}
-    <div className="z-10 text-center flex flex-col items-center justify-center">
-      <h2 className="font-thin tracking-[0.5em] text-xs uppercase mb-4">New product</h2>
+    <div className="z-10 text-center md:w-3/5 flex flex-col items-center md:gap-y-4 justify-center">
+      <h2 className="font-thin tracking-[0.5em] md:tracking-[1em] text-xs md:text-3sxl uppercase mb-4">New product</h2>
       
-      <h1 className="text-2xl font-bold tracking-wide mb-4">
+      <h1 className="text-2xl md:text-6xl font-bold tracking-wide mb-4">
         XX99 MARK II <br /> HEADPHONES
       </h1>
       
-      <p className="text-[11px] w-4/5 leading-5 font-extralight mb-6">
+      <p className="text-[11px] md:text-sm md:text-center w-4/5 leading-5 font-extralight mb-6">
         Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
       </p>
 
-      <Button text="SEE PRODUCT" className="text-sm" link="HEADPHONES" />
+      <Button text="SEE PRODUCT" className="text-sm md:text-base md:w-2/5" link="HEADPHONES" />
     </div>
 
    </div>
 </section>
+
           <div className="m-4">
               <NavSection/>
             <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">

@@ -39,7 +39,7 @@ export default async function Page({ params }: CategoryPageProps) {
   return (
     <div className="min-h-screen">
       <div className=' bg-PureBlack-100 text-PureWhite-100'>
-         <h1 className='p-3 relative ultra-thin-border uppercase text-center'>{category}</h1>
+         <h1 className='p-6 font-bold tracking-widest text-xl relative ultra-thin-border uppercase text-center'>{category}</h1>
       </div>
       <div className='py-4 px-4 grid grid-cols-1'>
         {products.map((product: Product,index:number) => (

@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function ScrollLockProvider({ children }: Props) {
-  const {menuIsOpen,toggleMenu,closeMenu,cartIsOpen,toggleCart,closeCart} = useStore();
+  const {menuIsOpen,closeMenu,cartIsOpen,closeCart} = useStore();
   const pathname = usePathname()
   const homePage = pathname === '/';
   const checkoutPage = pathname === '/checkout';
@@ -49,7 +49,7 @@ export default function ScrollLockProvider({ children }: Props) {
 
 return (
     <div className='relative'>
-      <Navbar toggleMenu={toggleMenu} />
+      <Navbar homePage={homePage} />
       {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu}/>}
       {cartIsOpen && <Cart/>}
       {children}

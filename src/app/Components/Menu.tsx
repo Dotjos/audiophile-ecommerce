@@ -40,7 +40,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
          <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
             text="HEADPHONES" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png" 
           />
          </div>
@@ -48,7 +48,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
          <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
             text="SPEAKERS" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"
           />
           </div>
@@ -56,7 +56,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
           <div onClick={handleNavigation} className="cursor-pointer">
           <ToShowComponent 
             text="EARPHONES" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"
           />
           </div>
