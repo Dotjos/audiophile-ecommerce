@@ -106,23 +106,23 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
 
 export function Footer(){
   return(<footer className= 'text-center px-5 pb-5 bg-PureBlack-100 text-WhiteSmoke-100'>
-          <span className='block ml-auto mr-auto mb-7 bg-BurntSienna-100 w-16 h-0.5'></span>
-          <h1 className='font-black mb-7'>audiophile</h1>
+          <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 h-0.5'></span>
+          <h1 className='font-black mb-7 md:text-xl md:text-left'>audiophile</h1>
 
-          <ul className='leading-8.5 text-sm font-medium'>
-            <li>HOME</li>
+          <ul className='leading-8.5 md:tracking-[.15em] md:flex md:space-x-10 md:font-semibold text-sm font-medium'>
+            <li className=''>HOME</li>
             <li>HEADPHONES</li>
             <li>SPEAKERS</li>
             <li>EARPHONES</li>
           </ul>
 
-          <p className='text-xs my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
+          <p className='text-xs md:text-lg text-Gray-200 md:leading-8 md:text-left my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
            and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
            visit our demo facility - we’re open 7 days a week.
            </p>
 
-          <div className='text-xs'>
-          <p className='mb-5'>Copyright 2021. All Rights Reserved</p>
+          <div className='text-xs md:flex items-center md:justify-between'>
+          <p className='mb-5 md:mb-0 md:text-lg md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
             <ul>
               <li className='inline-block mx-2'>
                 <Image
@@ -130,6 +130,7 @@ export function Footer(){
                   alt='Facebook'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
               <li className='inline-block mx-2'>
@@ -138,6 +139,7 @@ export function Footer(){
                   alt='Twitter'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
               <li className='inline-block mx-2'>
@@ -146,6 +148,7 @@ export function Footer(){
                   alt='Instagram'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
             </ul>
@@ -162,7 +165,7 @@ export function AudioGearSection() {
     alt="Best Gear"
     width={450}
     height={450}
-    className="object-cover rounded-lg"
+    className="object-cover h-100 border rounded-lg"
     />
 
      <h1 className="font-bold text-xl"> BRINGING YOU THE <br/> <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
