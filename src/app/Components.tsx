@@ -197,6 +197,7 @@ interface ProductImageProps {
   width?: number; 
   height?: number 
   className?: string;
+  wrapperStyle?:string
 }
 
 export function ProductImage({ 
@@ -204,9 +205,11 @@ export function ProductImage({
   alt, 
   width = 400, 
   height = 300,
-  className = "w-full h-auto object-cover rounded-lg" 
+  wrapperStyle,
+  className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
+    <div className={`${wrapperStyle} w-full flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
     <Image
       src={src}
       alt={alt}
@@ -217,12 +220,14 @@ export function ProductImage({
       placeholder="blur"
       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bvNU6V0+"
     />
+    </div>
   )}
 
 interface RandomProductProps {
   product: {
     id: string; // Make id required for proper linking
     image: string;
+    cartName: string;
     name: string;
     details: string;
     price: number;
@@ -235,24 +240,21 @@ interface RandomProductProps {
 
 export function RandomComponents({product}:RandomProductProps) {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className='h-27 overflow-hidden rounded-lg bg-OffWhite-100 w-full '>
+    <div className="flex flex-col md:w-full items-center gap-4">
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        width={100}
-        height={75}
-        className='m-auto rounded-lg '
+        className='m-auto rounded-lg'
+        wrapperStyle='h-27 md:h-82 overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
-      </div>
 
-      <h1 className='font-bold uppercase text-center'>{product.id}</h1>
+      <h1 className='font-bold uppercase md:text-2xl text-center'>{product.cartName}</h1>
       <Button
         text="SEE PRODUCT"
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3"
+        className="w-1/3 md:w-4/5 md:py-4"
       />   
     </div>
   );
