@@ -31,10 +31,11 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     onClose();
   }
 
+
   return (
     <>
       {/* Menu content */}
-     <Backdrop>
+     <Backdrop >
       <div className="absolute flex flex-col px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
 
          <div onClick={handleNavigation} className="cursor-pointer">
