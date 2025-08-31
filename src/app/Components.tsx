@@ -209,7 +209,7 @@ export function ProductImage({
   className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
-    <div className={`${wrapperStyle} w-full flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
+    <div className={`${wrapperStyle}  flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
     <Image
       src={src}
       alt={alt}
@@ -273,9 +273,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     return (
       <div className='w-full mb-3'>
         <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
-        <label htmlFor={id} className='text-xs hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
+        <label htmlFor={id} className='text-xs md:text-sm hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
         {error && (
-          <p className="text-xs">
+          <p className="text-xs md:text-sm">
             {error.message}
           </p>
         )}
@@ -287,9 +287,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           placeholder={placeholder} 
           // Apply an error class if an error exists, providing visual feedback.
           className={`
-            border w-full p-2 rounded-md caret-BurntSienna-100
+            border w-full p-2 rounded-md caret-BurntSienna-100 md:p-4
             focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
-            text-xs active:border-BurntSienna-100 hover:border-BurntSienna-100
+            text-xs md:text-sm active:border-BurntSienna-100 hover:border-BurntSienna-100
             ${error ? 'border-red-500' : 'border-Gray-200'}
             ${className}
           `}
@@ -315,13 +315,13 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
         <input
           id={id}
           type='radio'
           value={value}
           ref={ref}
-          className="sr-only"
+          className="sr-only "
           {...props}
         />
         <div className="custom-radio-indicator relative w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
