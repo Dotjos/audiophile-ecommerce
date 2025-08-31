@@ -47,7 +47,7 @@ export default async function Page({ params }: CategoryPageProps) {
             {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
             <h2 className="text-lg w-3/5 uppercase tracking-wide md:w-1/2 md:font-bold md:text-3xl font-semibold mt-2">{product.name}</h2>
             <p className="text-sm text-gray-500 mt-1 md:w-3/4">{product.details}</p>
-            <Button text='SEE PRODUCT' className='md:w-33' link={`../productDetail/${product.id}`} />
+            <Button text='SEE PRODUCT' className='md:w-33' link={`../productDetail/${product.id}`}/>
           </div>
         ))} 
         
