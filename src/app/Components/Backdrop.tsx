@@ -10,16 +10,14 @@ interface BackdropProps {
 }
 
 const Backdrop: React.FC<BackdropProps> = ({ 
-  isVisible = true,
   className = "",
   children = null,
 }) => {
   // if (!isVisible) return null;
   const pathname = usePathname();
+  const { closeMenu, closeCart } = useStore();
   const previousPathname = useRef(pathname);
-  const closeMenu = useStore((state) => state.closeMenu);
-  const closeCart = useStore((state) => state.closeCart);
-
+  
   useEffect(() => {
     if (previousPathname.current !== pathname) {
       closeMenu();
@@ -28,12 +26,11 @@ const Backdrop: React.FC<BackdropProps> = ({
     }
   }, [pathname, closeMenu, closeCart]);
 
-
   const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
     // Only trigger onClick if clicking the backdrop itself (not children)
     if (e.target === e.currentTarget ) {
       closeMenu(); // Close the menu when backdrop is clicked
-      closeCart(); // Close the cart when backdrop is clicked
+      closeCart(); //
     }
   };
 
@@ -48,6 +45,5 @@ const Backdrop: React.FC<BackdropProps> = ({
     </div>
   );
 };
-
 
 export default Backdrop;

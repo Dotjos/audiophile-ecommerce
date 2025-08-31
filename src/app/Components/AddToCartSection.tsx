@@ -7,6 +7,7 @@ import { QuantityInput } from "./QuantityInput";
 
 interface Product {
   id: string;
+  cartName: string; // Changed from
   name: string;
   price: number;
   image: string;
@@ -40,11 +41,11 @@ const AddToCartSection = ({product}:AddToCartSectionProps) => {
       };
 
   return (
-    <div className="flex w-full space-x-4">
-      <div className="w-2/5">
+    <div className="flex w-full space-x-4 md:space-x-0">
+      <div className="w-2/5 md:w-1/3">
         <QuantityInput id={product.id} quantity={quantity} setQuantity={setQuantity}/>
       </div>
-        <Button text="ADD TO CART" onClick={handleAddToCart} className="w-3/4"/>
+        <Button text="ADD TO CART" onClick={handleAddToCart} className="w-3/4 md:h-11 md:w-33"/>
     </div>
   );
 };

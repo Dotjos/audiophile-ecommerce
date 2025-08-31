@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { getProductsByCategory } from '../../lib/products';
 import { VALID_CATEGORIES,validCategory } from '../../lib/constants';
 import { Button, ProductImage } from '@/app/Components';
-import Image from 'next/image';
 
 interface CategoryPageProps {
   params: Promise<{
@@ -38,17 +37,17 @@ export default async function Page({ params }: CategoryPageProps) {
   
   return (
     <div className="min-h-screen">
-      <div className=' bg-PureBlack-100 text-PureWhite-100 '>
-         <h1 className='p-6 font-bold md:py-20 md:text-4xl tracking-widest text-xl relative ultra-thin-border uppercase text-center'>{category}</h1>
+      <div className=' bg-PureBlack-100 text-PureWhite-100'>
+         <h1 className='p-6 font-bold tracking-widest text-xl relative ultra-thin-border uppercase text-center md:py-20 md:font-bold md:text-3xl'>{category}</h1>
       </div>
-      <div className='py-4 px-4 grid grid-cols-1 md:gap-10 md:mt-20 md:mx-5'>
+      <div className='py-4 px-4 grid grid-cols-1 md:gap-10 md:pt-25 md:px-10'>
         {products.map((product: Product,index:number) => (
           <div key={product.id} className="flex space-y-4 text-center flex-col md:gap-2 items-center mb-6">
-            <ProductImage src={product.image} className='md:object-contain md:w-full border-BurntSienna-100 md:bg-OffWhite-100 md:rounded-lg md:h-80 ' alt={product.name} />
-            {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[8px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
-            <h2 className="text-lg w-3/5 md:w-1/2 uppercase md:text-3xl md:font-bold tracking-wide font-semibold mt-2">{product.name}</h2>
-            <p className="text-sm text-gray-500 mt-1 md:w-4/5">{product.details}</p>
-            <Button text='SEE PRODUCT' className='md:font-medium md:w-35' link={`../productDetail/${product.id}`} />
+            <ProductImage src={product.image} className='h-70' wrapperStyle='w-full'  alt={product.name} />
+            {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>}
+            <h2 className="text-lg w-3/5 uppercase tracking-wide md:w-1/2 md:font-bold md:text-3xl font-semibold mt-2">{product.name}</h2>
+            <p className="text-sm text-gray-500 mt-1 md:w-3/4">{product.details}</p>
+            <Button text='SEE PRODUCT' className='md:w-33' link={`../productDetail/${product.id}`}/>
           </div>
         ))} 
         

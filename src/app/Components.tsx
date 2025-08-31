@@ -73,9 +73,10 @@ interface ToShowComponentProps {
   imgPath: string;
   linkPath?:string;
   basePath?:string
+  className?:string
 }
 
-export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath }) => {
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -84,7 +85,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 md:w-1/3 flex flex-col justify-end`}>
+    <div className={`h-25 md:h-50 ${className} flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 md:p-4 relative flex flex-col justify-end rounded-xl h-32 md:h-40 ">
         <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image
@@ -197,6 +198,7 @@ interface ProductImageProps {
   width?: number; 
   height?: number 
   className?: string;
+  wrapperStyle?:string
 }
 
 export function ProductImage({ 
@@ -204,9 +206,11 @@ export function ProductImage({
   alt, 
   width = 400, 
   height = 300,
-  className = "w-full h-auto object-cover rounded-lg" 
+  wrapperStyle,
+  className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
+    <div className={`${wrapperStyle}  flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
     <Image
       src={src}
       alt={alt}
@@ -217,12 +221,14 @@ export function ProductImage({
       placeholder="blur"
       blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjFGMUYxIi8+PC9zdmc+"
     />
+    </div>
   )}
 
 interface RandomProductProps {
   product: {
     id: string; // Make id required for proper linking
     image: string;
+    cartName: string;
     name: string;
     details: string;
     price: number;
@@ -235,24 +241,21 @@ interface RandomProductProps {
 
 export function RandomComponents({product}:RandomProductProps) {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className='h-27 overflow-hidden rounded-lg bg-OffWhite-100 w-full '>
+    <div className="flex flex-col md:w-full items-center gap-4">
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        width={100}
-        height={75}
-        className='m-auto rounded-lg '
+        className='m-auto rounded-lg'
+        wrapperStyle='h-27 md:h-82 overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
-      </div>
 
-      <h1 className='font-bold uppercase text-center'>{product.id}</h1>
+      <h1 className='font-bold uppercase md:text-2xl text-center'>{product.cartName}</h1>
       <Button
         text="SEE PRODUCT"
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3"
+        className="w-1/3 md:w-4/5 md:py-4"
       />   
     </div>
   );
@@ -271,9 +274,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     return (
       <div className='w-full mb-3'>
         <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
-        <label htmlFor={id} className='text-xs hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
+        <label htmlFor={id} className='text-xs md:text-sm hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
         {error && (
-          <p className="text-xs">
+          <p className="text-xs md:text-sm">
             {error.message}
           </p>
         )}
@@ -285,9 +288,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           placeholder={placeholder} 
           // Apply an error class if an error exists, providing visual feedback.
           className={`
-            border w-full p-2 rounded-md caret-BurntSienna-100
+            border w-full p-2 rounded-md caret-BurntSienna-100 md:p-4
             focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
-            text-xs active:border-BurntSienna-100 hover:border-BurntSienna-100
+            text-xs md:text-sm active:border-BurntSienna-100 hover:border-BurntSienna-100
             ${error ? 'border-red-500' : 'border-Gray-200'}
             ${className}
           `}
@@ -313,13 +316,13 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
         <input
           id={id}
           type='radio'
           value={value}
           ref={ref}
-          className="sr-only"
+          className="sr-only "
           {...props}
         />
         <div className="custom-radio-indicator relative w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">

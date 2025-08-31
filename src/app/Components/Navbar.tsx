@@ -17,7 +17,7 @@ export const Navbar = ({homePage}:NavbarProps)=>{
 
     return(
 <nav className={`flex ${homePage?"absolute top-0 left-0 right-0 border-b-[1px] border-Gray-200 md:mx-10 z-50":"bg-black"} items-center text-PureWhite-100 py-5 px-4 justify-between`}>
-  <div onClick={toggleMenu} className='h-5 w-6 relative'>
+  <div onClick={toggleMenu} className='h-5 w-6 md:w-7 md:h-6 relative'>
   <Image
     src={"/assets/shared/tablet/icon-hamburger.svg"}
     alt='Menu'
