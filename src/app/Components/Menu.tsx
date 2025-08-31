@@ -31,32 +31,33 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     onClose();
   }
 
+
   return (
     <>
       {/* Menu content */}
-     <Backdrop>
-      <div className="absolute flex flex-col px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+     <Backdrop >
+      <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
 
-         <div onClick={handleNavigation} className="cursor-pointer">
+         <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
           <ToShowComponent 
             text="HEADPHONES" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png" 
           />
          </div>
 
-         <div onClick={handleNavigation} className="cursor-pointer">
+         <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
           <ToShowComponent 
             text="SPEAKERS" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"
           />
           </div>
 
-          <div onClick={handleNavigation} className="cursor-pointer">
+          <div onClick={handleNavigation} className="cursor-pointer md:w-3/10 ">
           <ToShowComponent 
             text="EARPHONES" 
-            height="h-25" 
+            // height="h-25" 
             imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"
           />
           </div>

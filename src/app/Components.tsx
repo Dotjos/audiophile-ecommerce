@@ -73,9 +73,10 @@ interface ToShowComponentProps {
   imgPath: string;
   linkPath?:string;
   basePath?:string
+  className?:string
 }
 
-export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath }) => {
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -84,20 +85,20 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 flex flex-col justify-end`}>
-      <div className="bg-OffWhite-100 p-2 relative flex flex-col justify-end rounded-xl h-32">
+    <div className={`h-25 md:h-50 ${className} flex flex-col justify-end`}>
+      <div className="bg-OffWhite-100 p-2 md:p-4 relative flex flex-col justify-end rounded-xl h-32 md:h-40 ">
         <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image
             src={imgPath}
             alt="Go to"
             width={100}
             height={100}
-            className="inline-block rounded-xl"
+            className="inline-block md:w-35 md:border rounded-xl"
           />
         </div>
-        <div className="flex justify-end flex-col">
-          <span className="text-center text-xs tracking-widest text-PureBlack-100 font-bold">{text}</span>
-          <Button text="SHOP" variant="tertiary" className='' link={finalLink} basePath={basePath} />
+        <div className="flex justify-end md:gap-y-2 flex-col">
+          <span className="text-center text-xs tracking-widest md:text-base text-PureBlack-100 font-bold">{text}</span>
+          <Button text="SHOP" variant="tertiary" className='md:text-base' link={finalLink} basePath={basePath} />
         </div>
       </div>
     </div>
@@ -106,23 +107,23 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
 
 export function Footer(){
   return(<footer className= 'text-center px-5 pb-5 bg-PureBlack-100 text-WhiteSmoke-100'>
-          <span className='block ml-auto mr-auto mb-7 bg-BurntSienna-100 w-16 h-0.5'></span>
-          <h1 className='font-black mb-7'>audiophile</h1>
+          <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 h-0.5'></span>
+          <h1 className='font-black mb-7 md:text-xl md:text-left'>audiophile</h1>
 
-          <ul className='leading-8.5 text-sm font-medium'>
-            <li>HOME</li>
+          <ul className='leading-8.5 md:tracking-[.15em] md:flex md:space-x-10 md:font-semibold text-sm font-medium'>
+            <li className=''>HOME</li>
             <li>HEADPHONES</li>
             <li>SPEAKERS</li>
             <li>EARPHONES</li>
           </ul>
 
-          <p className='text-xs my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
+          <p className='text-xs md:text-lg text-Gray-200 md:leading-8 md:text-left my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
            and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
            visit our demo facility - we’re open 7 days a week.
            </p>
 
-          <div className='text-xs'>
-          <p className='mb-5'>Copyright 2021. All Rights Reserved</p>
+          <div className='text-xs md:flex items-center md:justify-between'>
+          <p className='mb-5 md:mb-0 md:text-lg md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
             <ul>
               <li className='inline-block mx-2'>
                 <Image
@@ -130,6 +131,7 @@ export function Footer(){
                   alt='Facebook'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
               <li className='inline-block mx-2'>
@@ -138,6 +140,7 @@ export function Footer(){
                   alt='Twitter'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
               <li className='inline-block mx-2'>
@@ -146,6 +149,7 @@ export function Footer(){
                   alt='Instagram'
                   width={15}
                   height={15}
+                  className='md:h-4 md:w-4'
                 />
               </li>
             </ul>
@@ -162,14 +166,17 @@ export function AudioGearSection() {
     alt="Best Gear"
     width={450}
     height={450}
-    className="object-cover rounded-lg"
+    className="object-cover h-100 border rounded-lg"
     />
 
-     <h1 className="font-bold text-xl"> BRINGING YOU THE <br/> <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
-      <p className="text-xs leading-5">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
+    <div className='md:w-3/4 md:mx-auto md:flex md:flex-col md:items-center md:space-y-6'>
+    <h1 className="font-bold text-xl md:w-4/5 md:text-3xl"> BRINGING YOU THE  <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
+      <p className="text-xs md:text-sm md:leading-6 leading-5 md:text-Gray-200">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
         We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
          of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
       </p>  
+    </div>
+     
   </section>
   )
 
@@ -177,7 +184,7 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="flex gap-y-13 my-15 flex-col">
+    <section className="flex gap-y-13 my-15 flex-col md:flex-row md:gap-x-6 md:justify-between">
               <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
               <ToShowComponent text="SPEAKERS"  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
               <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
@@ -191,6 +198,7 @@ interface ProductImageProps {
   width?: number; 
   height?: number 
   className?: string;
+  wrapperStyle?:string
 }
 
 export function ProductImage({ 
@@ -198,9 +206,11 @@ export function ProductImage({
   alt, 
   width = 400, 
   height = 300,
-  className = "w-full h-auto object-cover rounded-lg" 
+  wrapperStyle,
+  className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
+    <div className={`${wrapperStyle}  flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
     <Image
       src={src}
       alt={alt}
@@ -211,12 +221,14 @@ export function ProductImage({
       placeholder="blur"
       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bvNU6V0+"
     />
+    </div>
   )}
 
 interface RandomProductProps {
   product: {
     id: string; // Make id required for proper linking
     image: string;
+    cartName: string;
     name: string;
     details: string;
     price: number;
@@ -229,24 +241,21 @@ interface RandomProductProps {
 
 export function RandomComponents({product}:RandomProductProps) {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className='h-27 overflow-hidden rounded-lg bg-OffWhite-100 w-full '>
+    <div className="flex flex-col md:w-full items-center gap-4">
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        width={100}
-        height={75}
-        className='m-auto rounded-lg '
+        className='m-auto rounded-lg'
+        wrapperStyle='h-27 md:h-82 overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
-      </div>
 
-      <h1 className='font-bold uppercase text-center'>{product.id}</h1>
+      <h1 className='font-bold uppercase md:text-2xl text-center'>{product.cartName}</h1>
       <Button
         text="SEE PRODUCT"
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3"
+        className="w-1/3 md:w-4/5 md:py-4"
       />   
     </div>
   );
@@ -265,9 +274,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     return (
       <div className='w-full mb-3'>
         <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
-        <label htmlFor={id} className='text-xs hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
+        <label htmlFor={id} className='text-xs md:text-sm hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
         {error && (
-          <p className="text-xs">
+          <p className="text-xs md:text-sm">
             {error.message}
           </p>
         )}
@@ -279,9 +288,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           placeholder={placeholder} 
           // Apply an error class if an error exists, providing visual feedback.
           className={`
-            border w-full p-2 rounded-md caret-BurntSienna-100
+            border w-full p-2 rounded-md caret-BurntSienna-100 md:p-4
             focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
-            text-xs active:border-BurntSienna-100 hover:border-BurntSienna-100
+            text-xs md:text-sm active:border-BurntSienna-100 hover:border-BurntSienna-100
             ${error ? 'border-red-500' : 'border-Gray-200'}
             ${className}
           `}
@@ -307,13 +316,13 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
         <input
           id={id}
           type='radio'
           value={value}
           ref={ref}
-          className="sr-only"
+          className="sr-only "
           {...props}
         />
         <div className="custom-radio-indicator relative w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">

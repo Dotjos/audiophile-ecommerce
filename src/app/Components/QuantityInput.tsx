@@ -57,7 +57,7 @@ export function QuantityInput({setQuantity,quantity,id}: QuantityInputProps) {
   };
 
   return (
-    <div className="flex w-full h-full items-center justify-around bg-gray-100">
+    <div className="flex w-full md:w-4/5 md:h-11 h-full items-center justify-around bg-gray-100">
       <button
         onClick={handleDecrease}
         className="px-2 py-1.5 hover:bg-gray-200 text-sm text-gray-600 font-bold"
