@@ -73,9 +73,10 @@ interface ToShowComponentProps {
   imgPath: string;
   linkPath?:string;
   basePath?:string
+  className?:string
 }
 
-export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath }) => {
+export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -84,7 +85,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 md:w-1/3 flex flex-col justify-end`}>
+    <div className={`h-25 md:h-50 ${className} flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 md:p-4 relative flex flex-col justify-end rounded-xl h-32 md:h-40 ">
         <div className="absolute -top-10 left-0 right-0 flex justify-center">
           <Image

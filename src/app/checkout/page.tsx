@@ -47,12 +47,12 @@ const zipPattern = /^\d{5,6}$/;
 
   return (
     <>
-    <div className='p-4'>
+    <div className='p-4 md:py-10 md:px-8'>
       <Goback/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='bg-PureWhite-100 rounded-lg px-4 py-5'>
-        <h1 className='text-2xl my-2 font-bold'>CHECKOUT</h1>
-        <h2 className='text-xs font-semibold text-BurntSienna-100 '>BILLING DETAILS</h2>
+        <h1 className='text-2xl md:text-4xl my-2 md:mb-10 font-bold'>CHECKOUT</h1>
+        <h2 className='text-xs md:text-base md:my-4 font-semibold text-BurntSienna-100 '>BILLING DETAILS</h2>
 
        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <TextInput text='Name' id="name" className='' placeholder='Name' error={errors.name} 
@@ -85,7 +85,7 @@ const zipPattern = /^\d{5,6}$/;
         })}/>
         </div>
 
-      <h2 className='text-xs font-semibold text-BurntSienna-100 mt-3 uppercase'>Delivery details</h2>
+      <h2 className='text-xs font-semibold md:text-base md:font-bold text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Delivery details</h2>
          <TextInput text='Your Address' id="address" className='' error={errors.address} placeholder='Address' 
          {...register("address",{required:true})}/>
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -102,7 +102,7 @@ const zipPattern = /^\d{5,6}$/;
          </div>
 
       
-         <h2 className='text-xs font-semibold text-BurntSienna-100  uppercase'>Payment details</h2>  
+         <h2 className='text-xs font-semibold md:text-base md:font-bold text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Payment details</h2>  
          <div className=' flex flex-col md:flex-row md:items-start justify-between'>
             <span className='text-xs md:text-base font-semibold my-3 '>Payment Method</span>
             <div className="md:w-1/2 md:flex md:flex-col md:gap-1">
