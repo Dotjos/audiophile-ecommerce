@@ -38,9 +38,9 @@ export default function Page() {
 
           <div className="m-4">
               <NavSection/>
-            <section className="relative bg-BurntSienna-100 rounded-lg overflow-hidden max-w-sm mx-auto py-16 px-8">
+<section className="relative bg-BurntSienna-100 md:w-full rounded-lg overflow-hidden  mx-auto py-16 px-8">
 
-              <div className="flex flex-col items-center justify-between relative z-10 h-full">
+ <div className="flex flex-col md:gap-11 items-center justify-between relative z-10 h-full">
     {/* Background pattern with speaker image positioned in the center */}
     <div className="relative flex h-1/2 justify-center items-center mb-10">
       <Image
@@ -54,40 +54,39 @@ export default function Page() {
       <Image
         src="/assets/home/mobile/image-speaker-zx9.png"
         alt="ZX9 Speaker"
-        width={160}
-        height={200}
-        className="relative z-10 object-contain"
+        width={100}
+        height={100}
+        className="relative z-10 md:w-50  object-contain"
       />
     </div>
     
-    {/* Text content */}
-    <div className="text-center text-white">
-      <h2 className="text-4xl font-bold mb-6">ZX9<br />SPEAKER</h2>
-      <p className="text-sm font-light mb-8 max-w-[250px] mx-auto">
+    {/* Text content */ }
+    <div className="text-center md:w-1/2 text-white">
+      <h2 className="text-4xl font-bold mb-6 md:text-6xl">ZX9<br />SPEAKER</h2>
+      <p className="text-xs font-light mb-8 md:text-center  mx-auto md:text-base md:w-4/5 md:leading-7">
         Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
       </p>
     </div>
     
     {/* Button */}
-    <Button text="SEE PRODUCT" variant="secondary" />
-              </div>
-              
+    <Button text="SEE PRODUCT" className="md:font-bold md:py-4 md:px-10 tracking-[1em]" variant="secondary" />
+              </div>          
             </section>
 
-            <section className=" flex flex-col space-y-4 my-5">
-               <div className="h-64 relative w-full">
+            <section className=" flex flex-col space-y-4 my-5 h-64 md:h-85 relative w-full ">
                 <Image
-                src={"/assets/home/mobile/image-speaker-zx7.jpg"}
+                src={"/assets/home/tablet/image-speaker-zx7.jpg"}
                 alt="ZX7 Speaker"
                 fill
                 className="object-cover rounded-lg"       
                 />
                 <div className="z-10 inset-0 flex flex-col px-5 space-y-4 justify-center absolute">
-                <h1 className="text-xl tracking-widest">ZX7 SPEAKER</h1>
+                <h1 className="text-xl md:font-bold md:text-2xl tracking-widest">ZX7 SPEAKER</h1>
                 <Button text="SEE PRODUCT" variant="new" className="w-3/5"/>
                 </div>
-               </div>
- 
+            </section>
+
+            <section>
                <div className="flex flex-col space-y-3">
                 <div className="h-32 relative">
                   <Image src={"/assets/home/mobile/image-earphones-yx1.jpg"}
@@ -101,7 +100,8 @@ export default function Page() {
                 <Button text="SEE PRODUCT" variant="new" className="w-3/5 text-sm"/>
                 </div>
                </div>
-            </section>
+
+               </section>
           </div> 
         </div>   
     )}

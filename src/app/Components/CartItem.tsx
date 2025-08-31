@@ -2,6 +2,7 @@
 import { ProductImage } from "../Components";
 import { QuantityInput } from "./QuantityInput";
 import useStore from "../Zustore";
+import { formatPrice } from "../utils";
 
 interface Product {
   id: string;
@@ -30,19 +31,19 @@ const CartItem = ({item}:CartItemProps) => {
 
   return (
     <div className="flex items-center mb-4 justify-between">
-         <div className="rounded-lg overflow-hidden h-14 w-14">
+         <div className="rounded-lg overflow-hidden h-14 w-15">
            <ProductImage
              src={item.smallImage || "/images/placeholder.png"}
              alt={`cart-${item.name}`}
-             className="h-full w-full object-fill"
+             className="h-full w-full object-fill border"
              width={40}
              height={40}
            />
          </div>
          {/* Item details */}
-         <div className="text-[11px] items-center text-left w-3/10 flex font-semibold space-y-1 flex-col uppercase">
-           <span className="text-left w-full">{item.cartName}</span>
-           <span className="text-Gray-200 text-left w-full">${item.price}</span>
+         <div className="text-sm items-center text-left w-3/10 flex font-semibold space-y-1 flex-col uppercase">
+           <span className="text-left font-semibold w-full">{item.cartName}</span>
+           <span className="text-Gray-200 font-semibold text-left w-full">{formatPrice(item.price)}</span>
          </div>
          {/* Quantity (optional) */}
          <div className="w-3/10 h-6 overflow-hidden flex items-center justify-center">

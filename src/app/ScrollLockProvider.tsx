@@ -54,7 +54,7 @@ return (
       {cartIsOpen && <Cart/>}
       {children}
     <div className='px-4 py-10'>
-     { !homePage || !checkoutPage &&<NavSection/>}
+     {!(homePage || checkoutPage) &&<NavSection/>}
       {!checkoutPage&&<AudioGearSection/>}
     </div>
      <Footer/>    
