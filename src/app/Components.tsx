@@ -120,22 +120,29 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
       </div>
     </div>
   );
-};
+}
 
 export function Footer(){
-  return(<footer className= 'text-center px-5 pb-5 bg-PureBlack-100 text-WhiteSmoke-100'>
+  return(<footer className= 'text-center px-5 pb-5 lg:px-30 bg-PureBlack-100 text-WhiteSmoke-100'>
           <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 h-0.5'></span>
-          <h1 className='font-black mb-7 md:text-xl md:text-left'>audiophile</h1>
 
-         <NavLink/>
+          <div className='lg:flex lg:mt-15 lg:items-center lg:justify-between'>
+          <h1 className='font-black mb-7 lg:mb-0 md:text-xl md:text-left'>audiophile</h1>
+          <NavLink/>
+          </div>
+          
+          <div className='lg:flex lg:justify-between lg:mb-5'>
 
-          <p className='text-xs md:text-lg text-Gray-200 md:leading-8 md:text-left my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
-           and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
-           visit our demo facility - we’re open 7 days a week.
-           </p>
+            <div className='lg:w-1/2 '>
+              <p className='text-xs md:text-lg lg:text-sm text-Gray-200 md:leading-8 md:text-left lg:mb-10 my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
+              and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
+               visit our demo facility - we’re open 7 days a week.
+              </p>
+              <p className='mb-5 md:mb-0 md:text-lg lg:text-sm lg:text-left md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
+            </div>
+          
 
           <div className='text-xs md:flex items-center md:justify-between'>
-          <p className='mb-5 md:mb-0 md:text-lg md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
             <ul>
               <li className='inline-block mx-2'>
                 <Image
@@ -165,6 +172,9 @@ export function Footer(){
                 />
               </li>
             </ul>
+
+
+            </div>
           </div>
 
         </footer>)
