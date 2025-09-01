@@ -76,6 +76,23 @@ interface ToShowComponentProps {
   className?:string
 }
 
+interface NavLinkProps {
+  className?:string
+}
+
+export const NavLink: FC<NavLinkProps> = ({className}) => {
+  return (
+    <ul className={`leading-8.5 md:tracking-[.15em] md:flex md:space-x-10 md:font-semibold text-sm font-medium ${className}`}>
+      <li>
+        <Link href="/">HOME</Link>
+      </li>
+      <li><Link href="/category/HEADPHONES">HEADPHONES</Link></li>
+      <li><Link href="/category/SPEAKERS">SPEAKERS</Link></li>
+      <li><Link href="/category/EARPHONES">EARPHONES</Link></li>
+    </ul>
+  );
+}
+
 export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
@@ -110,12 +127,7 @@ export function Footer(){
           <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 h-0.5'></span>
           <h1 className='font-black mb-7 md:text-xl md:text-left'>audiophile</h1>
 
-          <ul className='leading-8.5 md:tracking-[.15em] md:flex md:space-x-10 md:font-semibold text-sm font-medium'>
-            <li className=''>HOME</li>
-            <li>HEADPHONES</li>
-            <li>SPEAKERS</li>
-            <li>EARPHONES</li>
-          </ul>
+         <NavLink/>
 
           <p className='text-xs md:text-lg text-Gray-200 md:leading-8 md:text-left my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
            and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
@@ -185,9 +197,9 @@ export function AudioGearSection() {
 export function NavSection(){
   return(
     <section className="flex gap-y-13 my-15 flex-col md:flex-row md:gap-x-6 md:justify-between">
-              <ToShowComponent text="HEADPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS"  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+              <ToShowComponent text="HEADPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" className='w-1/3'  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
 }
