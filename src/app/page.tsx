@@ -4,39 +4,54 @@ import Image from 'next/image'
 
 export default function Page() {
     return (
-        <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >
-      <section className="relative bg-AlmostBlack-100">
-
-  <div className="relative min-h-screen flex items-center justify-center w-full text-PureWhite-100"> 
-    {/* Background Image */}
-    <Image
-      src="/assets/home/tablet/image-header.jpg"
-      alt="Speaker"
-      fill
-      priority
-      sizes= "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      className="w-1/3 absolute"
-    />
-
-    {/* Content */}
-    <div className="z-10 text-center md:w-3/5 flex flex-col items-center md:gap-y-4 justify-center">
-      <h2 className="font-thin tracking-[0.5em] md:tracking-[1em] text-xs md:text-3sxl uppercase mb-4">New product</h2>
-      
-      <h1 className="text-2xl md:text-6xl font-bold tracking-wide mb-4">
-        XX99 MARK II <br /> HEADPHONES
-      </h1>
-      
-      <p className="text-[11px] md:text-sm md:text-center w-4/5 leading-5 font-extralight mb-6">
-        Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
-      </p>
-
-      <Button text="SEE PRODUCT" className="text-sm md:text-base md:w-2/5" link="HEADPHONES" />
+    <>
+  <section className="min-h-screen relative items-center justify-center w-full text-PureWhite-100">
+  
+   <div className="w-full h-full z-20 lg:px-30 absolute flex items-center justify-center lg:justify-start">
+   {/* Content */}
+  <div className="text-center lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-4 justify-center">
+    <h2 className="font-thin tracking-[0.5em] md:tracking-[1em] text-xs md:text-3xl lg:text-sm lg:tracking-[0.5em] uppercase mb-4">
+      New product
+    </h2>
+    
+    <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold tracking-wide mb-4">
+      XX99 MARK II <br /> HEADPHONES
+    </h1>
+    
+    <p className="text-[11px] md:text-sm lg:text-left lg:w-3/5 lg:text-xs md:text-center w-4/5 leading-5 font-extralight mb-6">
+      Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+    </p>
+    
+    <Button 
+      text="SEE PRODUCT" 
+      className="text-sm md:text-base md:w-2/5 lg:w-37 lg:text-sm" 
+      link="headphones" 
+      />
+  </div>
     </div>
 
-   </div>
+  {/* Background Image */}
+<picture className="w-full z-10">
+  <source 
+    media="(min-width: 1024px)" 
+    srcSet="/assets/home/desktop/image-hero.jpg"
+    sizes="10vw"
+  />
+  <source 
+    media="(min-width: 640px)" 
+    srcSet="/assets/home/tablet/image-header.jpg"
+    sizes="100vw"
+  />
+  <img 
+    src="/assets/home/mobile/image-header.jpg"
+    alt="Speaker" 
+    className="object-cover w-full h-full"
+  />
+</picture>
 </section>
 
-          <div className="m-4">
+        <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >     
+          <div className="m-4 md:p-7">
               <NavSection/>
 <section className="relative bg-BurntSienna-100 md:w-full rounded-lg overflow-hidden  mx-auto py-16 px-8">
 
@@ -104,4 +119,5 @@ export default function Page() {
                </section>
           </div> 
         </div>   
+        </>
     )}
