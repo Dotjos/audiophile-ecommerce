@@ -102,19 +102,19 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 ${className} flex flex-col justify-end`}>
-      <div className="bg-OffWhite-100 p-2 md:p-4 relative flex flex-col justify-end rounded-xl h-32 md:h-40 ">
-        <div className="absolute -top-10 left-0 right-0 flex justify-center">
+    <div className={`h-25 md:h-50 ${className} relative flex flex-col justify-end`}>
+      <div className="bg-OffWhite-100 p-2 md:p-4  flex flex-col justify-end rounded-xl h-32 md:h-40 lg:h-50">
+        <div className="absolute lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
           <Image
             src={imgPath}
             alt="Go to"
             width={100}
             height={100}
-            className="inline-block md:w-35 md:border rounded-xl"
+            className="inline-block md:w-35 lg:w-50 md:border rounded-xl"
           />
         </div>
         <div className="flex justify-end md:gap-y-2 flex-col">
-          <span className="text-center text-xs tracking-widest md:text-base text-PureBlack-100 font-bold">{text}</span>
+          <span className="text-center text-xs tracking-widest md:text-base lg:text-xl text-PureBlack-100 font-bold">{text}</span>
           <Button text="SHOP" variant="tertiary" className='md:text-base' link={finalLink} basePath={basePath} />
         </div>
       </div>
@@ -206,7 +206,7 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="flex gap-y-13 my-15 flex-col md:flex-row md:gap-x-6 md:justify-between">
+    <section className="flex gap-y-13 my-15 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between">
               <ToShowComponent text="HEADPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
               <ToShowComponent text="SPEAKERS" className='w-1/3'  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
               <ToShowComponent text="EARPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
@@ -232,7 +232,7 @@ export function ProductImage({
   className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
-    <div className={`${wrapperStyle}  flex items-center justify-center bg-OffWhite-100 rounded-lg`}>
+    <div className={`${wrapperStyle}  flex items-center justify-center bg-OffWhite-100 rounded-lg overflow-hidden`}>
     <Image
       src={src}
       alt={alt}
@@ -267,8 +267,7 @@ export function RandomComponents({product}:RandomProductProps) {
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        className='m-auto rounded-lg'
-        wrapperStyle='h-27 md:h-82 overflow-hidden rounded-lg bg-OffWhite-100 w-full'
+        wrapperStyle='h-27 md:h-82 lg:items-center overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
 
       <h1 className='font-bold uppercase md:text-2xl text-center'>{product.cartName}</h1>
@@ -277,7 +276,7 @@ export function RandomComponents({product}:RandomProductProps) {
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3 md:w-4/5 md:py-4"
+        className="w-1/3 md:w-4/5 lg:w-1/2 lg:text-xs lg:p-2 md:py-4"
       />   
     </div>
   );
