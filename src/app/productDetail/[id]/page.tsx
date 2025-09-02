@@ -27,15 +27,15 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="px-4 py-2 md:px-8 md:py-6">
+    <div className="px-4 py-2 md:px-8 md:py-6 lg:px-30 lg:py-13">
       <Goback />
       <div>
         <div className="md:flex md:justify-between">
-        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 md:h-100" className=" md:h-auto" alt={product?.name || 'Product Image'} />
-        <div className="md:w-7/12 md:flex md:flex-col md:justify-center md:gap-5">
+        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 lg:w-4/9 md:h-100" className=" md:h-auto" alt={product?.name || 'Product Image'} />
+        <div className="md:w-7/12 lg:w-4/9 md:flex md:flex-col md:justify-center md:gap-5">
         {/* {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>} */}
-        <h2 className="text-lg w-3/5 md:font-bold uppercase tracking-wide md:w-1/3 md:text-3xl font-semibold mt-2">{product?.name}</h2>
-        <p className="text-sm text-gray-500 md:text-base mt-1 md:leading-6">{product?.details}</p>
+        <h2 className="text-lg w-3/5 md:font-bold uppercase tracking-wide md:w-1/3 lg:w-3/5 md:text-3xl font-semibold mt-2">{product?.name}</h2>
+        <p className="text-sm text-gray-500 md:text-base lg:w-full mt-1 md:leading-6">{product?.details}</p>
         <h1 className="my-4 font-bold">{ formatPrice(product?.price ?? 0)}</h1>
         <div className="flex space-x-2">
          <AddToCartSection product={product} />
@@ -43,7 +43,8 @@ export default async function Page({ params }: PageProps) {
         </div>
         </div>
 
-        <section className="my-15">
+     <div className="lg:flex lg:gap-25 lg:py-30">
+        <section className="my-15 lg:my-0 lg:w-2/4">
           <h1 className="font-bold md:text-3xl">FEATURES</h1>
           <ul className="list-none mt-6">
             {product?.features?.map((feature, index) => (
@@ -51,9 +52,9 @@ export default async function Page({ params }: PageProps) {
             ))}
           </ul>
         </section>
-        <section className="mt-4 md:flex">
-          <h1 className="md:w-1/2 font-bold md:text-3xl mb-5">IN THE BOX</h1>
-          <ul className="list-none md:w-1/2 ">
+        <section className="mt-4 lg:w-2/5 md:flex lg:mt-0 lg:flex-col">
+          <h1 className="md:w-1/2 lg:w-full font-bold md:text-3xl mb-5">IN THE BOX</h1>
+          <ul className="list-none md:w-1/2 lg:w-full">
             {product?.inTheBox?.map((item, index) => (
               <li key={index} className="text-sm md:text-base mb-2.5 text-gray-600">
                 <span className="text-BurntSienna-100 font-bold mr-4">{item.quantity}x</span>  {item.item}
@@ -61,11 +62,12 @@ export default async function Page({ params }: PageProps) {
             ))}
           </ul>
         </section>
+     </div>
         
 
-        <section className="my-16">
+        <section className="my-16 lg:mb-35">
   {product?.productImages && product.productImages.length >= 3 && (
-    <div className="flex flex-col md:flex-row gap-4 md:h-96">
+    <div className="flex flex-col md:flex-row gap-4 md:h-96 lg:h-150">
       {/* First column - constrained height */}
       <div className="flex flex-col md:w-1/2 gap-4">
         <ProductImage           
@@ -100,7 +102,7 @@ export default async function Page({ params }: PageProps) {
           <div className="md:flex md:gap-4">
           {randomProducts.map((product) => (
             <div key={product.id} className="mt-12 ">
-              <RandomComponents product={product}/>
+              <RandomComponents product={product} />
             </div>
           ))}
           </div>

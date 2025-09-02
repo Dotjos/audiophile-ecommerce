@@ -13,7 +13,7 @@ export function Goback() {
       }
     }
     return (
-      <button onClick={handleBackNavigation} className="text-xs md:text-sm my-2 md:mb-6 text-Gray-200 hover:text-BurntSienna-100">
+      <button onClick={handleBackNavigation} className="text-xs md:text-sm my-2 md:mb-6 lg:mb-11 text-Gray-200 hover:text-BurntSienna-100">
         Go Back
       </button>
     );
