@@ -31,8 +31,8 @@ export default async function Page({ params }: PageProps) {
       <Goback />
       <div>
         <div className="md:flex md:justify-between">
-        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 lg:w-4/9 md:h-100" className=" md:h-auto" alt={product?.name || 'Product Image'} />
-        <div className="md:w-7/12 lg:w-4/9 md:flex md:flex-col md:justify-center md:gap-5">
+        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 lg:w-4/9 md:h-100 lg:h-90" className=" md:h-auto" alt={product?.name || 'Product Image'} />
+        <div className="md:w-7/12 lg:w-4/9 md:flex md:flex-col md:justify-center md:gap-5 lg:gap-1">
         {/* {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>} */}
         <h2 className="text-lg w-3/5 md:font-bold uppercase tracking-wide md:w-1/3 lg:w-3/5 md:text-3xl font-semibold mt-2">{product?.name}</h2>
         <p className="text-sm text-gray-500 md:text-base lg:w-full mt-1 md:leading-6">{product?.details}</p>
