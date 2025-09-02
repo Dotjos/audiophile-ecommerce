@@ -13,7 +13,7 @@ const Cart = () => {
 
   return (
     <Backdrop className="w-full flex justify-center md:justify-end md:pr-10 pt-16 md:pt-24">
-    <div className=" w-9/10 md:w-1/2  rounded-md p-5 top-4 absolute bg-PureWhite-100">
+    <div className=" w-9/10 md:w-1/2 lg:w-1/3  rounded-md p-5 top-4 absolute bg-PureWhite-100">
         <div className="flex justify-between mb-7">
             <h1 className="font-bold md:text-base text-md">CART({totalItems})</h1>
             <button className="text-sm md:text-base text-Gray-200 underline" onClick={clearCart}>Remove all</button>
@@ -33,7 +33,7 @@ const Cart = () => {
         </div>
        
         {/* Checkout button */}
-        <Button text="CHECKOUT" className="w-full md:text-base mt-4 " link="checkout" basePath="" disabled={totalItems===0}/>
+        <Button text="CHECKOUT" className="w-full md:text-base mt-4 lg:text-sm" link="checkout" basePath="" disabled={totalItems===0}/>
       </div>
     </Backdrop>
   );
