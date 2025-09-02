@@ -5,7 +5,6 @@ interface GobackProps {
   className?: string;
 }
 
-
 export function Goback({ className }: GobackProps) {
     const router=useRouter();
     function handleBackNavigation(){
