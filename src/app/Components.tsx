@@ -309,7 +309,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           placeholder={placeholder} 
           // Apply an error class if an error exists, providing visual feedback.
           className={`
-            border w-full p-2 rounded-md caret-BurntSienna-100 md:p-4
+            border w-full p-2 rounded-md caret-BurntSienna-100 md:p-4 lg:p-2
             focus:outline-2 focus:outline-offset-2 focus:outline-BurntSienna-100 
             text-xs md:text-sm active:border-BurntSienna-100 hover:border-BurntSienna-100
             ${error ? 'border-red-500' : 'border-Gray-200'}
@@ -337,7 +337,7 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box md:p-4 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
         <input
           id={id}
           type='radio'

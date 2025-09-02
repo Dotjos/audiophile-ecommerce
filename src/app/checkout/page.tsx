@@ -47,12 +47,12 @@ const zipPattern = /^\d{5,6}$/;
 
   return (
     <>
-    <div className='p-4 md:py-10 md:px-8'>
+    <div className='p-4 md:py-10 md:px-8 lg:px-30'>
       <Goback/>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='bg-PureWhite-100 rounded-lg px-4 py-5'>
-        <h1 className='text-2xl md:text-4xl my-2 md:mb-10 font-bold'>CHECKOUT</h1>
-        <h2 className='text-xs md:text-base md:my-4 font-semibold text-BurntSienna-100 '>BILLING DETAILS</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="lg:flex lg:justify-between">
+        <div className='bg-PureWhite-100 lg:px-7 lg:py-7 rounded-lg px-4 py-5 lg:w-6/9'>
+        <h1 className='text-2xl md:text-4xl lg:text-xl my-2 md:mb-10 font-bold'>CHECKOUT</h1>
+        <h2 className='text-xs md:text-base lg:text-sm md:my-4 font-semibold text-BurntSienna-100 '>BILLING DETAILS</h2>
 
        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <TextInput text='Name' id="name" className='' placeholder='Name' error={errors.name} 
@@ -85,7 +85,7 @@ const zipPattern = /^\d{5,6}$/;
         })}/>
         </div>
 
-      <h2 className='text-xs font-semibold md:text-base md:font-bold text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Delivery details</h2>
+      <h2 className='text-xs font-semibold md:text-base md:font-bold lg:text-sm text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Delivery details</h2>
          <TextInput text='Your Address' id="address" className='' error={errors.address} placeholder='Address' 
          {...register("address",{required:true})}/>
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -102,9 +102,9 @@ const zipPattern = /^\d{5,6}$/;
          </div>
 
       
-         <h2 className='text-xs font-semibold md:text-base md:font-bold text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Payment details</h2>  
+         <h2 className='text-xs font-semibold md:text-base lg:text-sm md:font-bold text-BurntSienna-100 mt-3 md:mt-10 md:mb-4 uppercase'>Payment details</h2>  
          <div className=' flex flex-col md:flex-row md:items-start justify-between'>
-            <span className='text-xs md:text-base font-semibold my-3 '>Payment Method</span>
+            <span className='text-xs md:text-base font-semibold my-3 lg:text-sm'>Payment Method</span>
             <div className="md:w-1/2 md:flex md:flex-col md:gap-1">
             <RadioButton id='e-Money' value="e-Money" label='e-Money' {...register("paymentMethod",{required:true})}/>
             <RadioButton id='Cash-on-Delivery' value="Cash on Delivery" label='Cash on Delivery' {...register("paymentMethod",{required:true})}/>
@@ -137,8 +137,8 @@ const zipPattern = /^\d{5,6}$/;
 
       </div>
 
-        <div className='bg-white px-4 py-6 flex flex-col gap-5 rounded-lg mt-4'>
-          <h1 className="text-2xl uppercase md:font-medium">Summary</h1>
+        <div className='bg-PureWhite-100 lg:w-3/10 lg:mt-0 lg:h-fit px-4 py-6 flex flex-col gap-5 rounded-lg mt-4'>
+          <h1 className="text-2xl lg:text-lg uppercase md:font-medium">Summary</h1>
 
           {cartItems.map((item)=>(
             <SummaryItem product={item} key={item.id}/>)
@@ -150,7 +150,7 @@ const zipPattern = /^\d{5,6}$/;
           </div>
           <Button 
             text= "CONTINUE & PAY"  
-            className={`w-full md:py-4 mt-4 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`} 
+            className={`w-full md:py-4 mt-4 lg:py-2 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`} 
             type="submit"
              />   
         </div>

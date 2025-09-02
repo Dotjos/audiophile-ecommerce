@@ -3,7 +3,6 @@ import AddToCartSection from "@/app/Components/AddToCartSection";
 import { Goback } from "@/app/Components/Goback";
 import { getProductById,getRandomProducts } from "@/app/lib/products";
 import { formatPrice } from "@/app/utils";
-import Image from "next/image";
 import { notFound } from 'next/navigation';
 
 
@@ -28,7 +27,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="px-4 py-2 md:px-8 md:py-6 lg:px-30 lg:py-13">
-      <Goback />
+      <Goback className="lg:mb-11"/>
       <div>
         <div className="md:flex md:justify-between">
         <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 lg:w-4/9 md:h-100 lg:h-90" className=" md:h-auto" alt={product?.name || 'Product Image'} />

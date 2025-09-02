@@ -12,7 +12,8 @@ export const Navbar = ({homePage}:NavbarProps)=>{
     const toggleMenu = useStore(state=> state.toggleMenu);
     const toggleCart = useStore(state => state.toggleCart);
     const pathname = usePathname()
-    const productDetail = pathname.includes('/productDetail')
+    const productDetailPage = pathname.includes('/productDetail')
+    const checkoutPage = pathname.includes('/checkout')
     
 
     function handleCartClick() {
@@ -21,7 +22,7 @@ export const Navbar = ({homePage}:NavbarProps)=>{
     }
 
     return(
-     <nav className={`flex absolute top-0 left-0 py-5 right-0 border-b-[1px] border-Gray-200 z-30 items-center text-PureWhite-100 justify-between ${productDetail?"bg-PureBlack-100 h-auto static lg:w-full lg:mx-0 px-30":"lg:mx-30 px-4"}`}> 
+     <nav className={`flex absolute top-0 left-0 py-5 right-0 border-b-[1px] border-Gray-200 z-30 items-center text-PureWhite-100 justify-between ${(productDetailPage||checkoutPage)?"bg-PureBlack-100 h-auto static lg:w-full lg:mx-0 px-30":"lg:mx-30 px-4"}`}> 
   
   <div onClick={toggleMenu} className='h-5 w-6 md:w-7 md:h-6 lg:hidden relative'>
   <Image
