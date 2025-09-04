@@ -277,7 +277,7 @@ interface RandomProductProps {
     inTheBox?: { quantity: number; item: string }[];
     productImages?: string[];
     smallImage:string
-  };
+  }; 
 }
 
 export function RandomComponents({product}:RandomProductProps) {
@@ -286,7 +286,7 @@ export function RandomComponents({product}:RandomProductProps) {
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        className="w-1/4 h-full object-cover"
+        className="w-1/4 md:w-full h-full object-cover"
         wrapperStyle='h-27 md:h-82 lg:items-center overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
 
