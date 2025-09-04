@@ -53,7 +53,7 @@ const zipPattern = /^\d{5,6}$/;
         <h1 className='text-2xl md:text-4xl lg:text-xl mb-5 md:mb-10 font-semibold'>CHECKOUT</h1>
         <h2 className='text-xs md:text-base mb-2 lg:text-sm md:my-4 font-semibold text-BurntSienna-100 '>BILLING DETAILS</h2>
 
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+       <div className="grid grid-cols-1 md:gap-3 md:grid-cols-2 gap-2">
         <TextInput text='Name' id="name" className='' placeholder='Name' error={errors.name} 
         {...register("name",{required:"Name is required",
           minLength:{
@@ -85,9 +85,9 @@ const zipPattern = /^\d{5,6}$/;
         </div>
 
       <h2 className='text-xs font-semibold md:text-base md:font-bold lg:text-sm text-BurntSienna-100 my-3 md:mt-10 md:mb-4 uppercase'>Delivery details</h2>
-         <TextInput text='Your Address' id="address" className='' error={errors.address} placeholder='Address' 
+         <TextInput text='Your Address' id="address" className='md:mb-3' error={errors.address} placeholder='Address' 
          {...register("address",{required:true})}/>
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4">
+         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-4">
          <TextInput text='ZIP Code' id="zipcode" className='' error={errors.zipCode} placeholder='000000' 
          {...register("zipCode",
          {required:"ZIP code is required",
@@ -110,7 +110,7 @@ const zipPattern = /^\d{5,6}$/;
             </div>
                      
          {selection=== "e-Money" && (
-          <div className="grid grid-cols-1 mt-3 md:grid-cols-2 lg:gap-4 md:mt-2">
+          <div className="grid grid-cols-1 mt-3 md:gap-3 md:grid-cols-2 lg:gap-4 md:mt-2">
           <TextInput text='e-Money Number' id="eMoneyNumber" error={errors.eMoneyNumber} className='' placeholder='123456789' 
           {...register("eMoneyNumber", { 
             required: selection === "e-Money" ? "e-Money number is required" : false,
