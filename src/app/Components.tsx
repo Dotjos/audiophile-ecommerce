@@ -82,7 +82,7 @@ interface NavLinkProps {
 
 export const NavLink: FC<NavLinkProps> = ({className}) => {
   return (
-    <ul className={`leading-8.5 md:tracking-[.15em] md:flex md:space-x-10 md:font-semibold text-sm font-medium ${className}`}>
+    <ul className={`leading-8.5 md:tracking-[.15em] text-xs md:space-x-10 md:font-semibold flex-col font-medium ${className}`}>
       <li>
         <Link href="/">HOME</Link>
       </li>
@@ -102,9 +102,9 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 ${className} relative flex flex-col justify-end`}>
+    <div className={`h-25 md:h-50 ${className} w-full md:w-1/3 relative flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 md:p-4  flex flex-col justify-end rounded-xl h-32 md:h-40 lg:h-50">
-        <div className="absolute lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
+        <div className="absolute mb-9 lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
           <Image
             src={imgPath}
             alt="Go to"
@@ -138,7 +138,7 @@ export function Footer(){
               and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
                visit our demo facility - we’re open 7 days a week.
               </p>
-              <p className='mb-5 md:mb-0 md:text-lg lg:text-sm lg:text-left md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
+              <p className='mb-5 md:mb-0 text-xs text-Gray-200 md:text-lg lg:text-sm lg:text-left md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
             </div>
           
 
@@ -182,18 +182,29 @@ export function Footer(){
 
 export function AudioGearSection() {
   return (
-    <section className="min-h-screen text-center flex flex-col justify-around">
-    <Image
-    src={"/assets/shared/mobile/image-best-gear.jpg"}
-    alt="Best Gear"
-    width={450}
-    height={450}
-    className="object-cover h-100 border rounded-lg"
-    />
+    <section className="min-h-screen mb-13 text-center flex flex-col gap-6 justify-around">
+    <picture className="w-full h-full rounded-lg">
+      <source 
+        media="(min-width: 1024px)" 
+        srcSet="/assets/shared/desktop/image-best-gear.jpg"
+        sizes="100vw"
+      />
+      <source 
+        media="(min-width: 640px)" 
+        srcSet="/assets/shared/tablet/image-best-gear.jpg"
+        sizes="100vw"
+      />
+      <img 
+        src="/assets/shared/mobile/image-best-gear.jpg"
+        alt="Best Gear" 
+        className="object-cover w-full h-full rounded-lg"
+        sizes='100vw'
+      />
+    </picture>
 
-    <div className='md:w-3/4 md:mx-auto md:flex md:flex-col md:items-center md:space-y-6'>
-    <h1 className="font-bold text-xl md:w-4/5 md:text-3xl"> BRINGING YOU THE  <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
-      <p className="text-xs md:text-sm md:leading-6 leading-5 md:text-Gray-200">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
+    <div className='md:w-3/4 flex flex-col items-center w-full gap-6'>
+    <h1 className="font-bold w-3/4 text-xl md:w-4/5 md:text-3xl"> BRINGING YOU THE  <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
+      <p className="text-xs md:text-sm md:leading-6 leading-5 text-center text-Gray-200">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
         We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
          of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
       </p>  
@@ -206,10 +217,10 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="flex gap-y-13 my-15 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between">
-              <ToShowComponent text="HEADPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" className='w-1/3'  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" className='w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+    <section className="flex gap-y-13 my-5 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between">
+              <ToShowComponent text="HEADPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" className=''  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
 }
@@ -220,7 +231,9 @@ interface ProductImageProps {
   width?: number; 
   height?: number 
   className?: string;
-  wrapperStyle?:string
+  wrapperStyle?:string;
+  priority?:boolean;
+  loading?: "eager" | "lazy"; // Add loading prop
 }
 
 export function ProductImage({ 
@@ -228,7 +241,10 @@ export function ProductImage({
   alt, 
   width = 400, 
   height = 300,
+  priority=false,
   wrapperStyle,
+  loading="lazy",
+
   className = "object-contain border rounded-lg" 
 }: ProductImageProps) {
   return (
@@ -239,7 +255,8 @@ export function ProductImage({
       width={width}
       height={height}
       className={className}
-      priority
+      priority = {priority}
+      loading={loading} // Use the loading prop to control image loading behavior
       placeholder="blur"
       blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjFGMUYxIi8+PC9zdmc+"
     />
@@ -267,6 +284,7 @@ export function RandomComponents({product}:RandomProductProps) {
       <ProductImage
         src={product.smallImage}
         alt={product.id}
+        className="w-1/4 h-full object-cover"
         wrapperStyle='h-27 md:h-82 lg:items-center overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
 
@@ -293,7 +311,7 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ id, placeholder, className = '', text, error, ...props }, ref ) => {
     return (
-      <div className='w-full mb-3'>
+      <div className='w-full '>
         <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
         <label htmlFor={id} className='text-xs md:text-sm hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
         {error && (
@@ -337,7 +355,7 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 mb-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-2" htmlFor={id}>
         <input
           id={id}
           type='radio'

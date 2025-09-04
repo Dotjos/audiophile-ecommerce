@@ -35,8 +35,8 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
   return (
     <>
       {/* Menu content */}
-     <Backdrop >
-      <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+     <Backdrop className='top-17' >
+      <div className="absolute  flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
 
          <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
           <ToShowComponent 

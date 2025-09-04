@@ -26,16 +26,16 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="px-4 py-2 md:px-8 md:py-6 lg:px-30 lg:py-13">
-      <Goback className="lg:mb-11"/>
+    <div className="px-4 md:px-8 md:py-6 lg:px-30 lg:py-13">
+      <Goback className="lg:mb-11 mb-5"/>
       <div>
-        <div className="md:flex md:justify-between">
-        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 lg:w-4/9 md:h-100 lg:h-90" className=" md:h-auto" alt={product?.name || 'Product Image'} />
-        <div className="md:w-7/12 lg:w-4/9 md:flex md:flex-col md:justify-center md:gap-5 lg:gap-1">
+        <div className="flex flex-col gap-3 md:flex-row md:justify-between">
+        <ProductImage src={product?.image || ''} wrapperStyle="md:w-1/3 h-60 lg:w-4/9 md:h-100 lg:h-90" className=" md:h-auto" alt={product?.name || 'Product Image'} />
+        <div className="md:w-7/12 gap-3 lg:w-4/9 flex flex-col md:justify-center md:gap-5 lg:gap-1">
         {/* {index===0&&<h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">NEW PRODUCT</h2>} */}
-        <h2 className="text-lg w-3/5 md:font-bold uppercase tracking-wide md:w-1/3 lg:w-3/5 md:text-3xl font-semibold mt-2">{product?.name}</h2>
-        <p className="text-sm text-gray-500 md:text-base lg:w-full mt-1 md:leading-6">{product?.details}</p>
-        <h1 className="my-4 font-bold">{ formatPrice(product?.price ?? 0)}</h1>
+        <h2 className="text-lg w-3/5 font-bold uppercase tracking-wide md:w-1/3 lg:w-3/5 md:text-3xl ">{product?.name}</h2>
+        <p className="text-xs text-gray-500 md:text-base lg:w-full md:leading-6">{product?.details}</p>
+        <h1 className="font-bold">{ formatPrice(product?.price ?? 0)}</h1>
         <div className="flex space-x-2">
          <AddToCartSection product={product} />
         </div>
@@ -100,7 +100,7 @@ export default async function Page({ params }: PageProps) {
           <h1 className="font-bold text-xl md:text-3xl text-center">YOU MAY ALSO LIKE</h1>
           <div className="md:flex md:gap-4">
           {randomProducts.map((product) => (
-            <div key={product.id} className="mt-12 ">
+            <div key={product.id} className="my-12">
               <RandomComponents product={product} />
             </div>
           ))}

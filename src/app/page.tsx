@@ -5,8 +5,7 @@ import Image from 'next/image'
 export default function Page() {
     return (
     <>
-  <section className="min-h-screen relative items-center justify-center w-full text-PureWhite-100">
-  
+  <section className="md:min-h-screen relative items-center justify-center w-full text-PureWhite-100">
    <div className="w-full h-full z-20 lg:px-30 absolute flex items-center justify-center lg:justify-start">
    {/* Content */}
   <div className="text-center lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-4 justify-center">
@@ -50,68 +49,97 @@ export default function Page() {
 </picture>
 </section>
 
-        <div className="min-h-screen relative flex flex-col bg-WhiteSmoke-100" >     
+        <div className="min-h-screen my-7 relative flex flex-col bg-WhiteSmoke-100" >     
           <div className="m-4 md:p-7">
               <NavSection/>
-<section className="relative bg-BurntSienna-100 md:w-full rounded-lg overflow-hidden  mx-auto py-16 px-8">
 
- <div className="flex flex-col md:gap-11 items-center justify-between relative z-10 h-full">
+ <section className="bg-BurntSienna-100 md:w-full rounded-lg flex relative flex-col gap-7 md:gap-11 items-center h-auto overflow-hidden">
     {/* Background pattern with speaker image positioned in the center */}
-    <div className="relative flex h-1/2 justify-center items-center mb-10">
-      <Image
-        src="/assets/home/desktop/pattern-circles.svg"
-        alt="pattern-circles"
-       fill
-        className="absolute z-0 border"
-      />
-      
-      {/* Speaker image centered within the circles */}
+   
+
+<Image
+  src="/assets/home/desktop/pattern-circles.svg"
+  alt="pattern-circles"
+  height={400}
+  width={400}
+  className="object-cover absolute left-1/2 -translate-x-1/2 -translate-y-1/7 scale-125 z-0"
+/>
+
+       {/* Speaker image centered within the circles */}
+    <div className="mt-10">
       <Image
         src="/assets/home/mobile/image-speaker-zx9.png"
         alt="ZX9 Speaker"
         width={100}
         height={100}
-        className="relative z-10 md:w-50  object-contain"
+        className="md:w-50"
       />
     </div>
     
     {/* Text content */ }
-    <div className="text-center md:w-1/2 text-white">
-      <h2 className="text-4xl font-bold mb-6 md:text-6xl">ZX9<br />SPEAKER</h2>
-      <p className="text-xs font-light mb-8 md:text-center  mx-auto md:text-base md:w-4/5 md:leading-7">
-        Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
-      </p>
-    </div>
-    
+    <div className="text-center px-4 md:w-1/2 text-white">
+      <h2 className="text-2xl font-bold mb-2 md:text-6xl">ZX9<br />SPEAKER</h2>
+      <div className="text-xs text-center font-light mb-5 md:text-center leading-5  mx-auto md:text-base md:w-4/5 md:leading-10"
+      >
+       <p>Upgrade to premium speakers that are</p> 
+       <p>phenomenally built to deliver truly</p> 
+       <p>remarkable sound.</p> 
+      </div>
     {/* Button */}
-    <Button text="SEE PRODUCT" className="md:font-bold md:py-4 md:px-10 tracking-[1em]" variant="secondary" />
-              </div>          
-            </section>
+    <Button text="SEE PRODUCT" className="md:font-bold md:py-4 mb-13 md:px-10 tracking-[1em]" variant="secondary" />
+    </div>
+  </section>
 
-            <section className=" flex flex-col space-y-4 my-5 h-64 md:h-85 relative w-full ">
-                <Image
-                src={"/assets/home/tablet/image-speaker-zx7.jpg"}
-                alt="ZX7 Speaker"
-                fill
-                className="object-cover rounded-lg"       
-                />
+            <section className="flex flex-col space-y-4 my-5 h-64 md:h-85 relative w-full ">
+                <picture className="w-full h-full rounded-lg">
+                  <source 
+                    media="(min-width: 1024px)" 
+                    srcSet="/assets/home/desktop/image-speaker-zx7.jpg"
+                    sizes="100vw"
+                  />
+                  <source 
+                    media="(min-width: 640px)" 
+                    srcSet="/assets/home/tablet/image-speaker-zx7.jpg"
+                    sizes="100vw"
+                  />
+                  <img 
+                    src="/assets/home/mobile/image-speaker-zx7.jpg"
+                    alt="Speaker" 
+                    className="object-cover w-full h-full rounded-lg"
+                    sizes="100vw"
+                  />
+                </picture>
+
                 <div className="z-10 inset-0 flex flex-col px-5 space-y-4 justify-center absolute">
-                <h1 className="text-xl md:font-bold md:text-2xl tracking-widest">ZX7 SPEAKER</h1>
+                <h1 className="text-2xl font-semibold md:text-2xl tracking-wide">ZX7 SPEAKER</h1>
                 <Button text="SEE PRODUCT" variant="new" className="w-3/5"/>
                 </div>
             </section>
 
             <section>
                <div className="flex flex-col space-y-3">
-                <div className="h-32 relative">
-                  <Image src={"/assets/home/mobile/image-earphones-yx1.jpg"}
-                  alt="earphones"
-                  fill
-                  className="object-cover rounded-lg"  
+                
+             <picture className="w-full h-32 rounded-lg">
+                  <source 
+                    media="(min-width: 1024px)" 
+                    srcSet="/assets/home/desktop/image-earphones-yx1.jpg"
+                    sizes="100vw"
                   />
-                </div>
+                  <source 
+                    media="(min-width: 640px)" 
+                    srcSet="/assets/home/tablet/image-earphones-yx1.jpg"
+                    sizes="100vw"
+                  />
+                  <img 
+                    src="/assets/home/mobile/image-earphones-yx1.jpg"
+                    alt="earphones" 
+                    className="object-cover w-full h-full rounded-lg"
+                    sizes="100vw"
+                  />
+                </picture>
+
                 <div className="h-32 bg-OffWhite-100 flex flex-col space-y-4 justify-center px-6 rounded-lg">
-                <h1 className="text-xl tracking-widest">YX1 EARPHONES</h1>
+                <h1 className="text-xl font-semibold tracking-wide">YX1 EARPHONES</h1>
                 <Button text="SEE PRODUCT" variant="new" className="w-3/5 text-sm"/>
                 </div>
                </div>

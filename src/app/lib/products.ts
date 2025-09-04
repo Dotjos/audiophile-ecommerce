@@ -22,7 +22,7 @@ export const allProducts: Product[] = [
     name: "XX99 Mark II Headphones",
     cartName:"XX99 Mk II",
     price: 2999,
-    image: "/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg",
+    image:"/assets/shared/desktop/image-xx99-mark-two-headphones.jpg",
     details: "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     category: 'headphones',
     features: [
@@ -47,7 +47,7 @@ export const allProducts: Product[] = [
     name: 'XX99 Mark I Headphones',
     cartName:'xx99 mk I',
     price: 1750,
-    image: "/assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg",
+    image: "/assets/shared/desktop/image-xx99-mark-one-headphones.jpg",
     details: "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
     category: 'headphones',
     features: [
@@ -70,7 +70,7 @@ export const allProducts: Product[] = [
     name: 'XX59 Headphones',
     cartName:"xx59",
     price: 1950,
-    image: "/assets/product-xx59-headphones/mobile/image-category-page-preview.jpg",
+    image: "/assets/shared/desktop/image-xx59-headphones.jpg",
     details: "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
     category: 'headphones',
     features: ["These headphones have been created from durable, high-quality materials tough enough to take anywhere. Its compact folding design fuses comfort and minimalist style making it perfect for travel. Flawless transmission is assured by the latest wireless technology engineered for audio synchronization with videos.",
@@ -92,7 +92,7 @@ export const allProducts: Product[] = [
     name: "ZX9 Speaker",
     cartName:"zx9",
     price: 2999,
-    image: "/assets/product-zx9-speaker/mobile/image-category-page-preview.jpg",
+    image: "/assets/shared/desktop/image-zx9-speaker.jpg",
     details: "Upgrade your sound system with the all new ZX9 active speaker. It's a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
     category: 'speakers',
     features: [
@@ -118,7 +118,7 @@ export const allProducts: Product[] = [
     name: "ZX7 Speaker",
     cartName:"zx7",
     price: 2899,
-    image: "/assets/product-zx7-speaker/mobile/image-category-page-preview.jpg",
+    image: "/assets/shared/desktop/image-zx7-speaker.jpg",
     details: "Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
     category: 'speakers',
     features: [
@@ -146,7 +146,7 @@ export const allProducts: Product[] = [
     name: "YX1 Wireless Earphones",
     cartName:"yx1",
     price: 2344,
-    image: "/assets/product-yx1-earphones/mobile/image-category-page-preview.jpg",
+    image: "/assets/shared/desktop/image-yx1-earphones.jpg",
     details: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
     category: 'earphones',
     features: [
