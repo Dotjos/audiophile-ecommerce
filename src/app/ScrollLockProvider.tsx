@@ -53,7 +53,7 @@ return (
       {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu}/>}
       {cartIsOpen && <Cart/>}
       {children}
-    <div className='px-4 py-7 flex flex-col gap-16'>
+    <div className='px-4 py-7 flex md:px-11 flex-col gap-16'>
      {!(homePage || checkoutPage) &&<NavSection/>}
       {!checkoutPage&&<AudioGearSection/>}
     </div>

@@ -16,7 +16,7 @@ export function Goback({ className }: GobackProps) {
       }
     }
     return (
-      <button onClick={handleBackNavigation} className={`text-xs md:text-sm md:mb-6  ${className} text-Gray-200 hover:text-BurntSienna-100`}>
+      <button onClick={handleBackNavigation} className={`text-xs md:text-sm  ${className} text-Gray-200 hover:text-BurntSienna-100`}>
         Go Back
       </button>
     );

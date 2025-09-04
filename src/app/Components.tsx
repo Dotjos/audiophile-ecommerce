@@ -68,14 +68,6 @@ export const Button: FC<ButtonProps> = ({
   );
 };
  
-interface ToShowComponentProps {
-  text: string;
-  imgPath: string;
-  linkPath?:string;
-  basePath?:string
-  className?:string
-}
-
 interface NavLinkProps {
   className?:string
 }
@@ -93,6 +85,14 @@ export const NavLink: FC<NavLinkProps> = ({className}) => {
   );
 }
 
+interface ToShowComponentProps {
+  text: string;
+  imgPath: string;
+  linkPath?:string;
+  basePath?:string
+  className?:string
+}
+
 export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
@@ -102,7 +102,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 ${className} w-full md:w-1/3 relative flex flex-col justify-end`}>
+    <div className={`h-25 md:h-50 ${className} w-full relative flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 md:p-4  flex flex-col justify-end rounded-xl h-32 md:h-40 lg:h-50">
         <div className="absolute mb-9 lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
           <Image
@@ -123,27 +123,29 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
 }
 
 export function Footer(){
-  return(<footer className= 'text-center px-5 pb-5 lg:px-30 bg-PureBlack-100 text-WhiteSmoke-100'>
-          <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 h-0.5'></span>
+  return(<footer className='text-center px-5 pb-5 md:pb-8 md:px-10 lg:px-30 border bg-PureBlack-100 text-WhiteSmoke-100'>
+          <span className='block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 md:w-20 h-0.5'></span>
 
           <div className='lg:flex lg:mt-15 lg:items-center lg:justify-between'>
           <h1 className='font-black mb-7 lg:mb-0 md:text-xl md:text-left'>audiophile</h1>
-          <NavLink/>
+          <NavLink className='md:flex md:flex-row'/>
           </div>
           
           <div className='lg:flex lg:justify-between lg:mb-5'>
 
-            <div className='lg:w-1/2 '>
-              <p className='text-xs md:text-lg lg:text-sm text-Gray-200 md:leading-8 md:text-left lg:mb-10 my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
+            <div className='lg:w-1/2'>
+              <p className='text-xs md:text-sm lg:text-sm text-Gray-200 md:leading-6 md:text-left lg:mb-10 my-8'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
               and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
                visit our demo facility - we’re open 7 days a week.
               </p>
-              <p className='mb-5 md:mb-0 text-xs text-Gray-200 md:text-lg lg:text-sm lg:text-left md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
+              <div>
+                 
+              </div>
             </div>
           
-
-          <div className='text-xs md:flex items-center md:justify-between'>
-            <ul>
+          <div className='flex flex-col gap-4 md:flex-row md:justify-between'>
+            <p className='mb-5 md:mb-0 text-xs text-Gray-200 md:text-sm lg:text-left md:text-Gray-200'>Copyright 2021. All Rights Reserved</p>
+            <ul className='text-xs md:flex items-center '>
               <li className='inline-block mx-2'>
                 <Image
                   src={"/assets/shared/desktop/icon-facebook.svg"}
@@ -172,9 +174,9 @@ export function Footer(){
                 />
               </li>
             </ul>
+          </div>
 
-
-            </div>
+            
           </div>
 
         </footer>)
@@ -182,7 +184,7 @@ export function Footer(){
 
 export function AudioGearSection() {
   return (
-    <section className="min-h-screen mb-13 text-center flex flex-col gap-6 justify-around">
+    <section className="min-h-screen mb-13 text-center md:items-center md:gap-12 flex flex-col gap-6 justify-around">
     <picture className="w-full h-full rounded-lg">
       <source 
         media="(min-width: 1024px)" 
@@ -202,7 +204,7 @@ export function AudioGearSection() {
       />
     </picture>
 
-    <div className='md:w-3/4 flex flex-col items-center w-full gap-6'>
+    <div className='md:w-3/4 flex flex-col items-center w-full gap-6 md:gap-5'>
     <h1 className="font-bold w-3/4 text-xl md:w-4/5 md:text-3xl"> BRINGING YOU THE  <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
       <p className="text-xs md:text-sm md:leading-6 leading-5 text-center text-Gray-200">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
         We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
@@ -217,10 +219,10 @@ export function AudioGearSection() {
 
 export function NavSection(){
   return(
-    <section className="flex gap-y-13 my-5 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between">
-              <ToShowComponent text="HEADPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" className=''  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+    <section className="flex gap-y-13 my-5 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between md:mb-20">
+              <ToShowComponent text="HEADPHONES" className='md:w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" className='md:w-1/3'  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" className='md:w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
 }
@@ -275,7 +277,7 @@ interface RandomProductProps {
     inTheBox?: { quantity: number; item: string }[];
     productImages?: string[];
     smallImage:string
-  };
+  }; 
 }
 
 export function RandomComponents({product}:RandomProductProps) {
@@ -284,7 +286,7 @@ export function RandomComponents({product}:RandomProductProps) {
       <ProductImage
         src={product.smallImage}
         alt={product.id}
-        className="w-1/4 h-full object-cover"
+        className="w-1/4 md:w-full h-full object-cover"
         wrapperStyle='h-27 md:h-82 lg:items-center overflow-hidden rounded-lg bg-OffWhite-100 w-full'
       />
 

@@ -5,11 +5,11 @@ import Image from 'next/image'
 export default function Page() {
     return (
     <>
-  <section className="md:min-h-screen relative items-center justify-center w-full text-PureWhite-100">
+  <section className=" relative items-center justify-center w-full text-PureWhite-100">
    <div className="w-full h-full z-20 lg:px-30 absolute flex items-center justify-center lg:justify-start">
    {/* Content */}
-  <div className="text-center lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-4 justify-center">
-    <h2 className="font-thin tracking-[0.5em] md:tracking-[1em] text-xs md:text-3xl lg:text-sm lg:tracking-[0.5em] uppercase mb-4">
+  <div className="text-center md:w-1/2 lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-3 justify-center">
+    <h2 className="font-thin tracking-[0.5em] md:tracking-[0.5em] text-xs md:text-lg lg:text-sm lg:tracking-[0.5em] uppercase mb-4">
       New product
     </h2>
     
@@ -23,11 +23,11 @@ export default function Page() {
     
     <Button 
       text="SEE PRODUCT" 
-      className="text-sm md:text-base md:w-2/5 lg:w-37 lg:text-sm" 
+      className="text-sm md:text-base md:w-1/2 md:py-4 lg:w-37 lg:text-sm" 
       link="headphones" 
       />
   </div>
-    </div>
+  </div>
 
   {/* Background Image */}
 <picture className="w-full z-10">
@@ -49,20 +49,19 @@ export default function Page() {
 </picture>
 </section>
 
-        <div className="min-h-screen my-7 relative flex flex-col bg-WhiteSmoke-100" >     
+        <div className="min-h-screen my-7 md:my-0 relative flex flex-col bg-WhiteSmoke-100" >     
           <div className="m-4 md:p-7">
               <NavSection/>
 
  <section className="bg-BurntSienna-100 md:w-full rounded-lg flex relative flex-col gap-7 md:gap-11 items-center h-auto overflow-hidden">
     {/* Background pattern with speaker image positioned in the center */}
    
-
 <Image
   src="/assets/home/desktop/pattern-circles.svg"
   alt="pattern-circles"
   height={400}
   width={400}
-  className="object-cover absolute left-1/2 -translate-x-1/2 -translate-y-1/7 scale-125 z-0"
+  className="object-cover absolute left-1/2 -translate-x-1/2 -translate-y-1/7 md:-translate-y-1/9 scale-125 md:scale-250 z-0"
 />
 
        {/* Speaker image centered within the circles */}
@@ -77,16 +76,16 @@ export default function Page() {
     </div>
     
     {/* Text content */ }
-    <div className="text-center px-4 md:w-1/2 text-white">
+    <div className="text-center px-4 md:w-1/2 md:px-0 md:flex md:flex-col md:items-center md:gap-7 text-white">
       <h2 className="text-2xl font-bold mb-2 md:text-6xl">ZX9<br />SPEAKER</h2>
-      <div className="text-xs text-center font-light mb-5 md:text-center leading-5  mx-auto md:text-base md:w-4/5 md:leading-10"
+      <div className="text-xs text-center font-light mb-5 md:text-center leading-5  mx-auto md:text-base md:leading-6"
       >
        <p>Upgrade to premium speakers that are</p> 
        <p>phenomenally built to deliver truly</p> 
        <p>remarkable sound.</p> 
       </div>
     {/* Button */}
-    <Button text="SEE PRODUCT" className="md:font-bold md:py-4 mb-13 md:px-10 tracking-[1em]" variant="secondary" />
+    <Button text="SEE PRODUCT" className="md:font-bold md:py-4 md:w-1/2 mb-13 md:px-5 tracking-[1em]" variant="secondary" />
     </div>
   </section>
 
@@ -110,16 +109,16 @@ export default function Page() {
                   />
                 </picture>
 
-                <div className="z-10 inset-0 flex flex-col px-5 space-y-4 justify-center absolute">
-                <h1 className="text-2xl font-semibold md:text-2xl tracking-wide">ZX7 SPEAKER</h1>
-                <Button text="SEE PRODUCT" variant="new" className="w-3/5"/>
+                <div className="z-10 inset-0 flex flex-col px-5 md:px-15 space-y-5 md:space-y-7 justify-center absolute">
+                <h1 className="text-2xl font-semibold md:text-3xl tracking-wide">ZX7 SPEAKER</h1>
+                <Button text="SEE PRODUCT" variant="new" className="w-3/5 md:w-44 md:text-sm md:py-4"/>
                 </div>
             </section>
 
             <section>
-               <div className="flex flex-col space-y-3">
+               <div className="flex flex-col md:flex-row space-y-3 md:space-x-3">
                 
-             <picture className="w-full h-32 rounded-lg">
+                <picture className="w-full md:w-1/2 md:h-85 h-32 rounded-lg">
                   <source 
                     media="(min-width: 1024px)" 
                     srcSet="/assets/home/desktop/image-earphones-yx1.jpg"
@@ -138,9 +137,9 @@ export default function Page() {
                   />
                 </picture>
 
-                <div className="h-32 bg-OffWhite-100 flex flex-col space-y-4 justify-center px-6 rounded-lg">
-                <h1 className="text-xl font-semibold tracking-wide">YX1 EARPHONES</h1>
-                <Button text="SEE PRODUCT" variant="new" className="w-3/5 text-sm"/>
+                <div className="h-32 md:h-85 md:w-1/2 bg-OffWhite-100 flex flex-col space-y-5 md:space-y-7 justify-center px-6 md:px-10 rounded-lg">
+                <h1 className="text-xl md:text-3xl text-PureBlack-100 font-semibold tracking-wide">YX1 EARPHONES</h1>
+                <Button text="SEE PRODUCT" variant="new" className="w-3/5 md:w-44 md:text-sm md:py-4"/>
                 </div>
                </div>
 

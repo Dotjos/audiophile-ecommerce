@@ -12,6 +12,7 @@ export interface Product {
   inTheBox?: { quantity: number; item: string }[];
   smallImage: string; // Optional for smaller display
   productImages?: string[];
+  isNew?:boolean
 }
 
 // Single array structure with category as a property
@@ -40,7 +41,8 @@ export const allProducts: Product[] = [
     ["/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg",
       "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg",
       "/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg"],
-      smallImage: "/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg"
+      smallImage: "/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg",
+      isNew:true
   },
   {
     id: 'xx99-mark-i',
@@ -111,7 +113,8 @@ export const allProducts: Product[] = [
       "/assets/product-zx9-speaker/mobile/image-gallery-2.jpg",
       "/assets/product-zx9-speaker/mobile/image-gallery-3.jpg"
     ],
-    smallImage: "/assets/product-zx9-speaker/desktop/image-product.jpg"
+    smallImage: "/assets/product-zx9-speaker/desktop/image-product.jpg",
+    isNew:true
   },
   {
     id: "zx-7",
@@ -146,7 +149,7 @@ export const allProducts: Product[] = [
     name: "YX1 Wireless Earphones",
     cartName:"yx1",
     price: 2344,
-    image: "/assets/shared/desktop/image-yx1-earphones.jpg",
+    image: "/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg",
     details: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
     category: 'earphones',
     features: [
@@ -165,8 +168,8 @@ export const allProducts: Product[] = [
       "/assets/product-yx1-earphones/mobile/image-gallery-2.jpg",
       "/assets/product-yx1-earphones/mobile/image-gallery-3.jpg"
     ],
-    smallImage: "/assets/product-yx1-earphones/desktop/image-product.jpg"
-
+    smallImage: "/assets/product-yx1-earphones/desktop/image-product.jpg",
+    isNew:true
   }
 ];
 
