@@ -12,7 +12,7 @@ const Cart = () => {
   if(!cartIsOpen) return null;
 
   return (
-    <Backdrop className="w-full flex justify-center md:justify-end md:pr-10 pt-16 md:pt-24">
+    <Backdrop className="w-full flex justify-center top-17 md:justify-end md:pr-10 pt-16 md:pt-24">
     <div className=" w-9/10 md:w-1/2 lg:w-1/3 h-ato rounded-md p-5 top-4 absolute bg-PureWhite-100">
         <div className="flex justify-between mb-7">
             <h1 className="font-bold md:text-base text-md">CART({totalItems})</h1>
