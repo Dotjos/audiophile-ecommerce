@@ -5,11 +5,11 @@ import Image from 'next/image'
 export default function Page() {
     return (
     <>
-  <section className="md:min-h-screen relative items-center justify-center w-full text-PureWhite-100">
+  <section className=" relative items-center justify-center w-full text-PureWhite-100">
    <div className="w-full h-full z-20 lg:px-30 absolute flex items-center justify-center lg:justify-start">
    {/* Content */}
-  <div className="text-center lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-4 justify-center">
-    <h2 className="font-thin tracking-[0.5em] md:tracking-[1em] text-xs md:text-3xl lg:text-sm lg:tracking-[0.5em] uppercase mb-4">
+  <div className="text-center md:w-1/2 lg:ml-0 lg:items-start lg:gap-2 lg:text-left lg:w-fit w-full flex flex-col items-center md:gap-y-3 justify-center">
+    <h2 className="font-thin tracking-[0.5em] md:tracking-[0.5em] text-xs md:text-lg lg:text-sm lg:tracking-[0.5em] uppercase mb-4">
       New product
     </h2>
     
@@ -23,11 +23,11 @@ export default function Page() {
     
     <Button 
       text="SEE PRODUCT" 
-      className="text-sm md:text-base md:w-2/5 lg:w-37 lg:text-sm" 
+      className="text-sm md:text-base md:w-1/2 md:py-4 lg:w-37 lg:text-sm" 
       link="headphones" 
       />
   </div>
-    </div>
+  </div>
 
   {/* Background Image */}
 <picture className="w-full z-10">
