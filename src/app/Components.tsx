@@ -68,14 +68,6 @@ export const Button: FC<ButtonProps> = ({
   );
 };
  
-interface ToShowComponentProps {
-  text: string;
-  imgPath: string;
-  linkPath?:string;
-  basePath?:string
-  className?:string
-}
-
 interface NavLinkProps {
   className?:string
 }
@@ -93,6 +85,14 @@ export const NavLink: FC<NavLinkProps> = ({className}) => {
   );
 }
 
+interface ToShowComponentProps {
+  text: string;
+  imgPath: string;
+  linkPath?:string;
+  basePath?:string
+  className?:string
+}
+
 export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePath="category",linkPath,className }) => {
   
   const generateSlug = (text: string) => {
@@ -102,7 +102,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({ text, imgPath,basePa
   const finalLink = linkPath || generateSlug(text);
 
   return (
-    <div className={`h-25 md:h-50 ${className} w-full md:w-1/3 relative flex flex-col justify-end`}>
+    <div className={`h-25 md:h-50 ${className} w-full relative flex flex-col justify-end`}>
       <div className="bg-OffWhite-100 p-2 md:p-4  flex flex-col justify-end rounded-xl h-32 md:h-40 lg:h-50">
         <div className="absolute mb-9 lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
           <Image
@@ -220,9 +220,9 @@ export function AudioGearSection() {
 export function NavSection(){
   return(
     <section className="flex gap-y-13 my-5 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between md:mb-20">
-              <ToShowComponent text="HEADPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
-              <ToShowComponent text="SPEAKERS" className=''  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
-              <ToShowComponent text="EARPHONES" className='' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
+              <ToShowComponent text="HEADPHONES" className='md:w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"/>
+              <ToShowComponent text="SPEAKERS" className='md:w-1/3'  imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"/>
+              <ToShowComponent text="EARPHONES" className='md:w-1/3' imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"/>
             </section>  
   )
 }
