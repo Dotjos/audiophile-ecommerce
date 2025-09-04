@@ -25,8 +25,8 @@ const OrderComplete = ({onClose}:OrderCompleteProps) => {
       }
     
   return (
-       <div onClick={handleBackgroundClick} className=" fixed flex w-full items-center justify-center z-50 bg-PureBlack-100/40 top-0 min-h-screen">
-        <div className="bg-PureWhite-100 lg:w-1/3 w-9/10 md:w-3/4 md:p-10 flex flex-col gap-3 md:gap-7 lg:gap-5 rounded-md p-5">
+       <div onClick={handleBackgroundClick} className="fixed flex w-full items-center justify-center z-50 bg-PureBlack-100/40 top-0 min-h-screen">
+        <div className="bg-PureWhite-100 lg:w-1/3 w-9/10 md:w-3/4 md:p-10 flex flex-col gap-3 md:gap-6 lg:gap-7 rounded-md p-5">
         <Image src="/assets/checkout/icon-order-confirmation.svg" alt="order-complete" width={55} height={55} className="mr-auto"/>     
         <h1 className="font-bold md:text-3xl lg:text-2xl text-xl">THANK YOU <br/> FOR YOUR ORDER</h1>
         <p className="text-xs md:text-sm text-Gray-200">You will receive an email confirmation shortly.</p>
