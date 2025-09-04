@@ -146,7 +146,7 @@ export const allProducts: Product[] = [
     name: "YX1 Wireless Earphones",
     cartName:"yx1",
     price: 2344,
-    image: "/assets/shared/desktop/image-yx1-earphones.jpg",
+    image: "/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg",
     details: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
     category: 'earphones',
     features: [

@@ -204,7 +204,7 @@ export function AudioGearSection() {
       />
     </picture>
 
-    <div className='md:w-3/4 flex flex-col items-center w-full gap-6 md:gap-8'>
+    <div className='md:w-3/4 flex flex-col items-center w-full gap-6 md:gap-5'>
     <h1 className="font-bold w-3/4 text-xl md:w-4/5 md:text-3xl"> BRINGING YOU THE  <span className="text-BurntSienna-100">BEST</span> AUDIO GEAR</h1>            
       <p className="text-xs md:text-sm md:leading-6 leading-5 text-center text-Gray-200">  Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories.
         We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some
