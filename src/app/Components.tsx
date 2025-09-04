@@ -311,7 +311,7 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ id, placeholder, className = '', text, error, ...props }, ref ) => {
     return (
-      <div className='w-full mb-3'>
+      <div className='w-full '>
         <div className={`flex items-center pb-1 justify-between ${error ? 'text-red-500' : 'text-PureBlack-100'}`}>
         <label htmlFor={id} className='text-xs md:text-sm hover:border-BurntSienna-100 font-semibold'>{text}</label><br/>
         {error && (
@@ -355,7 +355,7 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement>{
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label,value, ...props }, ref) => {
     return (
-        <label className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 my-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-3" htmlFor={id}>
+        <label className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 mb-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-2" htmlFor={id}>
         <input
           id={id}
           type='radio'
