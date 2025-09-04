@@ -134,7 +134,7 @@ const zipPattern = /^\d{5,6}$/;
 
       </div>
 
-        <div className='bg-PureWhite-100 lg:w-3/10 lg:mt-0 lg:h-fit px-4 py-6 flex flex-col gap-5 rounded-lg mt-4'>
+        <div className='bg-PureWhite-100 lg:w-3/10 lg:mt-0 lg:h-fit px-4 py-5 flex flex-col gap-5 rounded-lg mt-4'>
           <h1 className="text-2xl lg:text-lg uppercase md:font-medium">Summary</h1>
 
           {cartItems.map((item)=>(
@@ -147,7 +147,7 @@ const zipPattern = /^\d{5,6}$/;
           </div>
           <Button 
             text= "CONTINUE & PAY"  
-            className={`w-full md:py-4 mt-4 lg:py-2 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`} 
+            className={`w-full md:py-4 mt-2 lg:py-2 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`} 
             type="submit"
              />   
         </div>
