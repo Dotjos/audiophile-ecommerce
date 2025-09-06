@@ -26,7 +26,7 @@ const Cart = () => {
         </div>
 
         {/* Cart Items */}
-        <div className="max-h-50 overflow-y-auto">
+        <div className="max-h-50 overflow-y-auto lg:min-h-screen">
           {cartItems.length === 0 ? (
             <p className="text-center md:text-base text-Gray-200">
               Your cart is empty
