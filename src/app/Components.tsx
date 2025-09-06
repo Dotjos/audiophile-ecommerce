@@ -222,7 +222,7 @@ export function Footer() {
 export function AudioGearSection() {
   return (
     <section className="h-auto lg:mt-10 lg:mb-33 mb-13 text-center md:items-center md:gap-12 lg:flex-row lg:gap-25 flex flex-col gap-6 justify-around">
-      <picture className="w-full h-full rounded-lg lg:order-2 lg:w-1/2">
+      <picture className="w-full h-auto  rounded-lg lg:order-2 lg:w-1/2">
         <source
           media="(min-width: 1024px)"
           srcSet="/assets/shared/desktop/image-best-gear.jpg"
@@ -241,8 +241,8 @@ export function AudioGearSection() {
         />
       </picture>
 
-      <div className="md:w-3/4 flex flex-col lg:w-4/9 lg:order-1 lg:gap-10 lg:text-left items-center lg:items-start w-full gap-6 md:gap-5">
-        <h1 className="font-bold w-3/4 text-xl md:w-4/5 lg:text-5xl lg:w-full md:text-3xl">
+      <div className="md:w-3/4 flex flex-col lg:w-4/9 lg:order-1 lg:gap-7 lg:text-left items-center lg:items-start w-full gap-6 md:gap-5">
+        <h1 className="font-bold w-3/4 text-xl md:w-4/5 lg:text-3xl lg:w-full md:text-3xl">
           {" "}
           BRINGING YOU THE <span className="text-BurntSienna-100">
             BEST
@@ -354,10 +354,10 @@ export function RandomComponents({ product }: RandomProductProps) {
         src={product.smallImage}
         alt={product.id}
         className="w-1/4 md:w-full h-full object-cover"
-        wrapperStyle="h-27 md:h-82 lg:items-center overflow-hidden rounded-lg bg-OffWhite-100 w-full"
+        wrapperStyle="h-27 md:h-82 lg:h-auto w-full lg:items-center overflow-hidden rounded-lg bg-OffWhite-100"
       />
 
-      <h1 className="font-bold uppercase md:text-2xl text-center">
+      <h1 className="font-bold uppercase md:text-2xl lg:text-lg text-center">
         {product.cartName}
       </h1>
       <Button
@@ -365,7 +365,7 @@ export function RandomComponents({ product }: RandomProductProps) {
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3 md:w-4/5 lg:w-1/2 lg:text-xs lg:p-2 md:py-4"
+        className="w-1/3 md:w-4/5 lg:w-1/2 lg:text-xs lg:py-3 md:py-4"
       />
     </div>
   );
