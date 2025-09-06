@@ -270,7 +270,7 @@ interface NavSection {
 export function NavSection({ className }: NavSection) {
   return (
     <section
-      className={`flex gap-y-13 my-5 ${className} flex-col md:flex-row md:gap-x-6 md:justify-between md:mb-20`}
+      className={`flex gap-y-13 my-5 mb-20 ${className} flex-col md:flex-row md:gap-x-6 md:justify-between`}
     >
       <ToShowComponent
         text="HEADPHONES"
