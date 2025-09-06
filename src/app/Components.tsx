@@ -160,7 +160,7 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({
 
 export function Footer() {
   return (
-    <footer className="text-center px-5 pb-5 md:pb-8 md:px-10 lg:px-30 border bg-PureBlack-100 text-WhiteSmoke-100">
+    <footer className="text-center px-5 pb-5 md:pb-8 md:px-10 lg:px-30 bg-PureBlack-100 text-WhiteSmoke-100">
       <span className="block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 md:w-20 h-0.5"></span>
 
       <div className="lg:flex lg:mt-15 lg:items-center lg:justify-between">

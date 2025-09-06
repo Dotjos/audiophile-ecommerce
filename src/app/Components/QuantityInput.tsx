@@ -5,21 +5,26 @@ import useStore from "../Zustore";
 interface QuantityInputProps {
   setQuantity?: (value: number) => void; // Optional setter function
   quantity?: number;
-  id:string;
+  id: string;
+  className?: string;
 }
 
+export function QuantityInput({
+  setQuantity,
+  quantity,
+  id,
+  className,
+}: QuantityInputProps) {
+  const { updateQuantity, increaseQuantity, decreaseQuantity, cartItems } =
+    useStore();
 
-export function QuantityInput({setQuantity,quantity,id}: QuantityInputProps) {
-  const {updateQuantity,increaseQuantity,decreaseQuantity,cartItems} = useStore();
-
-  const getQuantityFromStore = (id:string) => {
-    const item = cartItems.find(item => item.id === id);
+  const getQuantityFromStore = (id: string) => {
+    const item = cartItems.find((item) => item.id === id);
     return item ? item.quantity : 1; // or whatever default you want
-  }
+  };
 
-  const currentQuantity = quantity !== undefined ? quantity : getQuantityFromStore(id);
-
-
+  const currentQuantity =
+    quantity !== undefined ? quantity : getQuantityFromStore(id);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value) || 1;
@@ -28,12 +33,12 @@ export function QuantityInput({setQuantity,quantity,id}: QuantityInputProps) {
         setQuantity(value);
       } else {
         updateQuantity(id, value);
-      }        
+      }
     }
   };
 
-   // Handle decrease button
-   const handleDecrease = () => {
+  // Handle decrease button
+  const handleDecrease = () => {
     if (setQuantity) {
       // Use prop function if provided
       const newValue = Math.max(1, currentQuantity - 1);
@@ -57,7 +62,9 @@ export function QuantityInput({setQuantity,quantity,id}: QuantityInputProps) {
   };
 
   return (
-    <div className="flex w-full md:w-4/5 md:h-11 h-full items-center justify-around bg-gray-100">
+    <div
+      className={`flex w-full md:w-4/5 md:h-11 h-full items-center justify-around bg-gray-100 ${className}`}
+    >
       <button
         onClick={handleDecrease}
         className="px-2 py-1.5 hover:bg-gray-200 text-sm text-gray-600 font-bold"
@@ -86,5 +93,3 @@ export function QuantityInput({setQuantity,quantity,id}: QuantityInputProps) {
     </div>
   );
 }
-
- 
