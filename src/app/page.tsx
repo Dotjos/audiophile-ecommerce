@@ -17,7 +17,7 @@ export default function Page() {
               XX99 MARK II <br /> HEADPHONES
             </h1>
 
-            <p className="text-[11px] md:text-sm lg:text-left lg:w-2/4 md:text-center w-4/5 leading-5 font-extralight mb-6">
+            <p className="text-[11px] md:text-sm lg:text-base lg:text-left lg:w-2/4 md:text-center w-4/5 leading-5 font-extralight mb-6">
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
@@ -50,43 +50,46 @@ export default function Page() {
         </picture>
       </section>
 
-      <div className="min-h-screen my-7 md:my-0 relative flex flex-col bg-WhiteSmoke-100">
-        <div className="m-4 md:p-7">
+      <div className="min-h-screen lg:p-25 my-7 md:my-0 relative flex flex-col bg-WhiteSmoke-100">
+        <div className="m-4 md:p-7 lg:p-0 lg:m-0">
           <NavSection />
 
-          <section className="bg-BurntSienna-100 md:w-full rounded-lg flex relative flex-col gap-7 md:gap-11 items-center h-auto overflow-hidden">
+          <section className="bg-BurntSienna-100 lg:mt-25 md:w-full md:py-10 lg:pl-38 lg:py-0 lg:pt-18 rounded-lg flex relative flex-col lg:flex-row lg:gap-40 gap-7 md:gap-25  items-center h-auto overflow-hidden">
             {/* Background pattern with speaker image positioned in the center */}
-
             <Image
               src="/assets/home/desktop/pattern-circles.svg"
               alt="pattern-circles"
               height={400}
               width={400}
-              className="object-cover absolute left-1/2 -translate-x-1/2 -translate-y-1/7 md:-translate-y-1/9 scale-125 md:scale-250 z-0"
+              className="object-cover absolute left-1/2 -translate-x-1/2 lg:-translate-x-12/10 lg:translate-y-3/10  -translate-y-1/7 md:-translate-y-1/9 scale-125  md:scale-250 z-0"
             />
 
             {/* Speaker image centered within the circles */}
-            <div className="mt-10">
+            <div className="mt-10 relative h-48 w-1/3 lg:-mb-4 md:w-1/4 lg:w-1/3 lg:h-100">
               <Image
                 src="/assets/home/mobile/image-speaker-zx9.png"
                 alt="ZX9 Speaker"
-                width={100}
-                height={100}
-                className="md:w-50"
+                fill
+                loading="lazy"
               />
             </div>
 
             {/* Text content */}
-            <div className="text-center px-4 md:w-1/2 md:px-0 md:flex md:flex-col md:items-center md:gap-7 text-white">
-              <h2 className="text-2xl font-bold mb-2 md:text-6xl">
+            <div className="text-center px-4 md:w-1/2 lg:w-fit md:px-0 md:flex md:flex-col md:items-center lg:items-start md:gap-5 text-white">
+              <h2 className="text-2xl lg:text-left font-bold mb-2 md:text-6xl ">
                 ZX9
                 <br />
                 SPEAKER
               </h2>
-              <div className="text-xs text-center font-light mb-5 md:text-center leading-5  mx-auto md:text-base md:leading-6">
+              <div className="text-xs text-center lg:text-left lg:text-base font-light mb-5 md:text-center leading-5  mx-auto md:text-base md:leading-6">
                 <p>Upgrade to premium speakers that are</p>
-                <p>phenomenally built to deliver truly</p>
-                <p>remarkable sound.</p>
+                <p>
+                  phenomenally built to deliver truly
+                  <span className="hidden lg:inline">remarkable</span>
+                </p>
+                <p>
+                  <span className="lg:hidden">remarkable</span> sound.
+                </p>
               </div>
               {/* Button */}
               <Button
@@ -97,7 +100,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section className="flex flex-col space-y-4 my-5 h-64 md:h-85 relative w-full ">
+          <section className="flex flex-col space-y-4 my-5 lg:my-8 h-64 md:h-85 relative w-full ">
             <picture className="w-full h-full rounded-lg">
               <source
                 media="(min-width: 1024px)"
@@ -117,7 +120,7 @@ export default function Page() {
               />
             </picture>
 
-            <div className="z-10 inset-0 flex flex-col px-5 md:px-15 space-y-5 md:space-y-7 justify-center absolute">
+            <div className="z-10 inset-0 flex flex-col px-5 md:px-15 space-y-5 md:space-y-7 lg:space-y-9 lg:px-22 justify-center absolute">
               <h1 className="text-2xl font-semibold md:text-3xl tracking-wide">
                 ZX7 SPEAKER
               </h1>
@@ -130,7 +133,7 @@ export default function Page() {
           </section>
 
           <section>
-            <div className="flex flex-col md:flex-row space-y-3 md:space-x-3">
+            <div className="flex flex-col md:flex-row space-y-3 md:space-x-3 lg:space-x-8">
               <picture className="w-full md:w-1/2 md:h-85 h-32 rounded-lg">
                 <source
                   media="(min-width: 1024px)"
@@ -150,7 +153,7 @@ export default function Page() {
                 />
               </picture>
 
-              <div className="h-32 md:h-85 md:w-1/2 bg-OffWhite-100 flex flex-col space-y-5 md:space-y-7 justify-center px-6 md:px-10 rounded-lg">
+              <div className="h-32 md:h-85 md:w-1/2 bg-OffWhite-100 flex flex-col space-y-5 md:space-y-7 lg:space-y-9 lg:px-22 justify-center px-6 md:px-10 rounded-lg">
                 <h1 className="text-xl md:text-3xl text-PureBlack-100 font-semibold tracking-wide">
                   YX1 EARPHONES
                 </h1>

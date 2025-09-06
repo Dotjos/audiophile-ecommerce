@@ -164,35 +164,34 @@ export function Footer() {
       <span className="block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 md:w-20 h-0.5"></span>
 
       <div className="lg:flex lg:mt-15 lg:items-center lg:justify-between">
-        <h1 className="font-black mb-7 lg:mb-0 md:text-xl md:text-left">
+        <h1 className="font-black mb-7 lg:mb-0 md:text-xl lg:text-2xl md:text-left">
           audiophile
         </h1>
-        <NavLink className="md:flex md:flex-row" />
+        <NavLink className="md:flex md:flex-row lg:text-base" />
       </div>
 
-      <div className="lg:flex lg:justify-between lg:mb-5">
+      <div className="lg:flex lg:flex-col lg:justify-between lg:mb-5">
         <div className="lg:w-1/2">
-          <p className="text-xs md:text-sm lg:text-sm text-Gray-200 md:leading-6 md:text-left lg:mb-10 my-8">
+          <p className="text-xs md:text-sm  text-Gray-200 md:leading-6 md:text-left lg:text-base lg:mb-0 my-8">
             Audiophile is an all in one stop to fulfill your audio needs. We're
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
             our demo facility - we’re open 7 days a week.
           </p>
-          <div></div>
         </div>
 
-        <div className="flex flex-col gap-4 md:flex-row md:justify-between">
-          <p className="mb-5 md:mb-0 text-xs text-Gray-200 md:text-sm lg:text-left md:text-Gray-200">
+        <div className="flex flex-col gap-4 md:flex-row md:justify-between lg:h-30">
+          <p className="mb-5 md:mb-0 text-xs text-Gray-200 md:text-sm lg:text-base lg:flex lg:flex-col lg:text-left lg:justify-end md:text-Gray-200">
             Copyright 2021. All Rights Reserved
           </p>
-          <ul className="text-xs md:flex items-center ">
+          <ul className="text-xs md:flex lg:text-base items-center lg:items-start">
             <li className="inline-block mx-2">
               <Image
                 src={"/assets/shared/desktop/icon-facebook.svg"}
                 alt="Facebook"
                 width={15}
                 height={15}
-                className="md:h-4 md:w-4"
+                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
               />
             </li>
             <li className="inline-block mx-2">
@@ -201,7 +200,7 @@ export function Footer() {
                 alt="Twitter"
                 width={15}
                 height={15}
-                className="md:h-4 md:w-4"
+                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
               />
             </li>
             <li className="inline-block mx-2">
@@ -210,7 +209,7 @@ export function Footer() {
                 alt="Instagram"
                 width={15}
                 height={15}
-                className="md:h-4 md:w-4"
+                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
               />
             </li>
           </ul>
@@ -222,8 +221,8 @@ export function Footer() {
 
 export function AudioGearSection() {
   return (
-    <section className="min-h-screen mb-13 text-center md:items-center md:gap-12 flex flex-col gap-6 justify-around">
-      <picture className="w-full h-full rounded-lg">
+    <section className="h-auto lg:mt-10 lg:mb-33 mb-13 text-center md:items-center md:gap-12 lg:flex-row lg:gap-25 flex flex-col gap-6 justify-around">
+      <picture className="w-full h-full rounded-lg lg:order-2 lg:w-1/2">
         <source
           media="(min-width: 1024px)"
           srcSet="/assets/shared/desktop/image-best-gear.jpg"
@@ -242,15 +241,15 @@ export function AudioGearSection() {
         />
       </picture>
 
-      <div className="md:w-3/4 flex flex-col items-center w-full gap-6 md:gap-5">
-        <h1 className="font-bold w-3/4 text-xl md:w-4/5 md:text-3xl">
+      <div className="md:w-3/4 flex flex-col lg:w-4/9 lg:order-1 lg:gap-10 lg:text-left items-center lg:items-start w-full gap-6 md:gap-5">
+        <h1 className="font-bold w-3/4 text-xl md:w-4/5 lg:text-5xl lg:w-full md:text-3xl">
           {" "}
           BRINGING YOU THE <span className="text-BurntSienna-100">
             BEST
           </span>{" "}
           AUDIO GEAR
         </h1>
-        <p className="text-xs md:text-sm md:leading-6 leading-5 text-center text-Gray-200">
+        <p className="text-xs lg:text-base  md:text-sm md:leading-6 leading-5 lg:text-left text-center text-Gray-200">
           {" "}
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
@@ -264,9 +263,15 @@ export function AudioGearSection() {
   );
 }
 
-export function NavSection() {
+interface NavSection {
+  className?: string;
+}
+
+export function NavSection({ className }: NavSection) {
   return (
-    <section className="flex gap-y-13 my-5 lg:px-30 flex-col md:flex-row md:gap-x-6 md:justify-between md:mb-20">
+    <section
+      className={`flex gap-y-13 my-5 ${className} flex-col md:flex-row md:gap-x-6 md:justify-between md:mb-20`}
+    >
       <ToShowComponent
         text="HEADPHONES"
         className="md:w-1/3"
