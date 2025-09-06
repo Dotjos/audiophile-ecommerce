@@ -16,6 +16,7 @@ export default function ScrollLockProvider({ children }: Props) {
   const pathname = usePathname();
   const homePage = pathname === "/";
   const checkoutPage = pathname === "/checkout";
+  const categoryPage = pathname.includes("/category");
 
   useEffect(() => {
     if (menuIsOpen || cartIsOpen) {
@@ -53,8 +54,10 @@ export default function ScrollLockProvider({ children }: Props) {
       {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu} />}
       {cartIsOpen && <Cart />}
       {children}
-      <div className="px-4 py-7 flex lg:px-25 lg:py-0 md:px-11 flex-col gap-16">
-        {!(homePage || checkoutPage) && <NavSection />}
+      <div
+        className={`px-4 py-7 flex  ${"lg:px-30"} lg:py-0 md:px-11 flex-col gap-16`}
+      >
+        {!(homePage || checkoutPage) && <NavSection className="lg:my-10" />}
         {!checkoutPage && <AudioGearSection />}
       </div>
       <Footer />

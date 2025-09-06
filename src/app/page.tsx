@@ -50,7 +50,7 @@ export default function Page() {
         </picture>
       </section>
 
-      <div className="min-h-screen lg:p-25 my-7 md:my-0 relative flex flex-col bg-WhiteSmoke-100">
+      <div className="min-h-screen lg:p-30 my-7 md:my-0 relative flex flex-col bg-WhiteSmoke-100">
         <div className="m-4 md:p-7 lg:p-0 lg:m-0">
           <NavSection />
 
