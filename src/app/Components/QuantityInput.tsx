@@ -67,7 +67,7 @@ export function QuantityInput({
     >
       <button
         onClick={handleDecrease}
-        className="px-2 py-1.5 hover:bg-gray-200 text-sm text-gray-600 font-bold"
+        className="px-2 py-1.5 hover:text-BurntSienna-100 text-sm text-gray-600 font-bold"
       >
         −
       </button>
@@ -86,7 +86,7 @@ export function QuantityInput({
 
       <button
         onClick={handleIncrease}
-        className="px-2 py-1 hover:bg-gray-200 text-sm text-gray-600 font-bold"
+        className="px-2 py-1 hover:text-BurntSienna-100 text-sm text-gray-600 font-bold"
       >
         +
       </button>

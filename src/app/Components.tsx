@@ -27,15 +27,13 @@ export const Button: FC<ButtonProps> = ({
   type = "button", // Default to "button" if not provided
 }) => {
   const baseClasses =
-    "tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center";
+    " py-2.5 px-5 tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center";
 
   const variantClasses = {
-    primary:
-      "py-2.5 px-5 bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32",
-    secondary:
-      "py-2.5 px-5 bg-PureBlack-100 hover:bg-AlmostBlack-100 text-PureWhite-100 border border-PureBlack-100",
+    primary: "bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32",
+    secondary: "bg-PureBlack-100 hover:bg-Gray-300 text-PureWhite-100",
     tertiary: "bg-transparent text-xs text-Gray-200 hover:text-BurntSienna-100",
-    new: "py-2.5 px-5 bg-transparent hover:bg-OffWhite-100 text-PureBlack-100 border border-PureBlack-100",
+    new: "bg-transparent hover:bg-PureBlack-100 hover:text-PureWhite-100 text-PureBlack-100 border border-PureBlack-100",
   };
 
   const dynamicRoute = link
@@ -66,11 +64,11 @@ export const Button: FC<ButtonProps> = ({
     <Link
       href={disabled ? "#" : dynamicRoute}
       onClick={onClick}
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      className={`${baseClasses}  ${variantClasses[variant]} ${className}`}
     >
       {text}
       {variant === "tertiary" && (
-        <span className="text-BurntSienna-100 font-bold text-lg ml-1">
+        <span className="text-BurntSienna-100 font-semibold text-lg ml-1">
           {">"}
         </span>
       )}
@@ -83,23 +81,28 @@ interface NavLinkProps {
 }
 
 export const NavLink: FC<NavLinkProps> = ({ className }) => {
+  const navigationItems = [
+    { href: "/", label: "HOME" },
+    { href: "/category/HEADPHONES", label: "HEADPHONES" },
+    { href: "/category/SPEAKERS", label: "SPEAKERS" },
+    { href: "/category/EARPHONES", label: "EARPHONES" },
+  ];
+
   return (
-    <ul
-      className={`leading-8.5 md:tracking-[.15em] text-xs md:space-x-10 md:font-semibold flex-col font-medium ${className}`}
-    >
-      <li>
-        <Link href="/">HOME</Link>
-      </li>
-      <li>
-        <Link href="/category/HEADPHONES">HEADPHONES</Link>
-      </li>
-      <li>
-        <Link href="/category/SPEAKERS">SPEAKERS</Link>
-      </li>
-      <li>
-        <Link href="/category/EARPHONES">EARPHONES</Link>
-      </li>
-    </ul>
+    <nav role="navigation" aria-label="Main navigation">
+      <ul
+        className={`leading-8.5 md:tracking-[.15em] text-xs md:space-x-10 md:font-semibold flex-col font-medium ${className}`}
+      >
+        {navigationItems.map((item) => (
+          <li
+            key={item.href}
+            className="hover:text-BurntSienna-100 transition-colors duration-200"
+          >
+            <Link href={item.href}>{item.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
@@ -159,6 +162,24 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({
 };
 
 export function Footer() {
+  const socialLinks = [
+    {
+      href: "https://facebook.com",
+      src: "/assets/shared/desktop/icon-facebook.svg",
+      alt: "Facebook",
+    },
+    {
+      href: "https://twitter.com",
+      src: "/assets/shared/desktop/icon-twitter.svg",
+      alt: "Twitter",
+    },
+    {
+      href: "https://instagram.com",
+      src: "/assets/shared/desktop/icon-instagram.svg",
+      alt: "Instagram",
+    },
+  ];
+
   return (
     <footer className="text-center px-5 pb-5 md:pb-8 md:px-10 lg:px-30 bg-PureBlack-100 text-WhiteSmoke-100">
       <span className="block ml-auto mr-auto mb-7 md:ml-0 md:h-1 bg-BurntSienna-100 w-16 md:w-20 h-0.5"></span>
@@ -184,34 +205,32 @@ export function Footer() {
           <p className="mb-5 md:mb-0 text-xs text-Gray-200 md:text-sm lg:text-base lg:flex lg:flex-col lg:text-left lg:justify-end md:text-Gray-200">
             Copyright 2021. All Rights Reserved
           </p>
-          <ul className="text-xs md:flex lg:text-base items-center lg:items-start">
-            <li className="inline-block mx-2">
-              <Image
-                src={"/assets/shared/desktop/icon-facebook.svg"}
-                alt="Facebook"
-                width={15}
-                height={15}
-                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
-              />
-            </li>
-            <li className="inline-block mx-2">
-              <Image
-                src={"/assets/shared/desktop/icon-twitter.svg"}
-                alt="Twitter"
-                width={15}
-                height={15}
-                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
-              />
-            </li>
-            <li className="inline-block mx-2">
-              <Image
-                src={"/assets/shared/desktop/icon-instagram.svg"}
-                alt="Instagram"
-                width={15}
-                height={15}
-                className="md:h-4 md:w-4 lg:h-5 lg:w-5"
-              />
-            </li>
+
+          <ul className="flex items-center justify-center lg:items-start space-x-4 text-xs lg:text-base">
+            {socialLinks.map((social) => (
+              <li key={social.alt}>
+                <Link
+                  href={social.href}
+                  className="group block"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div
+                    className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-PureWhite-100 group-hover:bg-BurntSienna-100 transition-colors duration-200"
+                    style={{
+                      maskImage: `url(${social.src})`,
+                      maskRepeat: "no-repeat",
+                      maskSize: "contain",
+                      maskPosition: "center",
+                      WebkitMaskImage: `url(${social.src})`,
+                      WebkitMaskRepeat: "no-repeat",
+                      WebkitMaskSize: "contain",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -432,7 +451,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   ({ id, label, value, ...props }, ref) => {
     return (
       <label
-        className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 mb-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-2"
+        className="radio-box md:p-4 lg:p-2 border border-Gray-200 active:border-BurntSienna-100 hover:border-BurntSienna-100 mb-2 text-xs md:text-sm gap-x-4 flex items-center font-semibold rounded-md p-2"
         htmlFor={id}
       >
         <input

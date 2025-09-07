@@ -75,7 +75,7 @@ export default function Page() {
             </div>
 
             {/* Text content */}
-            <div className="text-center px-4 md:w-1/2 lg:w-7/13 md:px-0 md:flex md:flex-col md:items-center lg:items-start md:gap-4 text-white">
+            <div className="text-center z-40 px-4 md:w-1/2 lg:w-7/13 md:px-0 md:flex md:flex-col md:items-center lg:items-start md:gap-4 text-white">
               <h2 className="text-2xl lg:text-left font-bold mb-2 lg:text-4xl md:text-5xl">
                 ZX9
                 <br />

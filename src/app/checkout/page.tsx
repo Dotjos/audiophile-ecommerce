@@ -6,6 +6,7 @@ import SummaryItem from "../Components/SummaryItem";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import OrderComplete from "../Components/OrderComplete";
+import Image from "next/image";
 
 interface IFormInput {
   name: string;
@@ -220,6 +221,24 @@ const page = () => {
                         : undefined,
                   })}
                 />
+              </div>
+            )}
+
+            {selection === "Cash on Delivery" && (
+              <div className="flex gap-7 text-Gray-200 items-center mt-7">
+                <Image
+                  src="/assets/checkout/icon-cash-on-delivery.svg"
+                  alt="Cash on delivery"
+                  width="50"
+                  height="50"
+                  className="border-AlmostBlack-100 h-11 md:h-13"
+                />
+                <p className="text-xs md:text-sm lg:text-lg">
+                  The ‘Cash on Delivery’ option enables you to pay in cash when
+                  our delivery courier arrives at your residence. Just make sure
+                  your address is correct so that your order will not be
+                  cancelled.
+                </p>
               </div>
             )}
           </div>
