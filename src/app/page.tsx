@@ -25,7 +25,8 @@ export default function Page() {
             <Button
               text="SEE PRODUCT"
               className="text-sm md:text-base md:w-1/2 md:py-4 lg:w-37 lg:text-sm"
-              link="headphones"
+              basePath="productDetail"
+              link="xx99-mark-ii"
             />
           </div>
         </div>
@@ -94,7 +95,9 @@ export default function Page() {
               {/* Button */}
               <Button
                 text="SEE PRODUCT"
-                className="md:font-bold md:py-4 md:w-1/2 mb-13 md:px-5 tracking-[1em]"
+                basePath="productDetail"
+                link="zx-9"
+                className="w-3/5 md:w-44 md:text-sm md:py-4"
                 variant="secondary"
               />
             </div>
@@ -128,6 +131,8 @@ export default function Page() {
                 text="SEE PRODUCT"
                 variant="new"
                 className="w-3/5 md:w-44 md:text-sm md:py-4"
+                basePath="productDetail"
+                link="zx-7"
               />
             </div>
           </section>
@@ -161,6 +166,8 @@ export default function Page() {
                   text="SEE PRODUCT"
                   variant="new"
                   className="w-3/5 md:w-44 md:text-sm md:py-4"
+                  basePath="productDetail"
+                  link="yx-1"
                 />
               </div>
             </div>

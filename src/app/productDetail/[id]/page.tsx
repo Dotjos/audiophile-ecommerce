@@ -4,6 +4,7 @@ import { Goback } from "@/app/Components/Goback";
 import { getProductById, getRandomProducts } from "@/app/lib/products";
 import { formatPrice } from "@/app/utils";
 import { notFound } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -29,6 +30,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="px-4 md:px-8 md:py-6 lg:px-30 lg:py-13">
+      <ToastContainer />
       <Goback className="lg:mb-11 mb-5 md:mb-4 " />
       <div>
         <div className="flex flex-col gap-3 md:flex-row md:justify-between">
@@ -38,7 +40,7 @@ export default async function Page({ params }: PageProps) {
             className=" md:h-auto"
             alt={product?.name || "Product Image"}
           />
-          <div className="md:w-7/12 gap-3 lg:w-4/9 flex flex-col md:justify-center md:gap-5 lg:gap-1">
+          <div className="md:w-7/12 gap-3 lg:w-4/9 flex flex-col md:justify-center md:gap-5 lg:gap-3">
             {product.isNew && (
               <h2 className="text-xs tracking-[5px] md:tracking-[10px] font-light text-BurntSienna-100 mt-2">
                 NEW PRODUCT
@@ -50,9 +52,11 @@ export default async function Page({ params }: PageProps) {
             <p className="text-xs text-gray-500 md:text-base lg:w-full md:leading-6">
               {product?.details}
             </p>
-            <h1 className="font-bold">{formatPrice(product?.price ?? 0)}</h1>
+            <h1 className="font-bold lg:mb-3">
+              {formatPrice(product?.price ?? 0)}
+            </h1>
             <div className="flex space-x-2">
-              <AddToCartSection product={product} />
+              <AddToCartSection product={product} toast={toast} />
             </div>
           </div>
         </div>

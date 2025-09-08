@@ -145,13 +145,13 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({
           />
         </div>
         <div className="flex justify-end md:gap-y-2 flex-col">
-          <span className="text-center text-xs tracking-widest md:text-base lg:text-xl text-PureBlack-100 font-bold">
+          <span className="text-center text-xs tracking-widest md:text-base lg:text-sm text-PureBlack-100 font-bold">
             {text}
           </span>
           <Button
             text="SHOP"
             variant="tertiary"
-            className="md:text-base"
+            className="md:text-base lg:text-sm"
             link={finalLink}
             basePath={basePath}
           />
