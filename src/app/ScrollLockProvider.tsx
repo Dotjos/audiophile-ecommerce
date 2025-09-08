@@ -1,63 +1,66 @@
-'use client';
-import { useEffect, useState, ReactNode } from 'react';
-import { Navbar } from './Components/Navbar';
-import Menu from './Components/Menu';
-import useStore from './Zustore';
-import { AudioGearSection, Footer, NavSection } from './Components';
-import { usePathname } from 'next/navigation';
-import Cart from './Components/Cart';
+"use client";
+import { useEffect, useState, ReactNode } from "react";
+import { Navbar } from "./Components/Navbar";
+import Menu from "./Components/Menu";
+import useStore from "./Zustore";
+import { AudioGearSection, Footer, NavSection } from "./Components";
+import { usePathname } from "next/navigation";
+import Cart from "./Components/Cart";
 
 interface Props {
   children: ReactNode;
 }
 
 export default function ScrollLockProvider({ children }: Props) {
-  const {menuIsOpen,closeMenu,cartIsOpen,closeCart} = useStore();
-  const pathname = usePathname()
-  const homePage = pathname === '/';
-  const checkoutPage = pathname === '/checkout';
+  const { menuIsOpen, closeMenu, cartIsOpen, closeCart } = useStore();
+  const pathname = usePathname();
+  const homePage = pathname === "/";
+  const checkoutPage = pathname === "/checkout";
+  const categoryPage = pathname.includes("/category");
 
   useEffect(() => {
     if (menuIsOpen || cartIsOpen) {
       // Lock scroll when menu or cart is open
-      document.body.classList.add('overflow-hidden');
+      document.body.classList.add("overflow-hidden");
     } else {
       // Unlock scroll when both are closed
-      document.body.classList.remove('overflow-hidden');
+      document.body.classList.remove("overflow-hidden");
     }
     return () => {
       // Cleanup: remove overflow class on unmount
-      document.body.classList.remove('overflow-hidden');
+      document.body.classList.remove("overflow-hidden");
     };
   }, [menuIsOpen, cartIsOpen]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         // Close menu or cart when Escape is pressed
-        if (menuIsOpen) closeMenu()
-        if (cartIsOpen) closeCart()        
+        if (menuIsOpen) closeMenu();
+        if (cartIsOpen) closeCart();
       }
-    }
+    };
 
     if (menuIsOpen || cartIsOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
     }
 
-    return () => document.removeEventListener('keydown', handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [menuIsOpen, cartIsOpen, closeMenu, closeCart]);
 
-return (
-    <div className='relative'>
+  return (
+    <div className="relative">
       <Navbar homePage={homePage} />
-      {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu}/>}
-      {cartIsOpen && <Cart/>}
+      {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu} />}
+      {cartIsOpen && <Cart />}
       {children}
-    <div className='px-4 py-7 flex md:px-11 flex-col gap-16'>
-     {!(homePage || checkoutPage) &&<NavSection/>}
-      {!checkoutPage&&<AudioGearSection/>}
-    </div>
-     <Footer/>    
+      <div
+        className={`px-4 py-7 flex  ${"lg:px-30"} lg:py-0 md:px-11 flex-col gap-16`}
+      >
+        {!(homePage || checkoutPage) && <NavSection className="lg:my-10" />}
+        {!checkoutPage && <AudioGearSection />}
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import { notFound } from 'next/navigation';
-import { getProductsByCategory } from '../../lib/products';
-import { VALID_CATEGORIES,validCategory } from '../../lib/constants';
-import { Button, ProductImage } from '@/app/Components';
+import { notFound } from "next/navigation";
+import { getProductsByCategory } from "../../lib/products";
+import { VALID_CATEGORIES, validCategory } from "../../lib/constants";
+import { Button, ProductImage } from "@/app/Components";
 
 interface CategoryPageProps {
   params: Promise<{
-    category: string;   
+    category: string;
   }>;
 }
 
@@ -22,7 +22,7 @@ function isValidCategory(category: string): category is validCategory {
 }
 
 export default async function Page({ params }: CategoryPageProps) {
-  const { category } =await params;
+  const { category } = await params;
 
   const normalizedCategory = category.toLowerCase();
 
@@ -30,27 +30,57 @@ export default async function Page({ params }: CategoryPageProps) {
   if (!isValidCategory(normalizedCategory)) {
     notFound();
   }
-  
+
   // Fetch products for this category
   const products = await getProductsByCategory(normalizedCategory);
-  
+
   return (
-    <div className="min-h-screen relative ">
-      <div className=' bg-PureBlack-100 relative text-PureWhite-100'>
-         <h1 className='p-6 font-bold tracking-widest text-xl pt-23 lg:pt-40 uppercase text-center md:py-20 md:pt-35 md:font-bold md:text-3xl'>{category}</h1>
+    <div className="min-h-screen relative">
+      <div className=" bg-PureBlack-100 relative text-PureWhite-100">
+        <h1 className="p-6 font-bold tracking-widest text-xl pt-23 lg:pt-40 uppercase text-center md:py-20 md:pt-35 md:font-bold md:text-3xl">
+          {category}
+        </h1>
       </div>
-      <div className='py-10 px-4 lg:p-35 lg:px-35 grid grid-cols-1 gap-10 md:gap-15 md:pt-25 md:px-10'>
-        {products.map((product: Product,index:number) => (
-          <div key={product.id} className="flex space-y-10 text-center lg:justify-between flex-col md:space-y-9 lg:flex-row items-center mb-6">
-            <ProductImage src={product.image} className='h-70' width={300} height={500} wrapperStyle={`w-full ${(index+1)%2==1?"lg:order-1":"lg:order-2"} lg:w-4/9 lg:h-100`}  alt={product.name} />
-            <div className={`lg:w-2/5 flex ${(index+1)%2==1?"lg:order-2":"lg:order-1"} flex-col items-center gap-4 lg:gap-7 order-2 lg:items-start`}>
-            {index===0&&<h2 className="text-xs lg:text-start tracking-[5px] lg:tracking-[7px] lg:text-lg font-light text-BurntSienna-100 mt-3 md:mt-0">NEW PRODUCT</h2>}
-            <h2 className="text-lg w-3/5 lg:text-left lg:w-3/5 uppercase tracking-wide md:w-1/2 md:font-bold md:text-3xl md:mb-4 lg:text-4xl font-semibold">{product.name}</h2>
-            <p className="text-xs lg:text-sm lg:w-full lg:text-left text-gray-500 md:w-3/4">{product.details}</p>
-            <Button text='SEE PRODUCT' className='md:w-33 lg:mt-3 lg:font-bold lg:py-3' link={`../productDetail/${product.id}`}/>
+      <div className="py-10 px-4 lg:p-30 grid grid-cols-1 gap-10 md:gap-15 md:pt-25 md:px-10">
+        {products.map((product: Product, index: number) => (
+          <div
+            key={product.id}
+            className="flex space-y-10 text-center lg:justify-between flex-col md:space-y-9 lg:flex-row items-center mb-6"
+          >
+            <ProductImage
+              src={product.image}
+              className="h-70"
+              width={300}
+              height={500}
+              wrapperStyle={`w-full ${
+                (index + 1) % 2 == 1 ? "lg:order-1" : "lg:order-2"
+              } lg:w-4/9 lg:h-100 lg:mb-0`}
+              alt={product.name}
+            />
+            <div
+              className={`lg:w-2/5 flex ${
+                (index + 1) % 2 == 1 ? "lg:order-2" : "lg:order-1"
+              } flex-col items-center gap-4 lg:gap-7 order-2 lg:items-start`}
+            >
+              {index === 0 && (
+                <h2 className="text-xs lg:text-start tracking-[5px] lg:tracking-[7px] lg:text-lg font-light text-BurntSienna-100 mt-3 md:mt-0">
+                  NEW PRODUCT
+                </h2>
+              )}
+              <h2 className="text-lg w-3/5 lg:text-left lg:w-3/5 uppercase tracking-wide md:w-1/2 md:font-bold md:text-3xl md:mb-4 lg:text-4xl font-semibold">
+                {product.name}
+              </h2>
+              <p className="text-xs lg:text-sm lg:w-full lg:text-left text-gray-500 md:w-3/4">
+                {product.details}
+              </p>
+              <Button
+                text="SEE PRODUCT"
+                className="md:w-33 lg:mt-3 lg:font-bold lg:py-3"
+                link={`../productDetail/${product.id}`}
+              />
             </div>
           </div>
-        ))} 
+        ))}
       </div>
     </div>
   );
@@ -66,25 +96,26 @@ export async function generateStaticParams() {
 // Dynamic metadata based on category
 export async function generateMetadata({ params }: CategoryPageProps) {
   const { category } = await params;
-  
+
   const categoryData = {
     headphones: {
-      title: 'Headphones - Audiophile',
-      description: 'Premium headphones for audiophiles',
+      title: "Headphones - Audiophile",
+      description: "Premium headphones for audiophiles",
     },
     speakers: {
-      title: 'Speakers - Audiophile', 
-      description: 'High-quality speakers for your home',
+      title: "Speakers - Audiophile",
+      description: "High-quality speakers for your home",
     },
     earphones: {
-      title: 'Earphones - Audiophile',
-      description: 'Wireless and wired earphones',
+      title: "Earphones - Audiophile",
+      description: "Wireless and wired earphones",
     },
   };
-  
-  return categoryData[category as keyof typeof categoryData] || {
-    title: 'Category - Audiophile',
-    description: 'Browse our audio products',
-  };
-}
 
+  return (
+    categoryData[category as keyof typeof categoryData] || {
+      title: "Category - Audiophile",
+      description: "Browse our audio products",
+    }
+  );
+}
