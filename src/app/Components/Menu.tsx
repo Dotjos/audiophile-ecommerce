@@ -1,7 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-
 import { ToShowComponent } from "../Components";
 import Backdrop from "./Backdrop";
 
@@ -34,7 +33,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     <>
       {/* Menu content */}
       <Backdrop className="top-17">
-        <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+        <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:px-7 md:py-15 px-4 pb-6 pt-13 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
           <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
             <ToShowComponent
               text="HEADPHONES"
