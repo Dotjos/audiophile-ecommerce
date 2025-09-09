@@ -27,13 +27,15 @@ export const Button: FC<ButtonProps> = ({
   type = "button", // Default to "button" if not provided
 }) => {
   const baseClasses =
-    " py-2.5 px-5 tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center";
+    "  tracking-wider text-xs font-medium transition-colors cursor-pointer inline-block text-center";
 
   const variantClasses = {
-    primary: "bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32",
-    secondary: "bg-PureBlack-100 hover:bg-Gray-300 text-PureWhite-100",
+    primary:
+      " py-2.5 px-5 bg-BurntSienna-100 hover:bg-Peach-100 text-PureWhite-100 w-32",
+    secondary:
+      "py-2.5 px-5 bg-PureBlack-100 hover:bg-Gray-300 text-PureWhite-100",
     tertiary: "bg-transparent text-xs text-Gray-200 hover:text-BurntSienna-100",
-    new: "bg-transparent hover:bg-PureBlack-100 hover:text-PureWhite-100 text-PureBlack-100 border border-PureBlack-100",
+    new: "py-2.5 px-5 bg-transparent hover:bg-PureBlack-100 hover:text-PureWhite-100 text-PureBlack-100 border border-PureBlack-100",
   };
 
   const dynamicRoute = link
@@ -91,7 +93,7 @@ export const NavLink: FC<NavLinkProps> = ({ className }) => {
   return (
     <nav role="navigation" aria-label="Main navigation">
       <ul
-        className={`leading-8.5 md:tracking-[.15em] text-xs md:space-x-10 md:font-semibold flex-col font-medium ${className}`}
+        className={` leading-8.5 md:tracking-[.15em] text-xs md:space-x-10 md:font-semibold flex-col font-medium ${className}`}
       >
         {navigationItems.map((item) => (
           <li
@@ -132,26 +134,21 @@ export const ToShowComponent: FC<ToShowComponentProps> = ({
 
   return (
     <div
-      className={`h-25 md:h-50 ${className} w-full relative flex flex-col justify-end`}
+      className={` md:h-35 rounded-lg ${className} bg-OffWhite-100 w-full items-center flex flex-col pb-2`}
     >
-      <div className="bg-OffWhite-100 p-2 md:p-4  flex flex-col justify-end rounded-xl h-32 md:h-40 lg:h-50">
-        <div className="absolute mb-9 lg:mb-13 left-0 right-0 flex justify-center lg:h-auto items-center">
-          <Image
-            src={imgPath}
-            alt="Go to"
-            width={100}
-            height={100}
-            className="inline-block md:w-35 lg:w-50 md:border rounded-xl"
-          />
-        </div>
-        <div className="flex justify-end md:gap-y-2 flex-col">
+      <div className="flex relative w-23 md:h-23 -mt-8 h-20 justify-center lg:h-30 lg:w-33 items-center">
+        <Image src={imgPath} alt="Go to" fill className="inline-block" />
+      </div>
+
+      <div className="flex flex-col">
+        <div className="flex md:gap-y-2 flex-col">
           <span className="text-center text-xs tracking-widest md:text-base lg:text-sm text-PureBlack-100 font-bold">
             {text}
           </span>
           <Button
             text="SHOP"
             variant="tertiary"
-            className="md:text-base lg:text-sm"
+            className="text-xs md:text-base lg:text-sm"
             link={finalLink}
             basePath={basePath}
           />

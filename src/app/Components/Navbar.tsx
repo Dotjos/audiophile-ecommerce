@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`flex absolute top-0 left-0 py-5 px-4 right-0 border-b-[1px] lg:items-center border-Gray-200 z-30 items-center text-PureWhite-100 justify-between ${
+      className={`flex absolute top-0 left-0 py-5 px-4 right-0 border-b-[1px] border-Gray-200 z-30 items-center justify-between text-PureWhite-100  ${
         productDetailPage || checkoutPage
           ? "bg-PureBlack-100 h-auto static lg:w-full md:mx-0 md:px-8 lg:mx-0 lg:px-30"
           : "lg:mx-30 md:mx-8 md:px-0"
@@ -36,11 +36,11 @@ export const Navbar = () => {
         />
       </div>
 
-      <span className="text-xl lg:w-fit md:text-left md:w-full md:ml-10 lg:ml-0 font-black">
+      <span className="w-full text-center text-xl lg:w-fit md:text-left md:ml-10 lg:ml-0 font-black">
         audiophile
       </span>
 
-      <NavLink className="hidden md:hidden lg:flex lg:flex-row lg:justify-between lg:text-sm" />
+      <NavLink className="hidden lg:flex lg:flex-row lg:justify-between lg:text-sm" />
 
       <div className="h-5 w-6 relative" onClick={handleCartClick}>
         <Image
