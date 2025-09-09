@@ -4,11 +4,7 @@ import useStore from "../Zustore";
 import { NavLink } from "../Components";
 import { usePathname } from "next/navigation";
 
-interface NavbarProps {
-  homePage: boolean;
-}
-
-export const Navbar = ({ homePage }: NavbarProps) => {
+export const Navbar = () => {
   const toggleMenu = useStore((state) => state.toggleMenu);
   const toggleCart = useStore((state) => state.toggleCart);
   const pathname = usePathname();

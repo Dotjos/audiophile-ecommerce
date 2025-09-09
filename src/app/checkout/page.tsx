@@ -21,7 +21,7 @@ interface IFormInput {
   eMoneyPin?: string;
 }
 
-const page = () => {
+const Page = () => {
   const {
     register,
     handleSubmit,
@@ -43,7 +43,7 @@ const page = () => {
   const phonePattern = /^\+?[\d\s-()]+$/;
   const zipPattern = /^\d{5,6}$/;
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = () => {
     setShowOrderComplete(true);
   };
 
@@ -274,4 +274,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
