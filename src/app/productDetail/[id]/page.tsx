@@ -15,13 +15,6 @@ export default async function Page({ params }: PageProps) {
   const { id } = await params;
   const product = await getProductById(id);
 
-  function generateSlug(text: string) {
-    return text
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w-]/g, "");
-  }
-
   const randomProducts = await getRandomProducts(3);
 
   if (!product) {

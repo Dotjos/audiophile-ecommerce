@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, ReactNode } from "react";
 import { Navbar } from "./Components/Navbar";
 import Menu from "./Components/Menu";
 import useStore from "./Zustore";
@@ -16,7 +16,6 @@ export default function ScrollLockProvider({ children }: Props) {
   const pathname = usePathname();
   const homePage = pathname === "/";
   const checkoutPage = pathname === "/checkout";
-  const categoryPage = pathname.includes("/category");
 
   useEffect(() => {
     if (menuIsOpen || cartIsOpen) {
@@ -50,7 +49,7 @@ export default function ScrollLockProvider({ children }: Props) {
 
   return (
     <div className="relative">
-      <Navbar homePage={homePage} />
+      <Navbar />
       {menuIsOpen && <Menu isOpen={menuIsOpen} onClose={closeMenu} />}
       {cartIsOpen && <Cart />}
       {children}

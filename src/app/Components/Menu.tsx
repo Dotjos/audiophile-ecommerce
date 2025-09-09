@@ -1,9 +1,9 @@
 "use client";
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 import { ToShowComponent } from "../Components";
-import Backdrop from './Backdrop';
+import Backdrop from "./Backdrop";
 
 interface MenuProps {
   isOpen: boolean;
@@ -11,13 +11,12 @@ interface MenuProps {
 }
 
 const Menu = ({ isOpen, onClose }: MenuProps) => {
-  if (!isOpen) return null;
   //close the menu when navigation is triggered programmatically
   const pathname = usePathname();
   const previousPathnameRef = useRef(pathname);
 
   //Handle navigation logic here
-  
+
   useEffect(() => {
     // Only close if pathname actually changed and menu is open
     if (isOpen && pathname !== previousPathnameRef.current) {
@@ -26,42 +25,39 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     previousPathnameRef.current = pathname;
   }, [pathname, isOpen, onClose]);
 
-  
-  const handleNavigation=()=>{
+  const handleNavigation = () => {
     onClose();
-  }
+  };
 
-
+  if (!isOpen) return null;
   return (
     <>
       {/* Menu content */}
-     <Backdrop className='top-17' >
-      <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+      <Backdrop className="top-17">
+        <div className="absolute flex md:w-full md:justify-between flex-col md:flex-row md:p-10 px-4 pb-6 pt-15 gap-y-11 overflow-hidden z-50 w-full bg-WhiteSmoke-100 rounded-b-lg">
+          <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
+            <ToShowComponent
+              text="HEADPHONES"
+              // height="h-25"
+              imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png"
+            />
+          </div>
 
-         <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
-          <ToShowComponent 
-            text="HEADPHONES" 
-            // height="h-25" 
-            imgPath="/assets/shared/desktop/image-category-thumbnail-headphones.png" 
-          />
-         </div>
-
-         <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
-          <ToShowComponent 
-            text="SPEAKERS" 
-            // height="h-25" 
-            imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"
-          />
+          <div onClick={handleNavigation} className="cursor-pointer md:w-3/10">
+            <ToShowComponent
+              text="SPEAKERS"
+              // height="h-25"
+              imgPath="/assets/shared/desktop/image-category-thumbnail-speakers.png"
+            />
           </div>
 
           <div onClick={handleNavigation} className="cursor-pointer md:w-3/10 ">
-          <ToShowComponent 
-            text="EARPHONES" 
-            // height="h-25" 
-            imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"
-          />
+            <ToShowComponent
+              text="EARPHONES"
+              // height="h-25"
+              imgPath="/assets/shared/desktop/image-category-thumbnail-earphones.png"
+            />
           </div>
-
         </div>
       </Backdrop>
     </>
