@@ -41,13 +41,15 @@ const Cart = () => {
         </div>
 
         {/* Checkout button */}
-        <Button
-          text="CHECKOUT"
-          className="w-full md:text-base mt-4 lg:mt-1 lg:text-sm"
-          link="checkout"
-          basePath=""
-          disabled={totalItems === 0}
-        />
+        {cartItems.length > 0 && (
+          <Button
+            text="CHECKOUT"
+            className="w-full md:text-base mt-4 lg:mt-1 lg:text-sm"
+            link="checkout"
+            basePath=""
+            disabled={totalItems === 0}
+          />
+        )}
       </div>
     </Backdrop>
   );

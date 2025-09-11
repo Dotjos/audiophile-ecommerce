@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import OrderComplete from "../Components/OrderComplete";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface IFormInput {
   name: string;
@@ -35,8 +36,9 @@ const Page = () => {
     },
   });
   const selection = watch("paymentMethod", "e-Money");
-  const { cartItems, totalPrice } = useStore();
+  const { cartItems, totalPrice, clearCart } = useStore();
   const [showOrderComplete, setShowOrderComplete] = useState(false); // Renamed for clarity
+  const router = useRouter();
 
   // Validation patterns
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,6 +47,12 @@ const Page = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = () => {
     setShowOrderComplete(true);
+  };
+
+  const onClickButton = () => {
+    setShowOrderComplete(false);
+    clearCart();
+    router.push("/");
   };
 
   return (
@@ -87,7 +95,7 @@ const Page = () => {
                 id="emailAddress"
                 className=""
                 error={errors.email}
-                placeholder="oladotjos@dmail.com"
+                placeholder="oladotjos@gmail.com"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -248,27 +256,33 @@ const Page = () => {
               Summary
             </h1>
 
-            {cartItems.map((item) => (
-              <SummaryItem product={item} key={item.id} />
-            ))}
+            {cartItems.length > 0 &&
+              cartItems.map((item) => (
+                <SummaryItem product={item} key={item.id} />
+              ))}
 
             <div className="flex text-xs md:text-sm justify-between my-2 items-center">
               <span className="text-Gray-200">TOTAL</span>
               <span className="font-bold">${totalPrice}</span>
             </div>
-            <Button
-              text="CONTINUE & PAY"
-              className={`w-full md:py-4 mt-2 lg:py-2 ${
-                !isValid ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              type="submit"
-            />
+            {cartItems.length > 0 && (
+              <Button
+                text="CONTINUE & PAY"
+                className={`w-full md:py-4 mt-2 lg:py-2 ${
+                  !isValid ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                type="submit"
+              />
+            )}
           </div>
         </form>
       </div>
 
       {showOrderComplete && (
-        <OrderComplete onClose={() => setShowOrderComplete(false)} />
+        <OrderComplete
+          onClose={() => setShowOrderComplete(false)}
+          onClickButton={onClickButton}
+        />
       )}
     </>
   );

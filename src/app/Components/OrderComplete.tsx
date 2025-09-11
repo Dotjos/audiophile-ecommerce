@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
-import { Button } from "../Components";
 import useStore from "../Zustore";
 import SummaryItem from "./SummaryItem";
 import { formatPrice } from "../utils";
 
 interface OrderCompleteProps {
   onClose: () => void;
+  onClickButton: () => void;
 }
 
-const OrderComplete = ({ onClose }: OrderCompleteProps) => {
-  const { cartItems, totalPrice, clearCart } = useStore();
+const OrderComplete = ({ onClose, onClickButton }: OrderCompleteProps) => {
+  const { cartItems, totalPrice } = useStore();
 
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Check if the clicked element is the background container itself
@@ -19,9 +19,9 @@ const OrderComplete = ({ onClose }: OrderCompleteProps) => {
     }
   };
 
-  function handleButtonClick() {
-    clearCart();
-  }
+  // function handleButtonClick() {
+  //   clearCart();
+  // }
 
   return (
     <div
@@ -62,12 +62,13 @@ const OrderComplete = ({ onClose }: OrderCompleteProps) => {
             </span>
           </div>
         </div>
-        <Button
-          text="BACK TO HOME"
-          link="/"
-          onClick={handleButtonClick}
-          className="w-full mt-1 md:py-4 lg:py-3 font-bold"
-        />
+
+        <button
+          className="bg-BurntSienna-100 p-3 text-xs mt-2 font-medium md:font-semibold text-PureWhite-100 md:p-4"
+          onClick={onClickButton}
+        >
+          BACK TO HOME
+        </button>
       </div>
     </div>
   );
