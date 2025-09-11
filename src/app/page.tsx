@@ -55,7 +55,7 @@ export default function Page() {
         <div className="m-4 md:p-7 lg:p-0 lg:m-0">
           <NavSection />
 
-          <section className="bg-BurntSienna-100 lg:mt-25 md:w-full md:py-10 lg:pl-23 lg:pr-15 lg:py-0 lg:pt-18 rounded-lg flex relative flex-col lg:flex-row lg:justify-between gap-7 md:gap-15  items-center h-auto overflow-hidden">
+          <section className="bg-BurntSienna-100 pb-13 md:pb-0 lg:mt-25 md:w-full md:py-10 lg:pl-23 lg:pr-15 lg:py-0 lg:pt-18 rounded-lg flex relative flex-col lg:flex-row lg:justify-between gap-7 md:gap-15  items-center h-auto overflow-hidden">
             {/* Background pattern with speaker image positioned in the center */}
             <Image
               src="/assets/home/desktop/pattern-circles.svg"
@@ -66,7 +66,7 @@ export default function Page() {
             />
 
             {/* Speaker image centered within the circles */}
-            <div className="mt-10 relative h-48 w-1/3 lg:-mb-4 md:w-1/4 lg:w-1/3 lg:h-100">
+            <div className="mt-10 relative h-30 md:h-48 w-1/3 lg:-mb-4 md:w-1/4 lg:w-1/3 lg:h-100">
               <Image
                 src="/assets/home/mobile/image-speaker-zx9.png"
                 alt="ZX9 Speaker"
@@ -97,7 +97,7 @@ export default function Page() {
                 text="SEE PRODUCT"
                 basePath="productDetail"
                 link="zx-9"
-                className="w-3/5 md:w-44 md:text-sm md:py-4"
+                className=" md:w-44 md:text-sm md:py-4"
                 variant="secondary"
               />
             </div>

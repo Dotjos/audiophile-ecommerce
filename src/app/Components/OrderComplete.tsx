@@ -4,12 +4,14 @@ import { Button } from "../Components";
 import useStore from "../Zustore";
 import SummaryItem from "./SummaryItem";
 import { formatPrice } from "../utils";
+import Link from "next/link";
 
 interface OrderCompleteProps {
   onClose: () => void;
+  onClickButton: () => void;
 }
 
-const OrderComplete = ({ onClose }: OrderCompleteProps) => {
+const OrderComplete = ({ onClose, onClickButton }: OrderCompleteProps) => {
   const { cartItems, totalPrice, clearCart } = useStore();
 
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -19,9 +21,9 @@ const OrderComplete = ({ onClose }: OrderCompleteProps) => {
     }
   };
 
-  function handleButtonClick() {
-    clearCart();
-  }
+  // function handleButtonClick() {
+  //   clearCart();
+  // }
 
   return (
     <div
@@ -62,12 +64,14 @@ const OrderComplete = ({ onClose }: OrderCompleteProps) => {
             </span>
           </div>
         </div>
-        <Button
+        {/* <Button
           text="BACK TO HOME"
-          link="/"
-          onClick={handleButtonClick}
+          basePath="/"
+          onClick={onClickButton}
           className="w-full mt-1 md:py-4 lg:py-3 font-bold"
-        />
+        /> */}
+
+        <button onClick={onClickButton}>BACK TO HOME</button>
       </div>
     </div>
   );
