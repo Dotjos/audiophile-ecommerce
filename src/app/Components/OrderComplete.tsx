@@ -4,7 +4,6 @@ import { Button } from "../Components";
 import useStore from "../Zustore";
 import SummaryItem from "./SummaryItem";
 import { formatPrice } from "../utils";
-import Link from "next/link";
 
 interface OrderCompleteProps {
   onClose: () => void;
@@ -64,14 +63,13 @@ const OrderComplete = ({ onClose, onClickButton }: OrderCompleteProps) => {
             </span>
           </div>
         </div>
-        {/* <Button
-          text="BACK TO HOME"
-          basePath="/"
-          onClick={onClickButton}
-          className="w-full mt-1 md:py-4 lg:py-3 font-bold"
-        /> */}
 
-        <button onClick={onClickButton}>BACK TO HOME</button>
+        <button
+          className="bg-BurntSienna-100 p-3 text-xs mt-2 font-medium md:font-semibold text-PureWhite-100 md:p-4"
+          onClick={onClickButton}
+        >
+          BACK TO HOME
+        </button>
       </div>
     </div>
   );
