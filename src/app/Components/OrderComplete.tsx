@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Button } from "../Components";
 import useStore from "../Zustore";
 import SummaryItem from "./SummaryItem";
 import { formatPrice } from "../utils";
@@ -11,7 +10,7 @@ interface OrderCompleteProps {
 }
 
 const OrderComplete = ({ onClose, onClickButton }: OrderCompleteProps) => {
-  const { cartItems, totalPrice, clearCart } = useStore();
+  const { cartItems, totalPrice } = useStore();
 
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Check if the clicked element is the background container itself
