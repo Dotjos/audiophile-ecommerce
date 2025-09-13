@@ -49,7 +49,7 @@ export default async function Page({ params }: PageProps) {
               {formatPrice(product?.price ?? 0)}
             </h1>
             <div className="flex space-x-2">
-              <AddToCartSection product={product} toast={toast} />
+              {<AddToCartSection product={product} toast={toast} />}
             </div>
           </div>
         </div>

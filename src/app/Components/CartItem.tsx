@@ -1,7 +1,6 @@
 "use client";
 import { ProductImage } from "../Components";
 import { QuantityInput } from "./QuantityInput";
-import useStore from "../Zustore";
 import { formatPrice } from "../utils";
 
 interface Product {
@@ -21,11 +20,6 @@ interface CartItemProps {
 }
 
 const CartItem = ({ item }: CartItemProps) => {
-  const { updateQuantity } = useStore();
-  const handleQuantityChange = (newQuantity: number) => {
-    updateQuantity(item.id, newQuantity);
-  };
-
   return (
     <div className="flex items-center mb-4 justify-between">
       <div className="rounded-lg overflow-hidden h-14 w-15">
@@ -46,12 +40,7 @@ const CartItem = ({ item }: CartItemProps) => {
       </div>
       {/* Quantity (optional) */}
       <div className="w-3/10 h-6 overflow-hidden flex items-center justify-center">
-        <QuantityInput
-          id={item.id}
-          quantity={item.quantity || 1}
-          setQuantity={handleQuantityChange}
-          className="lg:h-9"
-        />
+        <QuantityInput id={item.id} className="lg:h-9" />
       </div>
     </div>
   );
