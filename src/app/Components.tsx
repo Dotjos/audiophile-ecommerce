@@ -381,7 +381,7 @@ export function RandomComponents({ product }: RandomProductProps) {
         variant="primary"
         link={product.id}
         basePath="productDetail"
-        className="w-1/3 md:w-4/5 lg:w-1/2 lg:text-xs lg:py-3 md:py-4"
+        className="w-1/3 md:w-4/5 lg:w-3/5 lg:text-xs lg:py-3 md:py-4"
       />
     </div>
   );

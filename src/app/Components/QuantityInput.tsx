@@ -1,63 +1,86 @@
 "use client";
-
+import { toast } from "react-toastify";
 import useStore from "../Zustore";
 
 interface QuantityInputProps {
   setQuantity?: (value: number) => void; // Optional setter function
-  quantity?: number;
+  newItemQuantity?: number;
   id: string;
   className?: string;
 }
 
 export function QuantityInput({
-  setQuantity,
-  quantity,
   id,
   className,
+  newItemQuantity,
+  setQuantity,
 }: QuantityInputProps) {
-  const { updateQuantity, increaseQuantity, decreaseQuantity, cartItems } =
-    useStore();
+  const {
+    updateQuantity,
+    increaseQuantity,
+    decreaseQuantity,
+    cartItems,
+    removeFromCart,
+  } = useStore();
 
-  const getQuantityFromStore = (id: string) => {
-    const item = cartItems.find((item) => item.id === id);
-    return item ? item.quantity : 1; // or whatever default you want
-  };
+  const isItemInCart = cartItems.find((item) => item.id === id);
 
-  const currentQuantity =
-    quantity !== undefined ? quantity : getQuantityFromStore(id);
+  const currentQuantity = isItemInCart
+    ? isItemInCart.quantity
+    : newItemQuantity ?? 1;
 
+  // Handle manual input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value) || 1;
-    if (value >= 1 && value <= 999) {
-      if (setQuantity) {
-        setQuantity(value);
-      } else {
+    const value = parseInt(e.target.value, 10);
+    if (Number.isNaN(value)) return; // ignore junk input
+    if (value < 1) {
+      if (isItemInCart) {
+        removeFromCart(id); // instead of forcing it to 1
+        toast.warning(
+          `${isItemInCart.cartName} has been removed from the cart`,
+          {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+          }
+        );
+      } else if (setQuantity) {
+        setQuantity(1);
+      }
+    } else if (value > 999) {
+      // Cap at 999
+      if (isItemInCart) {
+        updateQuantity(id, 999);
+      } else if (setQuantity) {
+        setQuantity(999);
+      }
+    } else {
+      // Valid input
+      if (isItemInCart) {
         updateQuantity(id, value);
+      } else if (setQuantity) {
+        setQuantity(value);
       }
     }
   };
 
   // Handle decrease button
   const handleDecrease = () => {
-    if (setQuantity) {
-      // Use prop function if provided
-      const newValue = Math.max(1, currentQuantity - 1);
-      setQuantity(newValue);
-    } else {
-      // Update store directly
+    if (isItemInCart) {
       decreaseQuantity(id);
+    } else if (setQuantity) {
+      setQuantity(Math.max(1, currentQuantity - 1));
     }
   };
 
   // Handle increase button
   const handleIncrease = () => {
-    if (setQuantity) {
-      // Use prop function if provided
-      const newValue = Math.min(999, currentQuantity + 1);
-      setQuantity(newValue);
-    } else {
+    if (isItemInCart) {
       // Update store directly
       increaseQuantity(id);
+    } else if (setQuantity) {
+      // Use prop function if provided
+      setQuantity(Math.min(999, currentQuantity + 1));
     }
   };
 
@@ -76,7 +99,7 @@ export function QuantityInput({
         type="number"
         min="1"
         max="999"
-        value={quantity}
+        value={currentQuantity}
         onChange={handleInputChange}
         className="w-5 bg-gray-100 text-center font-normal text-sm border-0 outline-none 
                    [appearance:textfield] 

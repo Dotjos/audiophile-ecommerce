@@ -62,7 +62,6 @@ const useStore = create<StoreState>()(
           cartIsOpen: false, // Ensure cart is closed when menu is opened
         });
       },
-
       // Cart state
       cartIsOpen: false,
       toggleCart: () => {
@@ -209,13 +208,6 @@ const useStore = create<StoreState>()(
             0
           );
 
-          console.log("IncreaseQuantity - Item:", existingItem);
-          console.log(
-            "IncreaseQuantity - New quantity:",
-            existingItem.quantity + 1
-          );
-          console.log("IncreaseQuantity - New total price:", totalPrice);
-
           return {
             cartItems: newCartItems,
             totalItems,
@@ -253,8 +245,6 @@ const useStore = create<StoreState>()(
             (sum, item) => sum + item.price * item.quantity,
             0
           );
-
-          console.log("DecreaseQuantity - New total price:", totalPrice);
 
           return {
             cartItems: newCartItems,
